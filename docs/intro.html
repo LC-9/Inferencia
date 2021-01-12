@@ -53,6 +53,70 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -73,6 +137,12 @@
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#estadística-y-muestras"><i class="fa fa-check"></i><b>1.1</b> Estadística y muestras</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modelos"><i class="fa fa-check"></i><b>1.2</b> Modelos</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#inferencia-estadística-ejemplo."><i class="fa fa-check"></i><b>1.3</b> Inferencia estadística: ejemplo.</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#estimador-de-momentos"><i class="fa fa-check"></i><b>1.3.1</b> Estimador de momentos</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#estimador-de-máxima-verosimilitud-maximización-discreta"><i class="fa fa-check"></i><b>1.3.2</b> Estimador de máxima verosimilitud (maximización discreta)</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#ejemplo-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo"><i class="fa fa-check"></i><b>1.3.3</b> Ejemplo 5: Muestreo de urna con dos clases, con orden, con reemplazo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#resumen-de-la-sección"><i class="fa fa-check"></i><b>1.4</b> Resumen de la sección</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
@@ -224,13 +294,13 @@ X_{(n)} = \{ X_1, X_2, X_3, \dots, X_{10}\}
 \]</span></span> donde <span class="math inline"><span class="math inline">\(X_i\)</span></span> tiene la siguiente distribución: <span class="math display"><span class="math display">\[
 \mathbb{P}(X_i = z) = 
 \begin{cases}
-p_1 &amp;amp; \text{ si } z = 1 \\
-p_2 &amp;amp; \text{ si } z = 2 \\
-p_3 &amp;amp; \text{ si } z = 3 \\
-p_4 &amp;amp; \text{ si } z = 4 \\
-p_5 &amp;amp; \text{ si } z = 5 \\
-p_6 &amp;amp; \text{ si } z = 6 \\
-0 &amp;amp; \text{ en otro caso.}
+p_1  \text{ si } z = 1 \\
+p_2  \text{ si } z = 2 \\
+p_3  \text{ si } z = 3 \\
+p_4  \text{ si } z = 4 \\
+p_5  \text{ si } z = 5 \\
+p_6  \text{ si } z = 6 \\
+0  \text{ en otro caso.}
 \end{cases}
 \]</span></span> donde <span class="math inline"><span class="math inline">\(\sum_{k = 1}^n p_k = 1\)</span></span> y <span class="math inline"><span class="math inline">\(p_{k} \geq 0\)</span></span> para todo <span class="math inline"><span class="math inline">\(k\)</span></span>. Lo que interesa en este estudio es <em>inferir</em> quiénes son las <span class="math inline"><span class="math inline">\(p_k\)</span></span> para determinar si es más probable que caiga en un lado que en otro. Las <span class="math inline"><span class="math inline">\(p_k\)</span></span> se conocen como parámetros.
 </p>
@@ -239,7 +309,7 @@ p_6 &amp;amp; \text{ si } z = 6 \\
 </p>
 <p>
 Ya en la realidad en esos <span class="math inline"><span class="math inline">\(10\)</span></span> tiros no observamos cualquier cosa, observamos valores específicos que hacen que <strong>la muestra aleatoria observada</strong> sea: <span class="math display"><span class="math display">\[
-s_n = \{x_1, x_2, \dots, x_10 \} = \{2,6,1,3,3,3,5,1,3,2\}.
+s_n = \{x_1, x_2, \dots, x_{10} \} = \{2,6,1,3,3,3,5,1,3,2\}.
 \]</span></span> Por supuesto que repitiendo el experimento (volviendo a tirar el dado 10 veces) lo más probable es que la <strong>muestra aleatoria observada</strong> cambie (y veamos otros números) pero el modelo, reflejado en la <strong>muestra aleatoria</strong> (teórica), permanezca inmutable. Una forma de estimar las probabilidades podría ser mediante proporciones y calcular, por ejemplo, la probabilidad de que aparezca <span class="math inline"><span class="math inline">\(1\)</span></span> como: <span class="math display"><span class="math display">\[
 \hat{p}_1 = \frac{\text{Veces que aparece 1}}{n} = \frac{2}{10}
 \]</span></span> En este caso, <span class="math inline"><span class="math inline">\(\hat{p}_1\)</span></span> dado por <span class="math inline"><span class="math inline">\(\frac{2}{10}\)</span></span> es un <strong>estimador observado</strong> de la verdadera probabilidad <span class="math inline"><span class="math inline">\(p_1\)</span></span> que vive en el mundo de los modelos (y jamás podremos conocer)
@@ -535,6 +605,171 @@ s_{(n)} = \{12.11,40.54,22.07,15.22,45.18, 33.39, 41.76\} = \{x_1, x_2, \dots, x
 \]</span></span> lo cual implica que el estimador, en promedio, devolvería el parámetro que nos interesa (este también es <em>insesgado</em>).
 </p>
 </div>
+<p>A modo de resumen y para concluir este capítulo introductorio, veamos un ejemplo más desarrollado de inferencia estadística.</p>
+</div>
+<div id="inferencia-estadística-ejemplo." class="section level2">
+<h2><span class="header-section-number">1.3</span> Inferencia estadística: ejemplo.</h2>
+<p>Se tiene una caja con cinco pelotas de colores rojo <span class="math inline">\(R\)</span> y azul <span class="math inline">\(A\)</span>. Las pelotas son indistinguibles<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> entre sí salvo por el color. Se desconoce exactamente la proporción de colores de la caja (es decir no se sabe cuál de las siguientes opciones es: <span class="math inline">\(\{ R, R, R, R, R\}\)</span>, <span class="math inline">\(\{ R, R, R, R, A\}\)</span>, <span class="math inline">\(\{ R, R, R, A, A\}\)</span>, <span class="math inline">\(\{ R, R, A, A, A\}\)</span>, <span class="math inline">\(\{ R, A, A, A, A\}\)</span>, <span class="math inline">\(\{ A, A, A, A, A\}\)</span>) y eso es lo que se desea determinar. Para ello se extrae una bola, se anota que su color fue rojo, <span class="math inline">\(R\)</span>, y se devuelve a la caja. Se extrae otra bola (que, pudo haber sido la misma que la inicial, recuerda que las bolas son indistinguibles y que la anterior se devolvió a la caja), se anota que su color fue rojo <span class="math inline">\(R\)</span> y se devuelve a la caja. Finalmente en la tercera extracción sale una pelota azul <span class="math inline">\(A\)</span>. Los datos observados (y ordenados) son los siguientes <span class="math inline">\(( R, R, A)\)</span>. Hay dos estimadores posibles de la probabilidad de que salga rojo <span class="math inline">\(p\)</span> que podemos calcular a partir de la <strong>muestra aleatoria</strong> ordenada <span class="math inline">\(( R, R, A)\)</span></p>
+<div id="estimador-de-momentos" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Estimador de momentos</h3>
+<p>Una opción es estimar la probabilidad de que salga rojo, <span class="math inline">\(p\)</span>, mediante el conteo de cuántos rojos salieron divididos entre el total de extracciones. En este caso tendríamos el estimador evaluado en la muestra:
+<span class="math display">\[
+\hat{p}_M = \frac{2}{3}
+\]</span>
+Aquí una nota bien importante: es imposible <em>(¿por qué?)</em> que en la vida real la probabilidad <span class="math inline">\(p\)</span> de que salga rojo sea <span class="math inline">\(2/3\)</span>. El <span class="math inline">\(\hat{p}\)</span> es un estimador pero que jamás va a coincidir con el valor de verdad.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Sin embargo este estimador <span class="math inline">\(\hat{p}\)</span> tiene características interesantes. Para verlas, definamos primero una <strong>muestra aleatoria</strong> de tamaño <span class="math inline">\(3\)</span> de las pelotas en la urna:
+<span class="math display">\[
+X_{(n)} = \{ X_1, X_2, X_3\}
+\]</span>
+donde marcaremos <span class="math inline">\(X_i = 1\)</span> si salió rojo y <span class="math inline">\(X_i = 0\)</span> si salió azul. Preguntarnos por la probabilidad de rojo es lo mismo que preguntarnos por la probabilidad de que <span class="math inline">\(X_i = 1\)</span>. El estimador <span class="math inline">\(\hat{p}\)</span> evaluado en la muestra, la suma ponderada de todos, (los rojos aportan <span class="math inline">\(1\)</span> y los azules nada) está dado por:</p>
+<p><span class="math display">\[
+\hat{p}(X_1, X_2, X_3) = \frac{1}{3}(X_1 + X_2 + X_3)
+\]</span></p>
+<p>Notamos que para este caso los datos (muestra aleatoria observada) son <span class="math inline">\(x_1 = 1\)</span>, <span class="math inline">\(x_2 = 1\)</span> y <span class="math inline">\(x_3 = 0\)</span>. Por lo que el estimador observado es:</p>
+<p><span class="math display">\[
+\hat{p}(x_1, x_2, x_3) = \frac{1}{3}(x_1 + x_2 + x_3) = \frac{2}{3}
+\]</span></p>
+<p>Notamos que el estimador <span class="math inline">\(\hat{p}\)</span> es una variable aleatoria que depende de la muestra (aleatoria). Una vez que se tiene la muestra el estimador <span class="math inline">\(\hat{p}\)</span> colapsa en un único número real definido por la tabla. Pero antes de hacer el experimento (o bien si repetimos el experimento) el <span class="math inline">\(\hat{p}\)</span> es una variable aleatoria que puede obtener múltiples valores distintos. Como es una variable aleatoria podemos entonces calcular su varianza, por ejemplo, así como su media:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb{E}\Big[ \hat{p} \Big] &amp; =  \frac{1}{3}\mathbb{E}\big[ X_1 + X_2 + X_3\big]
+\\ &amp; = \frac{1}{3}\big( \mathbb{E}[ X_1] + \mathbb{E}[ X_2] + \mathbb{E}[ X_3]\big)
+\\ &amp; = \frac{1}{3} 3p 
+\\ &amp; = p
+\end{aligned}
+\]</span></p>
+<p>por lo que si hiciéramos el ejercicio de muestreo múltiples veces los estimadores <span class="math inline">\(\hat{p}\)</span> que obtuviéramos le atinarían en promedio a <span class="math inline">\(p\)</span>. Por otro lado la varianza está dada por:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\textrm{Var}Big[ \hat{p} \Big] &amp; =  \frac{1}{9}\textrm{Var}\big[ X_1 + X_2 + X_3\big]
+\\ &amp; = \frac{1}{9}\big( \textrm{Var}[ X_1] + \textrm{Var}[ X_2] + \textrm{Var}[ X_3]\big)
+\\ &amp; = \frac{1}{9} 3p (1 - p)
+\\ &amp; = \frac{1}{3} p (1 - p)
+\end{aligned}
+\]</span></p>
+<p>Podemos calcular más propiedades probabilísticas de <span class="math inline">\(\hat{p}\)</span> pero el punto importante es que el <span class="math inline">\(\hat{p}\)</span> tiene su propia distribución.</p>
+<p>En <code>R</code> podemos simular este proceso de extracción de los <span class="math inline">\(\hat{p}\)</span>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="intro.html#cb1-2"></a></span>
+<span id="cb1-3"><a href="intro.html#cb1-3"></a><span class="co"># Número de veces que haremos el experimento de extraer 3 pelotas</span></span>
+<span id="cb1-4"><a href="intro.html#cb1-4"></a>nsim           &lt;-<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb1-5"><a href="intro.html#cb1-5"></a>tamaño.muestra &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb1-6"><a href="intro.html#cb1-6"></a></span>
+<span id="cb1-7"><a href="intro.html#cb1-7"></a><span class="co">#La verdadera población</span></span>
+<span id="cb1-8"><a href="intro.html#cb1-8"></a>poblacion &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>)</span>
+<span id="cb1-9"><a href="intro.html#cb1-9"></a></span>
+<span id="cb1-10"><a href="intro.html#cb1-10"></a><span class="co">#Aquí guardaremos los valores de pgorro</span></span>
+<span id="cb1-11"><a href="intro.html#cb1-11"></a>pgorro    &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, nsim)</span>
+<span id="cb1-12"><a href="intro.html#cb1-12"></a></span>
+<span id="cb1-13"><a href="intro.html#cb1-13"></a><span class="co">#Repetimos el proceso de muestreo n veces</span></span>
+<span id="cb1-14"><a href="intro.html#cb1-14"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nsim){</span>
+<span id="cb1-15"><a href="intro.html#cb1-15"></a>  muestra      &lt;-<span class="st"> </span><span class="kw">sample</span>(poblacion, tamaño.muestra, <span class="dt">replace =</span> T)</span>
+<span id="cb1-16"><a href="intro.html#cb1-16"></a>  conteo_rojos &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(muestra <span class="op">==</span><span class="st"> &quot;R&quot;</span>))</span>
+<span id="cb1-17"><a href="intro.html#cb1-17"></a>  pgorro[i]    &lt;-<span class="st"> </span>conteo_rojos<span class="op">/</span>tamaño.muestra</span>
+<span id="cb1-18"><a href="intro.html#cb1-18"></a>}</span>
+<span id="cb1-19"><a href="intro.html#cb1-19"></a></span>
+<span id="cb1-20"><a href="intro.html#cb1-20"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb1-21"><a href="intro.html#cb1-21"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> pgorro, <span class="dt">y =</span> ..count..<span class="op">/</span><span class="dv">100</span>), </span>
+<span id="cb1-22"><a href="intro.html#cb1-22"></a>                 <span class="dt">bins =</span> <span class="dv">10</span>, <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></span>
+<span id="cb1-23"><a href="intro.html#cb1-23"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb1-24"><a href="intro.html#cb1-24"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb1-25"><a href="intro.html#cb1-25"></a>    <span class="dt">x =</span> <span class="st">&quot;Valores de pgorro&quot;</span>,</span>
+<span id="cb1-26"><a href="intro.html#cb1-26"></a>    <span class="dt">y =</span> <span class="st">&quot;Masa de probabilidad de pgorro&quot;</span>,</span>
+<span id="cb1-27"><a href="intro.html#cb1-27"></a>    <span class="dt">title =</span> <span class="st">&quot;Función de masa de probabilidad de pgorro&quot;</span>,</span>
+<span id="cb1-28"><a href="intro.html#cb1-28"></a>    <span class="dt">subtitle =</span> <span class="st">&quot;Aproximación por simulaciones&quot;</span></span>
+<span id="cb1-29"><a href="intro.html#cb1-29"></a>  )</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>Esto implica que aunque tengamos datos fijos <span class="math inline">\(\{ R,R,R A, A\}\)</span> como la extracción de la muestra es aleatoria el valor de <span class="math inline">\(\hat{p}\)</span> va a variar por el simple proceso de selección aleatoria de la muestra. Darnos cuenta de qué tanto varía nuestro valor a estimar y cómo se aleja (o no) de la verdad va a ser un punto muy importante (en general queremos estimadores <span class="math inline">\(\hat{p}\)</span> que no se alejen de los valores verdaderos).</p>
+<p>Ahora, los estimadores <span class="math inline">\(\hat{p}\)</span> no son únicos y se nos puede ocurrir otro estimador como ejemplo:</p>
+</div>
+<div id="estimador-de-máxima-verosimilitud-maximización-discreta" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Estimador de máxima verosimilitud (maximización discreta)</h3>
+<p>Una segunda opción es buscar bajo qué valor de <span class="math inline">\(p\)</span> (de muchos posibles) son más probables los datos observados. Este criterio se conoce como el criterio de <strong>máxima verosimilitud</strong>. La idea es ver, bajo cada una de las construcciones posibles de la caja (<em>i.e.</em> <span class="math inline">\(\{ R, R, R, R, R\}\)</span>, <span class="math inline">\(\{ R, R, R, R, A\}\)</span>, <span class="math inline">\(\{ R, R, R, A, A\}\)</span>, <span class="math inline">\(\{ R, R, A, A, A\}\)</span>, <span class="math inline">\(\{ R, A, A, A, A\}\)</span>, <span class="math inline">\(\{ A, A, A, A, A\}\)</span>) son más probables los datos observados <span class="math inline">\(( R, R, A)\)</span> y elegir esa caja.
+Vamos a resolver este problema calculando bajo cada escenario de caja las probabilidades de obtener la combinación observada <span class="math inline">\(( R, R, A)\)</span>.</p>
+<p>La pregunta, antes de resolver el problema, es <em>¿y esto para qué sirve?</em> . Si bien los ejercicios de pelotas de colores y cajas son divertidos, estos por sí mismos no llegan muy lejos. Lo importante es que los ejercicios de urnas <em>son abstracciones</em> de problemas reales. Por ejemplo, el problema de urnas ocurre de manera poblacional cuando nos interesa estimar una proporción. En un país hay personas que padecen diabetes R y sin diabetes A. Se sabe que en el país hay 100 millones de personas. La proporción exacta (dentro del país) es desconocida. Sin embargo podemos hacer una encuesta y obtener una muestra de 100 personas dentro de las cuáles 20 padecieron diabetes y 80 no (<span class="math inline">\(\{20 R, 80 A\}\)</span>). De aquí, usando el mismo razonamiento que usaremos con la caja de pelotas podemos buscar la combinación de personas con diabetes y sin diabetes en el país donde la combinación de <span class="math inline">\(\{20 R, 80 A\}\)</span> es la más probable.</p>
+<p>Este mismo razonamiento puede cambiarse de múltiples formas. En una encuesta podemos tener más de dos opciones. Por ejemplo, si interesa determinar la cantidad de personas que votarían por el partido rojo <span class="math inline">\(R\)</span>, por el azul <span class="math inline">\(A\)</span> o por el negro <span class="math inline">\(B\)</span> el modelo de pelotas en una caja ahora tiene tres tipos de pelota (y si hay <span class="math inline">\(n\)</span> partidos habría <span class="math inline">\(n\)</span> colores). Puede que los colores estén relacionados entre sí y extraer uno garantice la extracción de otro (por ejemplo si se entrevista gente en casas es muy probable que si se vive un niño en una casa <em>a fuerza</em> viva un adulto en ella mientras que la relación inversa no funciona: que un adulto habite una casa no determina que viva un niño en la misma). Otros cambios posibles son en el mecanismo de selección. Pudiera ser que las pelotas rojas <span class="math inline">\(R\)</span> fueran más grandes que las azules <span class="math inline">\(A\)</span> de tal forma que cuando se extrajeran hubiera mayor probabilidad de tener rojas en la muestra. Esto pasa, por ejemplo, cuando se hacen encuestas de productos. Generalmente sólo aquellas personas que tienen un sentimiento muy fuerte hacia un producto contestan la encuesta. De ahí que haya muchísimas reseñas diciendo que los productos son malísimos o buenísimos y nada intermedio: la gente que reseña algo con 3 estrellas son las pelotas azules que son más difíciles de extraer. Poco a poco veremos otros problemas con pelotas y urnas con sus análogos al mundo real. Por ahora resolvamos el que se especifica más arriba.</p>
+</div>
+<div id="ejemplo-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> Ejemplo 5: Muestreo de urna con dos clases, con orden, con reemplazo</h3>
+<p>Considera una urna con cinco pelotas de colores rojo <span class="math inline">\(R\)</span> y azul <span class="math inline">\(A\)</span>. Se desconoce la proporción de pelotas en la urna. Las pelotas son indistinguibles entre sí salvo por el color. Se extrae de manera ordenada primero una bola roja, <span class="math inline">\(R\)</span>, y se devuelve a la urna. Luego se extrae una segunda bola roja, <span class="math inline">\(R\)</span>, y se devuelve a la urna. Finalmente se extrae una tercera bola y resulta azul: <span class="math inline">\(A\)</span>. La combinación ordenada de pelotas extraídas es: <span class="math inline">\(( R, R, A)\)</span>. Suponiendo todas las pelotas tienen la misma probabilidad de salir, cuál urna genera con mayor probabilidad los datos observados (y por tanto sería nuestra opción para decidir qué urna es la que tenemos): <span class="math inline">\(\{ R, R, R, R, R\}\)</span>, <span class="math inline">\(\{ R, R, R, R, A\}\)</span>, <span class="math inline">\(\{ R, R, R, A, A\}\)</span>, <span class="math inline">\(\{ R, R, A, A, A\}\)</span>, <span class="math inline">\(\{ R, A, A, A, A\}\)</span> ó <span class="math inline">\(\{ A, A, A, A, A\}\)</span>.</p>
+<blockquote>
+<h3 id="solución-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo"><span class="header-section-number">1.3.3</span> Solución 5: Muestreo de urna con dos clases, con orden, con reemplazo</h3>
+<p>Hay dos combinaciones de posible urna que podemos descartar desde un inicio: la que sólo tiene rojos <span class="math inline">\(\{ R, R, R, R, R\}\)</span> y la que sólo tiene azules <span class="math inline">\(\{ A, A, A, A, A\}\)</span>. Esto porque los datos observados nos muestran que obtuvimos tantos rojos como azules. En estas dos descartadas la probabilidad de obtener <span class="math inline">\(( R, R, A)\)</span> es cero. Quedan como cajas posibles: la de cuatro rojas <span class="math inline">\(\{ R, R, R, R, A\}\)</span>, la de tres rojas <span class="math inline">\(\{ R, R, R, A, A\}\)</span>, la de tres azules <span class="math inline">\(\{ R, R, A, A, A\}\)</span>, la de una roja <span class="math inline">\(\{ R, A, A, A, A\}\)</span>. Comenzaré mi análisis con la primera que puse: los otros análisis son similares.</p>
+<p><strong>Análisis de <span class="math inline">\(\{ R, R, R, R, A\}\)</span></strong></p>
+<p>Una de las formas más posibles de enlistar todos los escenarios es con un árbol. La forma larga (e impráctica) consiste en enlistar cada una de las formas de extraer las pelotas de la urna como muestra la siguiente imagen:</p>
+<div class="figure">
+<img src="images/arbol_decision_1.jpeg" alt="" />
+<p class="caption">Árbol de decisión para el análisis de <span class="math inline">\(\{ R, R, R, R, A\}\)</span> con reemplazo</p>
+</div>
+<p>Esta es una forma “segura” de resolver un problema: puede ser largo pero si no se te olvida nada ¡siempre es una posibilidad! Observa que de todas las opciones (combinadas del primer nodo,el segundo y el tercero) se tienen 16 extracciones de la forma <span class="math inline">\(( R, R, A)\)</span> de un total de 125 extracciones (<span class="math inline">\(5\)</span> opciones en el último nodo por <span class="math inline">\(5\)</span> formas de extraer el segundo por <span class="math inline">\(5\)</span> opciones primeras dan 125). La probabilidad entonces de extraer <span class="math inline">\(( R, R, A)\)</span> bajo este esquema es:
+<span class="math display">\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{ R, R, R, R, A\} con reemplazo} =  \dfrac{16}{125} 
+\]</span></p>
+<p><strong>Análisis de <span class="math inline">\(\{ R, R, R, A, A\}\)</span></strong></p>
+<p>Vale la pena para este segundo análisis podar un poco el árbol. Podemos darnos cuenta que en el caso anterior todas las ramas rojas son iguales por lo que quizá no vale la pena ponerlas todas. Al calcular la probabilidad de la extracción <span class="math inline">\(( R, R, A)\)</span> dado que la urna es de la forma <span class="math inline">\(\{ R, R, R, A, A\}\)</span> trabajaremos más a fondo el árbol. El árbol inicial es como sigue:</p>
+<div class="figure">
+<img src="images/arbol_decision_2.jpeg" alt="" />
+<p class="caption">Árbol de decisión en el caso <span class="math inline">\(\{ R, R, R, A, A\}\)</span> con reemplazo</p>
+</div>
+<p>En este caso notamos que todos los caminos iniciados por rojo, R, son idénticos lo mismo que los caminos iniciados por azul A por lo que podemos simplificar el árbol copiando sólo las ramas distintas y anotando cada rama a cuántas representa (las azules son <span class="math inline">\(2\)</span> de <span class="math inline">\(5\)</span> mientras que las rojas <span class="math inline">\(3\)</span> de <span class="math inline">\(5\)</span> de ahí los números <span class="math inline">\(2/5\)</span> y <span class="math inline">\(3/5\)</span>).</p>
+<div class="figure">
+<img src="images/arbol_decision_2_1.jpeg" alt="" />
+<p class="caption">Árbol de decisión simplificado para el análisis de <span class="math inline">\(\{ R, R, R, A, A\}\)</span> con reemplazo</p>
+</div>
+<p>Para el caso que nos atañe en esta ocasión: obtener primero roja, luego otra roja y finalmente azul, <span class="math inline">\(( R, R, A)\)</span>, la única opción es la rama de abajo con probabilidades dadas por:
+<span class="math display">\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{R, R, R, A, A\} con reemplazo}  = \dfrac{3 \times 3 \times 2}{5 \times 5 \times 5} = \dfrac{18}{125}
+\]</span>
+Esta forma reducida es equivalente a la que hubiéramos obtenido haciendo el análisis completo del árbol (por la primera imagen donde hay <span class="math inline">\(18\)</span> opciones de <span class="math inline">\(125\)</span> resultados). El producto de arriba refiere a el número de opciones para primera roja, por el número de opciones para segunda roja <em>dado</em> que la primera fue roja y la última son las opciones para una tercera azul <em>condicional</em> en que las dos primeras fueron rojas. En el denominador sólo multiplicamos los casos totales que son <span class="math inline">\(5\)</span> ramas iniciales que ramifican en <span class="math inline">\(5\)</span> nodos secundarios y <span class="math inline">\(5\)</span> hojas finales.</p>
+<p>Tómate unos minutos para intentar justificar por qué este conteo de multiplicaciones es equivalente a haber contado todas. Asegúrate de entenderlo bien antes de continuar ¡volveremos a ello más adelante!</p>
+<p><strong>Análisis de <span class="math inline">\(\{ R, R, A, A, A\}\)</span></strong></p>
+<p>En este análisis usaremos el mismo truco de un árbol de decisiones reducido que usamos la vez pasada. Lo construiremos paso a paso para mostrar el proceso. De manera inicial tenemos dos opciones: roja (<span class="math inline">\(2\)</span> bolas de <span class="math inline">\(5\)</span>) ó azul (<span class="math inline">\(3\)</span> bolas de <span class="math inline">\(5\)</span>) por lo que a partir de la raíz construimos el árbol con las dos opciones y sus probabilidades</p>
+<div class="figure">
+<img src="images/arbol_decision_3_1.jpeg" alt="" />
+<p class="caption">Versión 1 del árbol de decisión simplificado para <span class="math inline">\(\{ R, R, A, A, A\}\)</span> con reemplazo</p>
+</div>
+<p>Dentro de la rama azul de nuevo tenemos la posibilidad de extraer rojas (<span class="math inline">\(2\)</span> de <span class="math inline">\(5\)</span>) o azules (<span class="math inline">\(3\)</span> de <span class="math inline">\(5\)</span>) por lo que se acoplan a la rama:</p>
+<div class="figure">
+<img src="images/arbol_decision_3_2.jpeg" alt="" />
+<p class="caption">Versión 2 del árbol de decisión simplificado para <span class="math inline">\(\{ R, R, A, A, A\}\)</span> con reemplazo</p>
+</div>
+<p>La lógica es idéntica si salió roja: hay <span class="math inline">\(2/5\)</span> de probabilidad de extraer una roja o <span class="math inline">\(3/5\)</span> de extraer una azul</p>
+<div class="figure">
+<img src="images/arbol_decision_3_3.jpeg" alt="" />
+<p class="caption">Versión 3 del árbol de decisión simplificado para <span class="math inline">\(\{ R, R, A, A, A\}\)</span> con reemplazo</p>
+</div>
+<p>Finalmente las últimas ramas del árbol se agregan de manera idéntica: <span class="math inline">\(2/5\)</span> de rojas y <span class="math inline">\(3/5\)</span> de azul en cada una de las posibles extracciones.</p>
+<div class="figure">
+<img src="images/arbol_decision_3_4.jpeg" alt="" />
+<p class="caption">Versión final del árbol de decisión simplificado para <span class="math inline">\(\{ R, R, A, A, A\}\)</span> con reemplazo</p>
+</div>
+<p>Notamos entonces que podemos hacer el cálculo multiplicando (como hicimos la vez pasada) para obtener:
+<span class="math display">\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{R, R, A, A, A\} con reemplazo}  = \dfrac{2}{5} \cdot \dfrac{2}{5} \cdot \dfrac{3}{5} = \dfrac{12}{125}
+\]</span></p>
+<p><strong>Análisis de <span class="math inline">\(\{ R, A, A, A, A\}\)</span></strong></p>
+<p>Ya para este último caso los árboles de decisiones te son familiares por lo que puedes verificar que en este caso el árbol es el siguiente:</p>
+<div class="figure">
+<img src="images/arbol_decision_4.jpeg" alt="" />
+<p class="caption">Árbol de decisión simplificado para el análisis de <span class="math inline">\(\{ R, A, A, A, A\}\)</span> con reemplazo</p>
+</div>
+<p>donde la probabilidad de $( R, R, A) $ dado que la urna es <span class="math inline">\(\{ R, A, A, A, A\}\)</span> está dada por:
+<span class="math display">\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{ R, A, A, A, A\} con reemplazo} = \dfrac{1}{5} \cdot \dfrac{1}{5} \cdot \dfrac{4}{5} = \dfrac{4}{125}.
+\]</span></p>
+<p><strong>Conclusión</strong></p>
+<p>Después de que analizamos las probabilidades bajo todas las combinaciones posibles de urna concluimos que la que tiene probabilidad más alta de generar en ese orden rojo, luego rojo y finalmente azul, <span class="math inline">\(( R, R, A)\)</span>, es la urna <span class="math inline">\(\{R, R, R, A, A\}\)</span> pues si la urna tiene esa combinación de pelotas la probabilidad de extraer <span class="math inline">\(( R, R, A)\)</span> es:
+<span class="math display">\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{R, R, R, A, A\} con reemplazo} = \dfrac{18}{125} = 0.144.
+\]</span>
+Siguiendo la idea de que la urna que tenemos es la que tiene mayor probabilidad de generar los datos observados (esto se conoce como <em>criterio de máxima verosimilitud</em> en estadística) entonces estimaríamos que la urna que tenemos es <span class="math inline">\(\{R, R, R, A, A\}\)</span> por lo que <span class="math inline">\(\hat{p} = \frac{3}{5}\)</span> es el estimador de máxima verosimilitud de <span class="math inline">\(p\)</span>.</p>
+<p><strong>OJO</strong> Dadas las observaciones <span class="math inline">\(( R, R, A)\)</span> no podemos determinar a ciencia cierta cuál es la combinación de pelotas en la urna que tenemos. Por lo que siempre puede pasar que la combinación <em>real</em> sea distinta. Aquí el modelo nos dice por cuál optar (de manera lógica, aquella que genera con mayor probabilidad lo que observamos) pero la realidad ¡puede estar por otro lado!</p>
+</blockquote>
+<p>Una vez que obtuvimos el estimador, <span class="math inline">\(\hat{p}\)</span>, la segunda pregunta que nos interesará resolver es <em>qué tan buen estimador es <span class="math inline">\(\hat{p}\)</span></em>. Para ello también buscaríamos describir su distribución probabilística (su masa, su varianza, su valor esperado). Esto lo dejaremos para más adelante.</p>
+</div>
+</div>
+<div id="resumen-de-la-sección" class="section level2">
+<h2><span class="header-section-number">1.4</span> Resumen de la sección</h2>
+<p>En esta sección aprendimos que, en el mundo de las ideas, tenemos poblaciones de las cuales obtenemos subconjuntos (muestras). Las muestras observadas corresponden a los datos mientras que las muestras (sin el “observadas”) corresponden al modelo en el mundo de las ideas. Lo que buscamos es estimar los valores que necesitamos para determinar el modelo (parámetros) y esos valores se obtienen a través de estimadores (puede haber varios para el mismo parámetro). Los estimadores viven también en el mundo de los modelos y ahí tienen su distribución de probabilidad, sus masas y densidades, sus valores esperados y sus varianzas. Describir esto nos ayuda a saber cómo se comportan los estimadores y decidir cuáles son los buenos. Profundizaremos más en la siguiente sección donde haremos un ejemplo muy específico: ¿qué pasa si mi población está compuesta de variables aleatorias normales? Jugaremos con ello y veremos por qué es normal usar la normal.</p>
 
 </div>
 </div>
@@ -551,6 +786,8 @@ s_{(n)} = \{12.11,40.54,22.07,15.22,45.18, 33.39, 41.76\} = \{x_1, x_2, \dots, x
 <hr />
 <ol start="1">
 <li id="fn1"><p>Traducción y subrayado de Rodrigo<a href="intro.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Pelotas distinguibles, por ejemplo, tendrían números distintos o serían de materiales diferentes o con marcas específicas para saber que una azul es distinta de la otra.<a href="intro.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Esto porque en la caja hay cinco pelotas y el denominador de la probabilidad <span class="math inline">\(p\)</span> va a ser <span class="math inline">\(5\)</span> por construcción del modelo. No hay forma de que el <span class="math inline">\(5\)</span> se pueda simplificar en <span class="math inline">\(3\)</span> o viceversa.<a href="intro.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -41,6 +41,46 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -353,13 +393,13 @@ X_{(n)} = \{ X_1, X_2, X_3, \dots, X_{10}\}
 \] donde \(X_i\) tiene la siguiente distribución: \[
 \mathbb{P}(X_i = z) = 
 \begin{cases}
-p_1 & \text{ si } z = 1 \\
-p_2 & \text{ si } z = 2 \\
-p_3 & \text{ si } z = 3 \\
-p_4 & \text{ si } z = 4 \\
-p_5 & \text{ si } z = 5 \\
-p_6 & \text{ si } z = 6 \\
-0 & \text{ en otro caso.}
+p_1  \text{ si } z = 1 \\
+p_2  \text{ si } z = 2 \\
+p_3  \text{ si } z = 3 \\
+p_4  \text{ si } z = 4 \\
+p_5  \text{ si } z = 5 \\
+p_6  \text{ si } z = 6 \\
+0  \text{ en otro caso.}
 \end{cases}
 \] donde \(\sum_{k = 1}^n p_k = 1\) y \(p_{k} \geq 0\) para todo \(k\).
 Lo que interesa en este estudio es \emph{inferir} quiénes son las
@@ -371,7 +411,7 @@ otro. Las \(p_k\) se conocen como parámetros.
 Ya en la realidad en esos \(10\) tiros no observamos cualquier cosa,
 observamos valores específicos que hacen que \textbf{la muestra
 aleatoria observada} sea: \[
-s_n = \{x_1, x_2, \dots, x_10 \} = \{2,6,1,3,3,3,5,1,3,2\}.
+s_n = \{x_1, x_2, \dots, x_{10} \} = \{2,6,1,3,3,3,5,1,3,2\}.
 \] Por supuesto que repitiendo el experimento (volviendo a tirar el dado
 10 veces) lo más probable es que la \textbf{muestra aleatoria observada}
 cambie (y veamos otros números) pero el modelo, reflejado en la
@@ -627,6 +667,236 @@ Particularmente podemos calcular su valor esperado, por ejemplo, \[
 \] lo cual implica que el estimador, en promedio, devolvería el
 parámetro que nos interesa (este también es \emph{insesgado}).
 \end{Ejemplo}
+
+A modo de resumen y para concluir este capítulo introductorio, veamos un ejemplo más desarrollado de inferencia estadística.
+
+\hypertarget{inferencia-estaduxedstica-ejemplo.}{%
+\section{Inferencia estadística: ejemplo.}\label{inferencia-estaduxedstica-ejemplo.}}
+
+Se tiene una caja con cinco pelotas de colores rojo \(R\) y azul \(A\). Las pelotas son indistinguibles\footnote{Pelotas distinguibles, por ejemplo, tendrían números distintos o serían de materiales diferentes o con marcas específicas para saber que una azul es distinta de la otra.} entre sí salvo por el color. Se desconoce exactamente la proporción de colores de la caja (es decir no se sabe cuál de las siguientes opciones es: \(\{ R, R, R, R, R\}\), \(\{ R, R, R, R, A\}\), \(\{ R, R, R, A, A\}\), \(\{ R, R, A, A, A\}\), \(\{ R, A, A, A, A\}\), \(\{ A, A, A, A, A\}\)) y eso es lo que se desea determinar. Para ello se extrae una bola, se anota que su color fue rojo, \(R\), y se devuelve a la caja. Se extrae otra bola (que, pudo haber sido la misma que la inicial, recuerda que las bolas son indistinguibles y que la anterior se devolvió a la caja), se anota que su color fue rojo \(R\) y se devuelve a la caja. Finalmente en la tercera extracción sale una pelota azul \(A\). Los datos observados (y ordenados) son los siguientes \(( R, R, A)\). Hay dos estimadores posibles de la probabilidad de que salga rojo \(p\) que podemos calcular a partir de la \textbf{muestra aleatoria} ordenada \(( R, R, A)\)
+
+\hypertarget{estimador-de-momentos}{%
+\subsection{Estimador de momentos}\label{estimador-de-momentos}}
+
+Una opción es estimar la probabilidad de que salga rojo, \(p\), mediante el conteo de cuántos rojos salieron divididos entre el total de extracciones. En este caso tendríamos el estimador evaluado en la muestra:
+\[
+\hat{p}_M = \frac{2}{3}
+\]
+Aquí una nota bien importante: es imposible \emph{(¿por qué?)} que en la vida real la probabilidad \(p\) de que salga rojo sea \(2/3\). El \(\hat{p}\) es un estimador pero que jamás va a coincidir con el valor de verdad.\footnote{Esto porque en la caja hay cinco pelotas y el denominador de la probabilidad \(p\) va a ser \(5\) por construcción del modelo. No hay forma de que el \(5\) se pueda simplificar en \(3\) o viceversa.}. Sin embargo este estimador \(\hat{p}\) tiene características interesantes. Para verlas, definamos primero una \textbf{muestra aleatoria} de tamaño \(3\) de las pelotas en la urna:
+\[
+X_{(n)} = \{ X_1, X_2, X_3\}
+\]
+donde marcaremos \(X_i = 1\) si salió rojo y \(X_i = 0\) si salió azul. Preguntarnos por la probabilidad de rojo es lo mismo que preguntarnos por la probabilidad de que \(X_i = 1\). El estimador \(\hat{p}\) evaluado en la muestra, la suma ponderada de todos, (los rojos aportan \(1\) y los azules nada) está dado por:
+
+\[
+\hat{p}(X_1, X_2, X_3) = \frac{1}{3}(X_1 + X_2 + X_3)
+\]
+
+Notamos que para este caso los datos (muestra aleatoria observada) son \(x_1 = 1\), \(x_2 = 1\) y \(x_3 = 0\). Por lo que el estimador observado es:
+
+\[
+\hat{p}(x_1, x_2, x_3) = \frac{1}{3}(x_1 + x_2 + x_3) = \frac{2}{3}
+\]
+
+Notamos que el estimador \(\hat{p}\) es una variable aleatoria que depende de la muestra (aleatoria). Una vez que se tiene la muestra el estimador \(\hat{p}\) colapsa en un único número real definido por la tabla. Pero antes de hacer el experimento (o bien si repetimos el experimento) el \(\hat{p}\) es una variable aleatoria que puede obtener múltiples valores distintos. Como es una variable aleatoria podemos entonces calcular su varianza, por ejemplo, así como su media:
+
+\[
+\begin{aligned}
+\mathbb{E}\Big[ \hat{p} \Big] & =  \frac{1}{3}\mathbb{E}\big[ X_1 + X_2 + X_3\big]
+\\ & = \frac{1}{3}\big( \mathbb{E}[ X_1] + \mathbb{E}[ X_2] + \mathbb{E}[ X_3]\big)
+\\ & = \frac{1}{3} 3p 
+\\ & = p
+\end{aligned}
+\]
+
+por lo que si hiciéramos el ejercicio de muestreo múltiples veces los estimadores \(\hat{p}\) que obtuviéramos le atinarían en promedio a \(p\). Por otro lado la varianza está dada por:
+
+\[
+\begin{aligned}
+\textrm{Var}Big[ \hat{p} \Big] & =  \frac{1}{9}\textrm{Var}\big[ X_1 + X_2 + X_3\big]
+\\ & = \frac{1}{9}\big( \textrm{Var}[ X_1] + \textrm{Var}[ X_2] + \textrm{Var}[ X_3]\big)
+\\ & = \frac{1}{9} 3p (1 - p)
+\\ & = \frac{1}{3} p (1 - p)
+\end{aligned}
+\]
+
+Podemos calcular más propiedades probabilísticas de \(\hat{p}\) pero el punto importante es que el \(\hat{p}\) tiene su propia distribución.
+
+En \texttt{R} podemos simular este proceso de extracción de los \(\hat{p}\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{# Número de veces que haremos el experimento de extraer 3 pelotas}
+\NormalTok{nsim           <-}\StringTok{ }\DecValTok{100}
+\NormalTok{tamaño.muestra <-}\StringTok{ }\DecValTok{3}
+
+\CommentTok{#La verdadera población}
+\NormalTok{poblacion <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"R"}\NormalTok{,}\StringTok{"R"}\NormalTok{,}\StringTok{"R"}\NormalTok{,}\StringTok{"A"}\NormalTok{,}\StringTok{"A"}\NormalTok{)}
+
+\CommentTok{#Aquí guardaremos los valores de pgorro}
+\NormalTok{pgorro    <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\OtherTok{NA}\NormalTok{, nsim)}
+
+\CommentTok{#Repetimos el proceso de muestreo n veces}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{nsim)\{}
+\NormalTok{  muestra      <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(poblacion, tamaño.muestra, }\DataTypeTok{replace =}\NormalTok{ T)}
+\NormalTok{  conteo_rojos <-}\StringTok{ }\KeywordTok{length}\NormalTok{(}\KeywordTok{which}\NormalTok{(muestra }\OperatorTok{==}\StringTok{ "R"}\NormalTok{))}
+\NormalTok{  pgorro[i]    <-}\StringTok{ }\NormalTok{conteo_rojos}\OperatorTok{/}\NormalTok{tamaño.muestra}
+\NormalTok{\}}
+
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ pgorro, }\DataTypeTok{y =}\NormalTok{ ..count..}\OperatorTok{/}\DecValTok{100}\NormalTok{), }
+                 \DataTypeTok{bins =} \DecValTok{10}\NormalTok{, }\DataTypeTok{fill =} \StringTok{"purple"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"white"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_classic}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{x =} \StringTok{"Valores de pgorro"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Masa de probabilidad de pgorro"}\NormalTok{,}
+    \DataTypeTok{title =} \StringTok{"Función de masa de probabilidad de pgorro"}\NormalTok{,}
+    \DataTypeTok{subtitle =} \StringTok{"Aproximación por simulaciones"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{InferenciaEstadistica_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+Esto implica que aunque tengamos datos fijos \(\{ R,R,R A, A\}\) como la extracción de la muestra es aleatoria el valor de \(\hat{p}\) va a variar por el simple proceso de selección aleatoria de la muestra. Darnos cuenta de qué tanto varía nuestro valor a estimar y cómo se aleja (o no) de la verdad va a ser un punto muy importante (en general queremos estimadores \(\hat{p}\) que no se alejen de los valores verdaderos).
+
+Ahora, los estimadores \(\hat{p}\) no son únicos y se nos puede ocurrir otro estimador como ejemplo:
+
+\hypertarget{estimador-de-muxe1xima-verosimilitud-maximizaciuxf3n-discreta}{%
+\subsection{Estimador de máxima verosimilitud (maximización discreta)}\label{estimador-de-muxe1xima-verosimilitud-maximizaciuxf3n-discreta}}
+
+Una segunda opción es buscar bajo qué valor de \(p\) (de muchos posibles) son más probables los datos observados. Este criterio se conoce como el criterio de \textbf{máxima verosimilitud}. La idea es ver, bajo cada una de las construcciones posibles de la caja (\emph{i.e.} \(\{ R, R, R, R, R\}\), \(\{ R, R, R, R, A\}\), \(\{ R, R, R, A, A\}\), \(\{ R, R, A, A, A\}\), \(\{ R, A, A, A, A\}\), \(\{ A, A, A, A, A\}\)) son más probables los datos observados \(( R, R, A)\) y elegir esa caja.
+Vamos a resolver este problema calculando bajo cada escenario de caja las probabilidades de obtener la combinación observada \(( R, R, A)\).
+
+La pregunta, antes de resolver el problema, es \emph{¿y esto para qué sirve?} . Si bien los ejercicios de pelotas de colores y cajas son divertidos, estos por sí mismos no llegan muy lejos. Lo importante es que los ejercicios de urnas \emph{son abstracciones} de problemas reales. Por ejemplo, el problema de urnas ocurre de manera poblacional cuando nos interesa estimar una proporción. En un país hay personas que padecen diabetes R y sin diabetes A. Se sabe que en el país hay 100 millones de personas. La proporción exacta (dentro del país) es desconocida. Sin embargo podemos hacer una encuesta y obtener una muestra de 100 personas dentro de las cuáles 20 padecieron diabetes y 80 no (\(\{20 R, 80 A\}\)). De aquí, usando el mismo razonamiento que usaremos con la caja de pelotas podemos buscar la combinación de personas con diabetes y sin diabetes en el país donde la combinación de \(\{20 R, 80 A\}\) es la más probable.
+
+Este mismo razonamiento puede cambiarse de múltiples formas. En una encuesta podemos tener más de dos opciones. Por ejemplo, si interesa determinar la cantidad de personas que votarían por el partido rojo \(R\), por el azul \(A\) o por el negro \(B\) el modelo de pelotas en una caja ahora tiene tres tipos de pelota (y si hay \(n\) partidos habría \(n\) colores). Puede que los colores estén relacionados entre sí y extraer uno garantice la extracción de otro (por ejemplo si se entrevista gente en casas es muy probable que si se vive un niño en una casa \emph{a fuerza} viva un adulto en ella mientras que la relación inversa no funciona: que un adulto habite una casa no determina que viva un niño en la misma). Otros cambios posibles son en el mecanismo de selección. Pudiera ser que las pelotas rojas \(R\) fueran más grandes que las azules \(A\) de tal forma que cuando se extrajeran hubiera mayor probabilidad de tener rojas en la muestra. Esto pasa, por ejemplo, cuando se hacen encuestas de productos. Generalmente sólo aquellas personas que tienen un sentimiento muy fuerte hacia un producto contestan la encuesta. De ahí que haya muchísimas reseñas diciendo que los productos son malísimos o buenísimos y nada intermedio: la gente que reseña algo con 3 estrellas son las pelotas azules que son más difíciles de extraer. Poco a poco veremos otros problemas con pelotas y urnas con sus análogos al mundo real. Por ahora resolvamos el que se especifica más arriba.
+
+\hypertarget{ejemplo-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo}{%
+\subsection{Ejemplo 5: Muestreo de urna con dos clases, con orden, con reemplazo}\label{ejemplo-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo}}
+
+Considera una urna con cinco pelotas de colores rojo \(R\) y azul \(A\). Se desconoce la proporción de pelotas en la urna. Las pelotas son indistinguibles entre sí salvo por el color. Se extrae de manera ordenada primero una bola roja, \(R\), y se devuelve a la urna. Luego se extrae una segunda bola roja, \(R\), y se devuelve a la urna. Finalmente se extrae una tercera bola y resulta azul: \(A\). La combinación ordenada de pelotas extraídas es: \(( R, R, A)\). Suponiendo todas las pelotas tienen la misma probabilidad de salir, cuál urna genera con mayor probabilidad los datos observados (y por tanto sería nuestra opción para decidir qué urna es la que tenemos): \(\{ R, R, R, R, R\}\), \(\{ R, R, R, R, A\}\), \(\{ R, R, R, A, A\}\), \(\{ R, R, A, A, A\}\), \(\{ R, A, A, A, A\}\) ó \(\{ A, A, A, A, A\}\).
+
+\begin{quote}
+\hypertarget{soluciuxf3n-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo}{%
+\subsection{Solución 5: Muestreo de urna con dos clases, con orden, con reemplazo}\label{soluciuxf3n-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo}}
+
+Hay dos combinaciones de posible urna que podemos descartar desde un inicio: la que sólo tiene rojos \(\{ R, R, R, R, R\}\) y la que sólo tiene azules \(\{ A, A, A, A, A\}\). Esto porque los datos observados nos muestran que obtuvimos tantos rojos como azules. En estas dos descartadas la probabilidad de obtener \(( R, R, A)\) es cero. Quedan como cajas posibles: la de cuatro rojas \(\{ R, R, R, R, A\}\), la de tres rojas \(\{ R, R, R, A, A\}\), la de tres azules \(\{ R, R, A, A, A\}\), la de una roja \(\{ R, A, A, A, A\}\). Comenzaré mi análisis con la primera que puse: los otros análisis son similares.
+
+\textbf{Análisis de \(\{ R, R, R, R, A\}\)}
+
+Una de las formas más posibles de enlistar todos los escenarios es con un árbol. La forma larga (e impráctica) consiste en enlistar cada una de las formas de extraer las pelotas de la urna como muestra la siguiente imagen:
+
+\begin{figure}
+\centering
+\includegraphics{./images/arbol_decision_1.jpeg}
+\caption{Árbol de decisión para el análisis de \(\{ R, R, R, R, A\}\) con reemplazo}
+\end{figure}
+
+Esta es una forma ``segura'' de resolver un problema: puede ser largo pero si no se te olvida nada ¡siempre es una posibilidad! Observa que de todas las opciones (combinadas del primer nodo,el segundo y el tercero) se tienen 16 extracciones de la forma \(( R, R, A)\) de un total de 125 extracciones (\(5\) opciones en el último nodo por \(5\) formas de extraer el segundo por \(5\) opciones primeras dan 125). La probabilidad entonces de extraer \(( R, R, A)\) bajo este esquema es:
+\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{ R, R, R, R, A\} con reemplazo} =  \dfrac{16}{125} 
+\]
+
+\textbf{Análisis de \(\{ R, R, R, A, A\}\)}
+
+Vale la pena para este segundo análisis podar un poco el árbol. Podemos darnos cuenta que en el caso anterior todas las ramas rojas son iguales por lo que quizá no vale la pena ponerlas todas. Al calcular la probabilidad de la extracción \(( R, R, A)\) dado que la urna es de la forma \(\{ R, R, R, A, A\}\) trabajaremos más a fondo el árbol. El árbol inicial es como sigue:
+
+\begin{figure}
+\centering
+\includegraphics{./images/arbol_decision_2.jpeg}
+\caption{Árbol de decisión en el caso \(\{ R, R, R, A, A\}\) con reemplazo}
+\end{figure}
+
+En este caso notamos que todos los caminos iniciados por rojo, R, son idénticos lo mismo que los caminos iniciados por azul A por lo que podemos simplificar el árbol copiando sólo las ramas distintas y anotando cada rama a cuántas representa (las azules son \(2\) de \(5\) mientras que las rojas \(3\) de \(5\) de ahí los números \(2/5\) y \(3/5\)).
+
+\begin{figure}
+\centering
+\includegraphics{./images/arbol_decision_2_1.jpeg}
+\caption{Árbol de decisión simplificado para el análisis de \(\{ R, R, R, A, A\}\) con reemplazo}
+\end{figure}
+
+Para el caso que nos atañe en esta ocasión: obtener primero roja, luego otra roja y finalmente azul, \(( R, R, A)\), la única opción es la rama de abajo con probabilidades dadas por:
+\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{R, R, R, A, A\} con reemplazo}  = \dfrac{3 \times 3 \times 2}{5 \times 5 \times 5} = \dfrac{18}{125}
+\]
+Esta forma reducida es equivalente a la que hubiéramos obtenido haciendo el análisis completo del árbol (por la primera imagen donde hay \(18\) opciones de \(125\) resultados). El producto de arriba refiere a el número de opciones para primera roja, por el número de opciones para segunda roja \emph{dado} que la primera fue roja y la última son las opciones para una tercera azul \emph{condicional} en que las dos primeras fueron rojas. En el denominador sólo multiplicamos los casos totales que son \(5\) ramas iniciales que ramifican en \(5\) nodos secundarios y \(5\) hojas finales.
+
+Tómate unos minutos para intentar justificar por qué este conteo de multiplicaciones es equivalente a haber contado todas. Asegúrate de entenderlo bien antes de continuar ¡volveremos a ello más adelante!
+
+\textbf{Análisis de \(\{ R, R, A, A, A\}\)}
+
+En este análisis usaremos el mismo truco de un árbol de decisiones reducido que usamos la vez pasada. Lo construiremos paso a paso para mostrar el proceso. De manera inicial tenemos dos opciones: roja (\(2\) bolas de \(5\)) ó azul (\(3\) bolas de \(5\)) por lo que a partir de la raíz construimos el árbol con las dos opciones y sus probabilidades
+
+\begin{figure}
+\centering
+\includegraphics{./images/arbol_decision_3_1.jpeg}
+\caption{Versión 1 del árbol de decisión simplificado para \(\{ R, R, A, A, A\}\) con reemplazo}
+\end{figure}
+
+Dentro de la rama azul de nuevo tenemos la posibilidad de extraer rojas (\(2\) de \(5\)) o azules (\(3\) de \(5\)) por lo que se acoplan a la rama:
+
+\begin{figure}
+\centering
+\includegraphics{./images/arbol_decision_3_2.jpeg}
+\caption{Versión 2 del árbol de decisión simplificado para \(\{ R, R, A, A, A\}\) con reemplazo}
+\end{figure}
+
+La lógica es idéntica si salió roja: hay \(2/5\) de probabilidad de extraer una roja o \(3/5\) de extraer una azul
+
+\begin{figure}
+\centering
+\includegraphics{./images/arbol_decision_3_3.jpeg}
+\caption{Versión 3 del árbol de decisión simplificado para \(\{ R, R, A, A, A\}\) con reemplazo}
+\end{figure}
+
+Finalmente las últimas ramas del árbol se agregan de manera idéntica: \(2/5\) de rojas y \(3/5\) de azul en cada una de las posibles extracciones.
+
+\begin{figure}
+\centering
+\includegraphics{./images/arbol_decision_3_4.jpeg}
+\caption{Versión final del árbol de decisión simplificado para \(\{ R, R, A, A, A\}\) con reemplazo}
+\end{figure}
+
+Notamos entonces que podemos hacer el cálculo multiplicando (como hicimos la vez pasada) para obtener:
+\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{R, R, A, A, A\} con reemplazo}  = \dfrac{2}{5} \cdot \dfrac{2}{5} \cdot \dfrac{3}{5} = \dfrac{12}{125}
+\]
+
+\textbf{Análisis de \(\{ R, A, A, A, A\}\)}
+
+Ya para este último caso los árboles de decisiones te son familiares por lo que puedes verificar que en este caso el árbol es el siguiente:
+
+\begin{figure}
+\centering
+\includegraphics{./images/arbol_decision_4.jpeg}
+\caption{Árbol de decisión simplificado para el análisis de \(\{ R, A, A, A, A\}\) con reemplazo}
+\end{figure}
+
+donde la probabilidad de \$( R, R, A) \$ dado que la urna es \(\{ R, A, A, A, A\}\) está dada por:
+\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{ R, A, A, A, A\} con reemplazo} = \dfrac{1}{5} \cdot \dfrac{1}{5} \cdot \dfrac{4}{5} = \dfrac{4}{125}.
+\]
+
+\textbf{Conclusión}
+
+Después de que analizamos las probabilidades bajo todas las combinaciones posibles de urna concluimos que la que tiene probabilidad más alta de generar en ese orden rojo, luego rojo y finalmente azul, \(( R, R, A)\), es la urna \(\{R, R, R, A, A\}\) pues si la urna tiene esa combinación de pelotas la probabilidad de extraer \(( R, R, A)\) es:
+\[
+\textrm{Probabilidad de ( R, R, A) dada la urna \{R, R, R, A, A\} con reemplazo} = \dfrac{18}{125} = 0.144.
+\]
+Siguiendo la idea de que la urna que tenemos es la que tiene mayor probabilidad de generar los datos observados (esto se conoce como \emph{criterio de máxima verosimilitud} en estadística) entonces estimaríamos que la urna que tenemos es \(\{R, R, R, A, A\}\) por lo que \(\hat{p} = \frac{3}{5}\) es el estimador de máxima verosimilitud de \(p\).
+
+\textbf{OJO} Dadas las observaciones \(( R, R, A)\) no podemos determinar a ciencia cierta cuál es la combinación de pelotas en la urna que tenemos. Por lo que siempre puede pasar que la combinación \emph{real} sea distinta. Aquí el modelo nos dice por cuál optar (de manera lógica, aquella que genera con mayor probabilidad lo que observamos) pero la realidad ¡puede estar por otro lado!
+\end{quote}
+
+Una vez que obtuvimos el estimador, \(\hat{p}\), la segunda pregunta que nos interesará resolver es \emph{qué tan buen estimador es \(\hat{p}\)}. Para ello también buscaríamos describir su distribución probabilística (su masa, su varianza, su valor esperado). Esto lo dejaremos para más adelante.
+
+\hypertarget{resumen-de-la-secciuxf3n}{%
+\section{Resumen de la sección}\label{resumen-de-la-secciuxf3n}}
+
+En esta sección aprendimos que, en el mundo de las ideas, tenemos poblaciones de las cuales obtenemos subconjuntos (muestras). Las muestras observadas corresponden a los datos mientras que las muestras (sin el ``observadas'') corresponden al modelo en el mundo de las ideas. Lo que buscamos es estimar los valores que necesitamos para determinar el modelo (parámetros) y esos valores se obtienen a través de estimadores (puede haber varios para el mismo parámetro). Los estimadores viven también en el mundo de los modelos y ahí tienen su distribución de probabilidad, sus masas y densidades, sus valores esperados y sus varianzas. Describir esto nos ayuda a saber cómo se comportan los estimadores y decidir cuáles son los buenos. Profundizaremos más en la siguiente sección donde haremos un ejemplo muy específico: ¿qué pasa si mi población está compuesta de variables aleatorias normales? Jugaremos con ello y veremos por qué es normal usar la normal.
 
   \bibliography{book.bib,packages.bib}
 

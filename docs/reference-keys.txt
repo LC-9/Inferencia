@@ -1,3 +1,8 @@
 intro
 estadística-y-muestras
 modelos
+inferencia-estadística-ejemplo.
+estimador-de-momentos
+estimador-de-máxima-verosimilitud-maximización-discreta
+ejemplo-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo
+resumen-de-la-sección
