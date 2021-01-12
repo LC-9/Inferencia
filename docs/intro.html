@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Inferencia</title>
+  <meta name="description" content="Notas para un curso de inferencia estadística" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Inferencia" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas para un curso de inferencia estadística" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Inferencia" />
+  
+  <meta name="twitter:description" content="Notas para un curso de inferencia estadística" />
+  
+
+<meta name="author" content="Rodrigo Zepeda-Tello y Luis Carlos Bernal" />
+
+
+<meta name="date" content="2021-01-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="referencias.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas a un curso de inferencia estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#estadística-y-muestras"><i class="fa fa-check"></i><b>1.1</b> Estadística y muestras</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modelos"><i class="fa fa-check"></i><b>1.2</b> Modelos</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/RodrigoZepeda" target="blank">Elaborado por Rodrigo Zepeda y Luis Carlos Bernal</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inferencia</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Inferencia</h1>
+<p class="author"><em>Rodrigo Zepeda-Tello y Luis Carlos Bernal</em></p>
+<p class="date"><em>2021-01-12</em></p>
+</div>
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Capítulo 1</span> Introducción</h1>
+<div id="estadística-y-muestras" class="section level2">
+<h2><span class="header-section-number">1.1</span> Estadística y muestras</h2>
+<p>La <a href="https://plato.stanford.edu/entries/statistics/#StaInd">enciclopedia Stanford de filosofía</a> establece la siguiente definición de estadística<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<div class="Definicion">
+<p>
+<strong>Estadística</strong> La estadística es una disciplina matemática y conceptual que se enfoca en la relación entre datos e hipótesis. Los datos son registros de observaciones o eventos en un estudio científico, por ejemplo, un conjunto de mediciones de individuos de una población. Los datos que son obtenidos se conoce como la muestra, datos muestrales, o simplemente los datos, y todas las posibles muestras posibles en un estudio forman una colección llamada el espacio muestra. Las hipótesis, por su parte, son enunciados generales sobre el sistema objetivo de la investigación científica, por ejemplo, expresar un hecho general sobre todos los individuos en la población. Una hipótesis estadística es un enunciado general que puede ser expresada como una distribución de probabilidad sobre el espacio muestral, es decir, ésta determina una probabilidad para cada una de las posibles muestras.
+</p>
+</div>
+<p>De manera breve, la estadística es una disciplina que se encarga de, a través de muestras (cuantificadas como datos), describir el mundo. Y hay muchas cosas por describir: asociaciones, causalidad, realizar predicciones, establecer mecanismos de funcionamiento de objetos, etc. Es así como se establece su objetivo el cual de acuerdo con <span class="citation">Wackerly, Mendenhall, and Scheaffer (<a href="#ref-wackerly" role="doc-biblioref">2014</a>)</span> es:</p>
+<blockquote>
+<p>realizar una inferencia sobre la población con base en la información contenida en una muestra de dicha población y proveer una medida asociada de qué tan buena es la inferencia.</p>
+</blockquote>
+<p>Dentro de la definición previa y objetivos hay que destacar varios términos que son de importancia. La primera es la <strong>población</strong>, cualquier conjunto (no vacío) de objetos. Una <strong>población</strong> es lo más general posible, no necesariamente involucra personas o seres vivos. Algunos ejemplos de poblaciones incluyen: las personas que viven en Guatemala (si me interesa saber algo de los guatemaltecos en general), los árboles del Amazonas (si quiero saber cosas de ecología), los perros callejeros en Ciudad de México, los consumidores de una marca de cereal, los coches que transitan por Dubai, los granos de arena en una playa específica de Cancún, las células T dentro de los seres humanos o los metales pesados.</p>
+<p>Más relevante que la población (para nuestros propósitos) es la <strong>población objetivo</strong> El conjunto de elementos que formarán parte del estudio. Definir la <strong>población objetivo</strong> es complicado en algunas situaciones; por ejemplo, si se desea saber si <em>los mexicanos</em> están a favor o en contra de legalizar la marihuana hay que establecer quiénes son <em>los mexicanos</em>. ¿Cuentan las personas con nacionalidad mexicana que residen en el extranjero? ¿Cuentan los menores de edad? ¿Qué pasa con los extranjeros que son residentes? De nuevo, la población objetivo no necesariamente son personas, es sólo aquello que nos interesa medir.</p>
+<p>Idealmente el estudio estadístico sería sobre la población objetivo. Por ejemplo, si nos interesa estudiar la evolución de los enfermos de VIH, la <strong>población objetivo</strong> serían los enfermos. Sin embargo, en el mundo real es imposible conseguir a toda la población objetivo (dentro de los enfermos, por ejemplo, están aquellos que aún no saben que tienen la enfermedad y no acudirían a nuestro estudio). La <strong>población muestreada</strong> resulta de esta dificultad. La <strong>población muestreada</strong> es el conjunto de elementos sobre los cuales se construyó la muestra para el análisis estadístico. En el caso de los enfermos de VIH la <strong>población muestreada</strong> podrían ser las personas que para una fecha específica habían sido diagnosticadas (y nos olvidamos de quienes desconocen su diagnóstico) o toda la población mexicana (y llevamos kits de diagnóstico con nosotros cuando diagnostiquemos). En encuestas de consumo, por ejemplo, usualmente no se muestrean zonas remotas o de muy bajos recursos por lo que la <strong>población muestreada</strong> no coincide con la <strong>población objetivo</strong> (todos los consumidores) sino que son sólo los consumidores de mayor poder adquisitivo. En encuestas de elecciones si bien la población objetivo son <em>todas las personas que voten el día de la elección</em>, como la mayoría se hacen <em>antes</em> de la elección (exceptuando las de salida) entonces se aproxima la definición de <em>votante</em> buscando incluir sólo aquellos que estén registrados en el padrón electoral o bien aquellos que al ser encuestados digan que <em>sí</em> van a votar. Aquí la <strong>población muestreada</strong> tampoco coincide con la objetivo.</p>
+<p>Una <strong>muestra</strong> es un subconjunto de la población muestreada. Si la muestra coincide con la población muestreada (es decir, muestreaste a todo el mundo) se dice que es un <strong>censo</strong>. Si se tiene un censo se conoce TODA la población por lo que no es necesario hacer ningún análisis de inferencia (ya sabes todo de todos). Puedes realizar predicciones o descripciones. Ejemplos de censos son las encuestas de fin de cursos, las calificaciones de todo un grupo o el registro de todas las compras de todas las personas en una tienda en línea.</p>
+<blockquote>
+<p><strong>Ojo</strong> No hay que confundir la definición de <strong>muestra</strong> con la definición estadística de <strong>muestra aleatoria</strong> (ver más adelante) la cual es un tipo muy específico de muestra obtenida bajo reglas restrictivas.</p>
+</blockquote>
+<p>Finalmente hay que definir <strong>inferencia</strong>, el propósito de estas notas. Para ello usaremos el ejemplo y una versión adaptada de la definición de <span class="citation">Boghossian (<a href="#ref-boghossian2014inference" role="doc-biblioref">2014</a>)</span>. Considera que sabes dos verdades:</p>
+<ol style="list-style-type: decimal">
+<li><p>Llovió anoche</p></li>
+<li><p>Cuando llueve el suelo se moja</p></li>
+</ol>
+<p>por lo que esta mañana <em>infieres</em> que el suelo estará mojado y sales de tu casa con botas y no con chanclas. El proceso de <em>inferir</em> parece una consecuencia lógica de las premisas 1 y 2 pero no lo es exactamente: hoy es otro día y si hizo suficiente calor en la noche el agua pudo haberse evaporado del suelo. De ahí que definamos inferencia como:</p>
+<blockquote>
+<p>Realizar un juicio el cual se explica a partir de premisas que suponemos verdaderas.</p>
+</blockquote>
+<p>En particular <strong>la inferencia estadística</strong> será la rama de la estadística cuyo propósito es</p>
+<blockquote>
+<p>Realizar juicios probabilísticos a partir de datos que suponemos verdaderos.</p>
+</blockquote>
+<p>Aquí es necesario desglosar un poco la definición:</p>
+<ul>
+<li><p>Se habla de <strong>juicios probabilísticos</strong> pues nuestros juicios nunca van a ser tan certeros como <code>el suelo està mojado</code>. Más bien van a ser del estilo <code>hay una probabilidad muy alta de que el suelo esté mojado</code> o <code>nueve de cada diez veces el suelo estará mojado</code>.</p></li>
+<li><p>La <strong>suposición de verdad</strong> de los datos es muy relevante. Imagina el siguiente experimento: tu amiga borracha durante una fiesta se le ocurre que, de la nada, desarrolló poderes de psíquica y puede adivinar el futuro resultado de una moneda (cara o cruz). Tiras una moneda diez veces y todas las veces tu amiga hace una predicción correcta. <em>Considerando los datos como verdad concluirías que tu amiga es psíquica</em>. Una observación a profundidad de la moneda quizá te revele que es una moneda truqueada que siempre cae en cara. En ese momento cambiarías la <strong>suposición de verdad</strong> de los datos y la inferencia de que tu amiga es psíquica.</p></li>
+</ul>
+<p>A lo largo de este libro aprenderemos lo básico para realizar inferencias estadísticas: observar datos y suponer verdades a partir de ellos. Tristemente la estadística nunca nos va a poder dar la verdad absoluta pero, si lo hacemos bien, es quizá lo más cerca que podamos estar de ella.</p>
+</div>
+<div id="modelos" class="section level2">
+<h2><span class="header-section-number">1.2</span> Modelos</h2>
+<p>La estadística funciona a partir de la construcción de <strong>modelos</strong>. Estos pretenden ser una forma de describir el mundo mediante teoría de la probabilidad y lo que se busca es utilizar dicha teoría para realizar inferencias. Estos modelos teóricos representan la forma en la que suponemos funciona la población. Para propósitos de estas notas diremos que los modelos viven <em>en el mundo de los modelos</em> o <em>mundo de las ideas</em>. Los datos observados, para poder distinguirlos, viven en <em>el mundo real</em>. Muchos de los modelos (no todos) se componen de <strong>parámetros</strong> que requieren para poder funcionar los cuales son estimados mediante <strong>estadísticos</strong> que se construyen a partir de los datos.</p>
+<p>Para nuestros propósitos, los modelos que usaremos siempre construirán una población de la siguiente forma:</p>
+<div class="Definicion">
+<h3 id="población">
+Población
+</h3>
+<p>
+Una población es un conjunto no vacío de variables (o vectores) aleatorias. <span class="math display"><span class="math display">\[
+\mathcal{X} = \{ X_1, X_2, \dots \}
+\]</span></span>
+</p>
+</div>
+<p>Una población no necesariamente es finita. Por ejemplo, si nos interesa saber el tiempo que tarda un cliente en ser atendido en una llamada telefónica al banco quizá podemos suponer que la llamada telefónica tiene una duración descrita por un modelo <span class="math inline">\(\text{Exponencial}(\lambda)\)</span>. La población sería el conjunto infinito de todas las posibles llamadas telefónicas que se pueden realizar bajo este modelo. Por otro lado, un ejemplo finito de una población, son las caras de una moneda en un experimento donde busquemos, para una moneda específica, si caen más caras que cruces (cae más de un lado que del otro).</p>
+<p>Una <strong>muestra</strong> es cualquier subconjunto (posiblemente infinito también) de la población.</p>
+<div class="Definicion">
+<h3 id="muestra">
+Muestra
+</h3>
+<p>
+Una muestra <span class="math inline"><span class="math inline">\(\mathcal{M}\)</span></span> de una población <span class="math inline"><span class="math inline">\(\mathcal{X}\)</span></span> es cualquier subconjunto no vacío de <span class="math inline"><span class="math inline">\(\mathcal{X}\)</span></span>. Es decir, <span class="math inline"><span class="math inline">\(\mathcal{M}\)</span></span> es una muestra de <span class="math inline"><span class="math inline">\(\mathcal{X}\)</span></span> si: <span class="math display"><span class="math display">\[
+ \mathcal{M} \subseteq \mathcal{X}
+\]</span></span>
+</p>
+</div>
+<p>Pocas veces hablaremos de <em>muestras</em> de manera general y nos enfocaremos, sobre todo, en <strong>muestras aleatorias</strong>:</p>
+<div class="Definicion">
+<h3 id="muestra-aleatoria">
+Muestra aleatoria
+</h3>
+<p>
+Una muestra aleatoria de tamaño <span class="math inline"><span class="math inline">\(n\)</span></span>, <span class="math inline"><span class="math inline">\(\mathcal{X}_{(n)}\)</span></span>, de una población <span class="math inline"><span class="math inline">\(\mathcal{X}\)</span></span> es un subconjunto finito (de tamaño <span class="math inline"><span class="math inline">\(n\)</span></span>), no vacío de <span class="math inline"><span class="math inline">\(\mathcal{X}\)</span></span> donde sus elementos son <strong>variables aleatorias independientes idénticamente distribuidas</strong>. Es decir, <span class="math inline"><span class="math inline">\(\mathcal{X}_{(n)}\)</span></span> es una muestra de <span class="math inline"><span class="math inline">\(\mathcal{X}\)</span></span> si:
+</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>
+<strong>Es una muestra</strong>: <span class="math inline"><span class="math inline">\(\mathcal{X}_{(n)} \subseteq \mathcal{X}\)</span></span>,
+</p>
+</li>
+<li>
+<p>
+<strong>de tamaño <span class="math inline"><span class="math inline">\(n\)</span></span></strong>: <span class="math inline"><span class="math inline">\(\textrm{Cardinalidad}\Big( \mathcal{X}_{(n)} \Big) = n\)</span></span>,
+</p>
+</li>
+<li>
+<p>
+<strong>con variables independientes</strong>: si <span class="math inline"><span class="math inline">\(X_i, X_j \in \mathcal{X}_{(n)}\)</span></span> entonces <span class="math inline"><span class="math inline">\(\mathbb{P}(X_i \in A , X_j \in B) = \mathbb{P}(X_i \in A)\cdot\mathbb{P}(X_j \in B)\)</span></span> para <span class="math inline"><span class="math inline">\(A,B\)</span></span> conjuntos <em>medibles</em>,
+</p>
+</li>
+<li>
+<p>
+<strong>idénticamente distribuidas</strong>: para todo <span class="math inline"><span class="math inline">\(i = 1,2,\dots, n\)</span></span> se tiene que <span class="math inline"><span class="math inline">\(X_i\)</span></span> tiene función de distribución acumulada <span class="math inline"><span class="math inline">\(F_X\)</span></span>.
+</p>
+</li>
+</ol>
+</div>
+<p>El punto 4. de la definición pide que todas las variables descritas tengan la misma distribución. Por ejemplo, podemos pedir que todas sean exponenciales con el mismo parámetro o todas sean gamma con los mismos parámetros. El punto es que todas las variables aleatorias estén descritas con el mismo modelo y sean independientes entre sí.</p>
+<p>El punto 3. de la definición puede escribirse de otras formas más amigables, por ejemplo, si suponemos que las variables aleatorias son continuas y tienen densidad <span class="math inline">\(f_X\)</span> entonces la independencia puede escribirse como:
+<span class="math display">\[
+f_X(x_i, x_j) = f_X(x_i) \cdot f_X(x_j)
+\]</span>
+mientras que si son discretas con función de masa de probabilidad <span class="math inline">\(p_X\)</span> tenemos:
+<span class="math display">\[
+p_X(x_i, x_j) = p_X(x_i) \cdot p_X(x_j)
+\]</span></p>
+<p>La <strong>muestra observada</strong> así como <strong>la muestra aleatoria observada</strong> es el conjunto de <em>datos</em> que realmente viste. Mientras que la <strong>muestra</strong> y la <strong>muestra aleatoria</strong> viven <em>en el mundo de los modelos</em> y son variables aleatorias (constructos teóricos, como sabes, bastante complejos), la <strong>muestra observada</strong> es lo que se midió. Antes de dar la definición veamos un ejemplo con un dado.</p>
+<div class="Ejemplo">
+<h3 id="tiro-de-un-dado">
+Tiro de un dado
+</h3>
+<p>
+Se realiza un experimento para saber si un dado es justo (todos los lados tienen la misma probabilidad). Para ello se tira el dado <span class="math inline"><span class="math inline">\(n = 10\)</span></span> veces y se registran los tiros: <span class="math inline"><span class="math inline">\(2,6,1,3,3,3,5,1,3,2\)</span></span>.
+</p>
+<p>
+<em>Mundo del modelo</em>
+</p>
+<p>
+La población en este caso es el conjunto infinito de todos los posibles tiros del dado. De ese conjunto obtenemos una muestra aleatoria de tamaño <span class="math inline"><span class="math inline">\(n = 10\)</span></span> (suponemos que los tiros son independientes entre sí) dada por: <span class="math display"><span class="math display">\[
+X_{(n)} = \{ X_1, X_2, X_3, \dots, X_{10}\}
+\]</span></span> donde <span class="math inline"><span class="math inline">\(X_i\)</span></span> tiene la siguiente distribución: <span class="math display"><span class="math display">\[
+\mathbb{P}(X_i = z) = 
+\begin{cases}
+p_1 &amp;amp; \text{ si } z = 1 \\
+p_2 &amp;amp; \text{ si } z = 2 \\
+p_3 &amp;amp; \text{ si } z = 3 \\
+p_4 &amp;amp; \text{ si } z = 4 \\
+p_5 &amp;amp; \text{ si } z = 5 \\
+p_6 &amp;amp; \text{ si } z = 6 \\
+0 &amp;amp; \text{ en otro caso.}
+\end{cases}
+\]</span></span> donde <span class="math inline"><span class="math inline">\(\sum_{k = 1}^n p_k = 1\)</span></span> y <span class="math inline"><span class="math inline">\(p_{k} \geq 0\)</span></span> para todo <span class="math inline"><span class="math inline">\(k\)</span></span>. Lo que interesa en este estudio es <em>inferir</em> quiénes son las <span class="math inline"><span class="math inline">\(p_k\)</span></span> para determinar si es más probable que caiga en un lado que en otro. Las <span class="math inline"><span class="math inline">\(p_k\)</span></span> se conocen como parámetros.
+</p>
+<p>
+<em>Mundo real</em>
+</p>
+<p>
+Ya en la realidad en esos <span class="math inline"><span class="math inline">\(10\)</span></span> tiros no observamos cualquier cosa, observamos valores específicos que hacen que <strong>la muestra aleatoria observada</strong> sea: <span class="math display"><span class="math display">\[
+s_n = \{x_1, x_2, \dots, x_10 \} = \{2,6,1,3,3,3,5,1,3,2\}.
+\]</span></span> Por supuesto que repitiendo el experimento (volviendo a tirar el dado 10 veces) lo más probable es que la <strong>muestra aleatoria observada</strong> cambie (y veamos otros números) pero el modelo, reflejado en la <strong>muestra aleatoria</strong> (teórica), permanezca inmutable. Una forma de estimar las probabilidades podría ser mediante proporciones y calcular, por ejemplo, la probabilidad de que aparezca <span class="math inline"><span class="math inline">\(1\)</span></span> como: <span class="math display"><span class="math display">\[
+\hat{p}_1 = \frac{\text{Veces que aparece 1}}{n} = \frac{2}{10}
+\]</span></span> En este caso, <span class="math inline"><span class="math inline">\(\hat{p}_1\)</span></span> dado por <span class="math inline"><span class="math inline">\(\frac{2}{10}\)</span></span> es un <strong>estimador observado</strong> de la verdadera probabilidad <span class="math inline"><span class="math inline">\(p_1\)</span></span> que vive en el mundo de los modelos (y jamás podremos conocer)
+</p>
+</div>
+<p>Armados con el ejemplo anterior realicemos la definición de las muestras observadas:</p>
+<div class="Definicion">
+<h3 id="muestra-observada">
+Muestra observada
+</h3>
+<p>
+Una muestra observada es una colección no vacía de valores codificados como números reales los cuales corresponden a realizaciones de una muestra <span class="math inline"><span class="math inline">\(\mathcal{X}\)</span></span>. Usualmente la denotamos: <span class="math display"><span class="math display">\[
+s = \{ x_1, x_2, \dots\}
+\]</span></span> donde las <span class="math inline"><span class="math inline">\(x_i\)</span></span> <strong>NO SON VARIABLES ALEATORIAS</strong> sino que son datos <strong>fijos</strong> ya observados.
+</p>
+</div>
+<div class="Definicion">
+<h3 id="muestra-aleatoria-observada">
+Muestra aleatoria observada
+</h3>
+<p>
+Una muestra aleatoria observada es una colección no vacía de tamaño <span class="math inline"><span class="math inline">\(n\)</span></span> de valores codificados como números reales los cuales corresponden a realizaciones de una muestra aleatoria <span class="math inline"><span class="math inline">\(\mathcal{X}_{(n)}\)</span></span>. En particular suponemos que <span class="math inline"><span class="math inline">\(x_1\)</span></span> es el valor observado de la variable aleatoria <span class="math inline"><span class="math inline">\(X_1\)</span></span>, <span class="math inline"><span class="math inline">\(x_2\)</span></span> es el valor observado de la variable aleatoria <span class="math inline"><span class="math inline">\(X_2\)</span></span> y así sucesivamente. Generalmente la denotamos por: <span class="math display"><span class="math display">\[
+s_{(n)} = \{ x_1, x_2, \dots, x_n\}
+\]</span></span> donde las <span class="math inline"><span class="math inline">\(x_i\)</span></span> <strong>NO SON VARIABLES ALEATORIAS</strong> sino que son datos <strong>fijos</strong> ya observados.
+</p>
+</div>
+<p>Veamos un segundo ejemplo:</p>
+<div class="Ejemplo">
+<h3 id="cantidad-de-personas-que-llegan-a-una-tienda">
+Cantidad de personas que llegan a una tienda
+</h3>
+<p>
+En muchos casos la llegada de personas se supone que sigue una distribución Poisson. En este caso nos interesa estimar el número promedio de personas por día que hay en una tienda de la cual se han medido las siguientes cantidades (por día). Suponemos que las llegadas son independientes entre sí (la cantidad de gente que llegó un día no influye en la cantidad que llegó el otro).
+</p>
+<table>
+<thead>
+<tr class="header">
+<th>
+<strong>Día</strong>
+</th>
+<th>
+<strong>Número de personas</strong>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+1
+</td>
+<td>
+50
+</td>
+</tr>
+<tr class="even">
+<td>
+2
+</td>
+<td>
+45
+</td>
+</tr>
+<tr class="odd">
+<td>
+3
+</td>
+<td>
+60
+</td>
+</tr>
+<tr class="even">
+<td>
+4
+</td>
+<td>
+65
+</td>
+</tr>
+<tr class="odd">
+<td>
+5
+</td>
+<td>
+55
+</td>
+</tr>
+<tr class="even">
+<td>
+6
+</td>
+<td>
+40
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<em>Mundo del modelo</em>
+</p>
+<p>
+La población en este caso es el conjunto infinito de todas las posibles formas en que en un día pueden llegar personas. De ese conjunto obtenemos una muestra aleatoria de tamaño <span class="math inline"><span class="math inline">\(n = 6\)</span></span> (suponemos que las observaciones son independientes entre sí) dada por: <span class="math display"><span class="math display">\[
+X_{(n)} = \{ X_1, X_2, X_3, X_4, X_5, X_6\}
+\]</span></span> donde las <span class="math inline"><span class="math inline">\(X_i \sim \text{Poisson}(\lambda)\)</span></span> (todas con el mismo <span class="math inline"><span class="math inline">\(\lambda\)</span></span>). Recordamos que la media de una Poisson es <span class="math inline"><span class="math inline">\(\lambda\)</span></span> por lo que el <strong>parámetro</strong> que nos interesa estimar es <span class="math inline"><span class="math inline">\(\lambda\)</span></span>.
+</p>
+<p>
+<em>Mundo real</em>
+</p>
+<p>
+A partir de las <span class="math inline"><span class="math inline">\(6\)</span></span> llegadas observadas construimos <strong>la muestra aleatoria observada</strong>: <span class="math display"><span class="math display">\[
+s_n = \{x_1, x_2, x_3, x_4, x_5, x_6 \} = \{50, 45, 60, 65, 55, 40\}.
+\]</span></span> Una forma de estimar la media <span class="math inline"><span class="math inline">\(\lambda\)</span></span> es mediante el siguiente <strong>estimador observado</strong>: <span class="math display"><span class="math display">\[
+\hat{\lambda} = \frac{1}{6} \sum_{i = 1}^6 x_i = 52.5
+\]</span></span> Ojo, esto no significa que <span class="math inline"><span class="math inline">\(\lambda\)</span></span> <em>sea</em> <span class="math inline"><span class="math inline">\(52.5\)</span></span>. Significa que nuestra hipótesis de quién es <span class="math inline"><span class="math inline">\(\lambda\)</span></span> es <span class="math inline"><span class="math inline">\(52.5\)</span></span> y que esperaríamos la próxima vez en la tienda <span class="math inline"><span class="math inline">\(52\)</span></span> ó <span class="math inline"><span class="math inline">\(53\)</span></span> personas. En el mundo real <em>quién sabe cuánto vale <span class="math inline"><span class="math inline">\(\lambda\)</span></span></em> , nuestra hipótesis es que vale <span class="math inline"><span class="math inline">\(52.5\)</span></span> pero eso no necesarimente es la realidad.
+</p>
+</div>
+<p>Como ya establecimos, muchas veces el modelo utiliza un <strong>parámetro</strong> el cual es desconocido. A partir de los datos construimos un <strong>estimador observado</strong> el cual es nuestra hipótesis del verdadero valor del parámetro. En general va a ser imposible que le atinemos al <em>verdadero</em> valor del parámetro pero la idea es que el <strong>estimador observado</strong> esté lo suficientemente cerca. En el ejemplo anterior nos gustaría, por ejemplo, que el verdadero parámetro quizá fuera <span class="math inline">\(\lambda = 52\)</span> ó <span class="math inline">\(\lambda = 54\)</span> pero nos sacaría mucho de onda que el parámetro real fuera <span class="math inline">\(\lambda = 1000000\)</span>.</p>
+<div class="Definicion">
+<h3 id="distirbución-paramétrica">
+Distirbución paramétrica
+</h3>
+<p>
+Una función de distirbución acumulada es una <strong>distribución paramétrica</strong> con parámetro <span class="math inline"><span class="math inline">\(\vec{\theta}\)</span></span> si dada una colección de distribuciones <span class="math display"><span class="math display">\[
+\{ F_{\vec{\theta}} | \theta \in \Theta \}
+\]</span></span> determinar <span class="math inline"><span class="math inline">\(\vec{\theta}\)</span></span> determina la distribución. Es decir, la familia de distribuciones está indizada por <span class="math inline"><span class="math inline">\(\vec{\theta}\)</span></span>. A <span class="math inline"><span class="math inline">\(\vec{\theta}\)</span></span> se le conoce como el <strong>parámetro</strong> o <strong>vector de parámetros</strong>.
+</p>
+</div>
+<p>La definición anterior suena muy compleja sin embargo los ejemplos ya los conocemos.</p>
+<div class="Ejemplo">
+<h3 id="la-normal">
+La normal
+</h3>
+<p>
+La distribución normal es una distribución paramétrica con <span class="math display"><span class="math display">\[
+\vec{\theta} = (\mu, \sigma^2)^T
+\]</span></span> el vector de parámetros dado por la media y la varianza.
+</p>
+</div>
+<div class="Ejemplo">
+<h3 id="la-exponencial">
+La exponencial
+</h3>
+<p>
+La distribución exponencial es una distribución paramétrica con <span class="math display"><span class="math display">\[
+\theta = \lambda
+\]</span></span> el parámetro que establece la tasa de la exponencial.
+</p>
+</div>
+<div class="Ejemplo">
+<h3 id="la-normal-con-varianza-1">
+La normal con varianza 1
+</h3>
+<p>
+La distribución normal con varianza 1 es una distribución paramétrica con <span class="math display"><span class="math display">\[
+\theta = \mu
+\]</span></span> En este caso la varianza es conocida (<span class="math inline"><span class="math inline">\(\sigma^2 = 1\)</span></span>) pero la media no por eso sólo la media es el parámetro.
+</p>
+</div>
+<p>Podemos entonces definir un <strong>estimador</strong>:</p>
+<div class="Definicion">
+<h3 id="estimador">
+Estimador
+</h3>
+<p>
+Dada una distribución paramétrica <span class="math inline"><span class="math inline">\(F_{\theta}\)</span></span> con parámetro <span class="math inline"><span class="math inline">\(\theta\)</span></span> un estimador <span class="math inline"><span class="math inline">\(\hat{\theta}\)</span></span> de <span class="math inline"><span class="math inline">\(\theta\)</span></span> es una variable aleatoria que se construye como función de la muestra aleatoria: <span class="math display"><span class="math display">\[
+\hat{\theta}: \mathcal{X}_{(n)} \to \Theta
+\]</span></span> Como <span class="math inline"><span class="math inline">\(\hat{\theta}\)</span></span> es una función de la muestra aleatoria entonces puede representarse como: <span class="math display"><span class="math display">\[
+\hat{\theta} = \hat{\theta}(X_1, X_2, \dots, X_n)
+\]</span></span>
+</p>
+</div>
+<p>Dado un conjunto de datos, el <strong>estimador observado de <span class="math inline">\(\theta\)</span></strong> es el estimador <span class="math inline">\(\hat{\theta}\)</span> de <span class="math inline">\(\theta\)</span> evaluado en los datos.</p>
+<div class="Definicion">
+<h3 id="estimador-observado">
+Estimador observado
+</h3>
+<p>
+Dada una distribución paramétrica <span class="math inline"><span class="math inline">\(F_{\theta}\)</span></span> con parámetro <span class="math inline"><span class="math inline">\(\theta\)</span></span> con estimador <span class="math inline"><span class="math inline">\(\hat{\theta}\)</span></span> y datos observados <span class="math inline"><span class="math inline">\(s_{(n)} = \{x_1, x_2, \dots, x_n\}\)</span></span> el <strong>estimador observado</strong> corresponde a la evaluación de <span class="math inline"><span class="math inline">\(\hat{\theta}\)</span></span> en <span class="math inline"><span class="math inline">\(s_{(n)}\)</span></span>; es decir: <span class="math display"><span class="math display">\[
+\hat{\theta}(x_1, x_2, \dots, x_n)
+\]</span></span>
+</p>
+</div>
+<p>Veamos ejemplos para entender mejor cómo funciona esto.</p>
+<div class="Ejemplo">
+<h3 id="tiros-de-una-moneda">
+Tiros de una moneda
+</h3>
+<p>
+Se tiene una moneda que cae más de un lado que del otro. Interesa estimar <span class="math inline"><span class="math inline">\(p\)</span></span> la probabilidad de que caiga cruz. Para ello se toma una <strong>muestra aleatoria</strong> de <span class="math inline"><span class="math inline">\(5\)</span></span> tiros de la moneda: <span class="math display"><span class="math display">\[
+X_{(n)} = \{X_1, X_2, \dots, X_{5} \}
+\]</span></span> Suponemos que los tiros son independientes. El modelo entonces implicaría que <span class="math display"><span class="math display">\[
+X_i \sim \text{Bernoulli}(p)
+\]</span></span> para cada <span class="math inline"><span class="math inline">\(i = 1, 2, \dots, 5\)</span></span>. Si codificamos cruz como <span class="math inline"><span class="math inline">\(1\)</span></span> y cara como <span class="math inline"><span class="math inline">\(0\)</span></span>, la <strong>muestra aleatoria observada</strong> es: <span class="math display"><span class="math display">\[
+s_{(n)} = \{1,1,1,0,1\} = \{x_1, x_2, \dots, x_5\}
+\]</span></span> donde tuvimos tres cruces continuas, luego una cara y finalmente una cruz. Una opción de estimador observado sería contar la proporción de cruces haciendo: <span class="math display"><span class="math display">\[
+\hat{\theta}(x_1, \dots, x_5) = \frac{1}{n} \sum_{k = 1}^n x_i = \frac{4}{5}
+\]</span></span> de donde diríamos que nuestra hipótesis de cuánto vale el parámetro <span class="math inline"><span class="math inline">\(p\)</span></span> es <span class="math inline"><span class="math inline">\(4/5\)</span></span>. Por otro lado, el <strong>estimador</strong> teórico es: <span class="math display"><span class="math display">\[
+\hat{\theta}(X_1, \dots, X_5) = \frac{1}{n} \sum_{k = 1}^n X_i 
+\]</span></span> el cual tiene una distribución de probabilidad sencilla pues <span class="math inline"><span class="math inline">\(\sum_{k = 1}^n X_i \sim \textrm{Binomial}(n,p)\)</span></span>. Particularmente podemos calcular su valor esperado, por ejemplo, <span class="math display"><span class="math display">\[
+\mathbb{E}\Big[  \hat{\theta}(X_1, \dots, X_5) \Big]  =  \mathbb{E}\Big[  \frac{1}{n} \sum_{k = 1}^n X_i  \Big] = \frac{1}{n}\sum_{k = 1}^n \mathbb{E}\Big[X_i \Big] = \frac{1}{n}\sum_{k = 1}^n  p = \frac{1}{n} np = p
+\]</span></span> lo cual implica que el estimador, en promedio, devolvería el parámetro que nos interesa (esta propiedad se conoce como <em>ser insesgado</em> y lo veremos más adelante).
+</p>
+</div>
+<div class="Ejemplo">
+<h3 id="error-de-medición-de-una-app">
+Error de medición de una app
+</h3>
+<p>
+Una app que se dedica a medir la altura de edificios mediante la toma de videos tiene un error de medición con distribución normal y cuya varianza es <span class="math inline"><span class="math inline">\(1\)</span></span>. Interesa determinar el error de medición promedio, el parámetro <span class="math inline"><span class="math inline">\(\mu\)</span></span>. Para ello se toman videos y se miden edificios para obtener una colección de 7 errores de medición independientes en la siguiente <strong>muestra aleatoria</strong>: <span class="math display"><span class="math display">\[
+X_{(n)} = \{X_1, X_2, \dots, X_{5} \}
+\]</span></span> El modelo es <span class="math display"><span class="math display">\[
+X_i \sim \text{Normal}(\mu, 1)
+\]</span></span> para cada <span class="math inline"><span class="math inline">\(i = 1, 2, \dots, 7\)</span></span>. Si los datos fueron:
+</p>
+<table>
+<thead>
+<tr class="header">
+<th>
+<strong>Edificio</strong>
+</th>
+<th>
+<strong>Error de medición</strong>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+Bellas Artes
+</td>
+<td>
+12.11
+</td>
+</tr>
+<tr class="even">
+<td>
+Torre Latinoamericana
+</td>
+<td>
+40.54
+</td>
+</tr>
+<tr class="odd">
+<td>
+Catedral Metropolitana
+</td>
+<td>
+22.07
+</td>
+</tr>
+<tr class="even">
+<td>
+Palacio Nacional
+</td>
+<td>
+15.22
+</td>
+</tr>
+<tr class="odd">
+<td>
+Rectoría de la UNAM
+</td>
+<td>
+45.18
+</td>
+</tr>
+<tr class="even">
+<td>
+Guerrero Chimalli
+</td>
+<td>
+33.39
+</td>
+</tr>
+<tr class="odd">
+<td>
+Estadio Azteca
+</td>
+<td>
+41.76
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+la <strong>muestra aleatoria observada</strong> en este caso correspondió : <span class="math display"><span class="math display">\[
+s_{(n)} = \{12.11,40.54,22.07,15.22,45.18, 33.39, 41.76\} = \{x_1, x_2, \dots, x_7\}
+\]</span></span> Una opción de estimador observado sería calcular la media muestral haciendo: <span class="math display"><span class="math display">\[
+\hat{\theta}(x_1, \dots, x_7) = \frac{1}{n} \sum_{k = 1}^n x_i = 30.03857
+\]</span></span> de donde diríamos que nuestra hipótesis de cuánto vale el parámetro <span class="math inline"><span class="math inline">\(\mu\)</span></span> es <span class="math inline"><span class="math inline">\(30.03857\)</span></span>. Por otro lado, el <strong>estimador</strong> teórico es: <span class="math display"><span class="math display">\[
+\hat{\theta}(X_1, \dots, X_7) = \frac{1}{n} \sum_{k = 1}^n X_i 
+\]</span></span> tiene una distribución de probabilidad sencilla pues sabemos que <span class="math inline"><span class="math inline">\(\sum_{k = 1}^n X_i \sim \textrm{Normal}(\mu,\sigma^2)\)</span></span>. Particularmente podemos calcular su valor esperado, por ejemplo, <span class="math display"><span class="math display">\[
+\mathbb{E}\Big[  \hat{\theta}(X_1, \dots, X_7) \Big]  =  \mathbb{E}\Big[  \frac{1}{n} \sum_{k = 1}^n X_i  \Big] = \frac{1}{n}\sum_{k = 1}^n \mathbb{E}\Big[X_i \Big] = \frac{1}{n}\sum_{k = 1}^n  \mu = \frac{1}{n} n\mu = \mu
+\]</span></span> lo cual implica que el estimador, en promedio, devolvería el parámetro que nos interesa (este también es <em>insesgado</em>).
+</p>
+</div>
+
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-boghossian2014inference">
+<p>Boghossian, Paul. 2014. “What Is Inference?” <em>Philosophical Studies</em> 169 (1): 1–18.</p>
+</div>
+<div id="ref-wackerly">
+<p>Wackerly, Dennis, William Mendenhall, and Richard L Scheaffer. 2014. <em>Mathematical Statistics with Applications</em>. Cengage Learning.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Traducción y subrayado de Rodrigo<a href="intro.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="referencias.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["InferenciaEstadistica.pdf", "InferenciaEstadistica.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

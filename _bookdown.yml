@@ -1,0 +1,10 @@
+book_filename: "InferenciaEstadistica"
+delete_merged_file: true
+output_dir: "docs"
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabla '
+    eq: 'Ecuación '
+  ui:
+    chapter_name: "Capítulo "
