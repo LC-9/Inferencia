@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 12 A tibble: 3 x 2 | Inferencia</title>
+  <meta name="description" content="Notas para un curso de inferencia estadística" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 12 A tibble: 3 x 2 | Inferencia" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas para un curso de inferencia estadística" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 12 A tibble: 3 x 2 | Inferencia" />
+  
+  <meta name="twitter:description" content="Notas para un curso de inferencia estadística" />
+  
+
+<meta name="author" content="Rodrigo Zepeda-Tello y Luis Carlos Bernal" />
+
+
+<meta name="date" content="2021-01-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="a-tibble-25-x-2.html"/>
+<link rel="next" href="referencias.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas a un curso de inferencia estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#estadística-y-muestras"><i class="fa fa-check"></i><b>1.1</b> Estadística y muestras</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modelos"><i class="fa fa-check"></i><b>1.2</b> Modelos</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#inferencia-estadística-ejemplo."><i class="fa fa-check"></i><b>1.3</b> Inferencia estadística: ejemplo.</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#estimador-de-momentos"><i class="fa fa-check"></i><b>1.3.1</b> Estimador de momentos</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#estimador-de-máxima-verosimilitud-maximización-discreta"><i class="fa fa-check"></i><b>1.3.2</b> Estimador de máxima verosimilitud (maximización discreta)</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#ejemplo-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo"><i class="fa fa-check"></i><b>1.3.3</b> Ejemplo 5: Muestreo de urna con dos clases, con orden, con reemplazo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#resumen-de-la-sección"><i class="fa fa-check"></i><b>1.4</b> Resumen de la sección</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="R.html"><a href="R.html"><i class="fa fa-check"></i><b>2</b> R</a><ul>
+<li class="chapter" data-level="2.1" data-path="R.html"><a href="R.html#programación-en-r"><i class="fa fa-check"></i><b>2.1</b> Programación en <code>R</code></a><ul>
+<li class="chapter" data-level="2.1.1" data-path="R.html"><a href="R.html#puntos-a-favor-de-r"><i class="fa fa-check"></i><b>2.1.1</b> Puntos a favor de <code>R</code></a></li>
+<li class="chapter" data-level="2.1.2" data-path="R.html"><a href="R.html#bienvenidx-a-r-bunny-wunnies-freak-out-sí-así-se-llama-esta-versión"><i class="fa fa-check"></i><b>2.1.2</b> Bienvenidx a <code>R</code>, Bunny-Wunnies Freak Out (sí, así se llama esta versión)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="R.html"><a href="R.html#instalando-cosas"><i class="fa fa-check"></i><b>2.2</b> Instalando cosas</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="R.html"><a href="R.html#instalación-de-r"><i class="fa fa-check"></i><b>2.2.1</b> Instalación de <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="R.html"><a href="R.html#instalación-de-rstudio"><i class="fa fa-check"></i><b>2.3</b> Instalación de <code>RStudio</code></a></li>
+<li class="chapter" data-level="2.4" data-path="R.html"><a href="R.html#primeros-pasos-en-r-usando-rstudio"><i class="fa fa-check"></i><b>2.4</b> Primeros pasos en <code>R</code> usando <code>RStudio</code></a></li>
+<li class="chapter" data-level="2.5" data-path="R.html"><a href="R.html#cálculos-numéricos"><i class="fa fa-check"></i><b>2.5</b> Cálculos numéricos</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="R.html"><a href="R.html#ejercicio"><i class="fa fa-check"></i><b>2.5.1</b> Ejercicio</a></li>
+<li class="chapter" data-level="2.5.2" data-path="R.html"><a href="R.html#ejercicio-1"><i class="fa fa-check"></i><b>2.5.2</b> Ejercicio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="R.html"><a href="R.html#respuestas"><i class="fa fa-check"></i><b>2.5.3</b> Respuestas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="R.html"><a href="R.html#variables"><i class="fa fa-check"></i><b>2.6</b> Variables</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="R.html"><a href="R.html#ejercicios"><i class="fa fa-check"></i><b>2.6.1</b> Ejercicios</a></li>
+<li class="chapter" data-level="2.6.2" data-path="R.html"><a href="R.html#nivel-3"><i class="fa fa-check"></i><b>2.6.2</b> NIVEL 3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="R.html"><a href="R.html#observaciones-sobre-la-aritmética-de-punto-flotante"><i class="fa fa-check"></i><b>2.7</b> Observaciones sobre la aritmética de punto flotante</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="R.html"><a href="R.html#cómo-checar-un-if"><i class="fa fa-check"></i><b>2.7.1</b> ¿Cómo checar un if?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="R.html"><a href="R.html#leer-y-almacenar-variables-en-r"><i class="fa fa-check"></i><b>2.8</b> Leer y almacenar variables en <code>R</code></a><ul>
+<li class="chapter" data-level="2.8.1" data-path="R.html"><a href="R.html#ejercicio-2"><i class="fa fa-check"></i><b>2.8.1</b> Ejercicio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="R.html"><a href="R.html#instalación-de-paquetes"><i class="fa fa-check"></i><b>2.9</b> Instalación de paquetes</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="R.html"><a href="R.html#ejercicios-1"><i class="fa fa-check"></i><b>2.9.1</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="R.html"><a href="R.html#comentarios-adicionales-sobre-el-formato"><i class="fa fa-check"></i><b>2.10</b> Comentarios adicionales sobre el formato</a></li>
+<li class="chapter" data-level="2.11" data-path="R.html"><a href="R.html#loops"><i class="fa fa-check"></i><b>2.11</b> Loops</a></li>
+<li class="chapter" data-level="2.12" data-path="R.html"><a href="R.html#for"><i class="fa fa-check"></i><b>2.12</b> For</a></li>
+<li class="chapter" data-level="2.13" data-path="R.html"><a href="R.html#while"><i class="fa fa-check"></i><b>2.13</b> While</a></li>
+<li class="chapter" data-level="2.14" data-path="R.html"><a href="R.html#if-else-condicionales"><i class="fa fa-check"></i><b>2.14</b> If-else (condicionales)</a></li>
+<li class="chapter" data-level="2.15" data-path="R.html"><a href="R.html#and-or-operadores-lógicos"><i class="fa fa-check"></i><b>2.15</b> And-or (Operadores lógicos)</a><ul>
+<li class="chapter" data-level="2.15.1" data-path="R.html"><a href="R.html#and"><i class="fa fa-check"></i><b>2.15.1</b> And</a></li>
+</ul></li>
+<li class="chapter" data-level="2.16" data-path="R.html"><a href="R.html#or"><i class="fa fa-check"></i><b>2.16</b> Or</a></li>
+<li class="chapter" data-level="2.17" data-path="R.html"><a href="R.html#ejercicio-1-1"><i class="fa fa-check"></i><b>2.17</b> Ejercicio 1</a></li>
+<li class="chapter" data-level="2.18" data-path="R.html"><a href="R.html#media"><i class="fa fa-check"></i><b>2.18</b> Media</a></li>
+<li class="chapter" data-level="2.19" data-path="R.html"><a href="R.html#desviación-estándar"><i class="fa fa-check"></i><b>2.19</b> Desviación estándar</a></li>
+<li class="chapter" data-level="2.20" data-path="R.html"><a href="R.html#ejercicio-2-1"><i class="fa fa-check"></i><b>2.20</b> Ejercicio 2</a></li>
+<li class="chapter" data-level="2.21" data-path="R.html"><a href="R.html#ejercicio-3"><i class="fa fa-check"></i><b>2.21</b> Ejercicio 3</a></li>
+<li class="chapter" data-level="2.22" data-path="R.html"><a href="R.html#advertencias-y-otras-cosas-poco-intuitivas"><i class="fa fa-check"></i><b>2.22</b> Advertencias y otras cosas poco intuitivas</a></li>
+<li class="chapter" data-level="2.23" data-path="R.html"><a href="R.html#donde-fallan-estas-cosas"><i class="fa fa-check"></i><b>2.23</b> Donde fallan estas cosas</a></li>
+<li class="chapter" data-level="2.24" data-path="R.html"><a href="R.html#números-pseudoaleatorios"><i class="fa fa-check"></i><b>2.24</b> Números pseudoaleatorios</a></li>
+<li class="chapter" data-level="2.25" data-path="R.html"><a href="R.html#ejercicio-4"><i class="fa fa-check"></i><b>2.25</b> Ejercicio 4</a></li>
+<li class="chapter" data-level="2.26" data-path="R.html"><a href="R.html#aleatoreidad-en-r"><i class="fa fa-check"></i><b>2.26</b> Aleatoreidad en R</a></li>
+<li class="chapter" data-level="2.27" data-path="R.html"><a href="R.html#las-semillas"><i class="fa fa-check"></i><b>2.27</b> Las semillas</a></li>
+<li class="chapter" data-level="2.28" data-path="R.html"><a href="R.html#ejercicio-5"><i class="fa fa-check"></i><b>2.28</b> Ejercicio 5</a></li>
+<li class="chapter" data-level="2.29" data-path="R.html"><a href="R.html#ejercicio-6"><i class="fa fa-check"></i><b>2.29</b> Ejercicio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html"><i class="fa fa-check"></i><b>3</b> Análisis Exploratorio de Datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#inicio"><i class="fa fa-check"></i><b>3.1</b> Inicio</a></li>
+<li class="chapter" data-level="3.2" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#librerías"><i class="fa fa-check"></i><b>3.2</b> Librerías</a></li>
+<li class="chapter" data-level="3.3" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#base-a-analizar"><i class="fa fa-check"></i><b>3.3</b> Base a analizar</a></li>
+<li class="chapter" data-level="3.4" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#definiciones-y-notación"><i class="fa fa-check"></i><b>3.4</b> Definiciones y notación</a></li>
+<li class="chapter" data-level="3.5" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#estadísticos-univariados"><i class="fa fa-check"></i><b>3.5</b> Estadísticos univariados</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#definición-estadístico-observado"><i class="fa fa-check"></i><b>3.5.1</b> Definición [Estadístico observado]</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="a-tibble-6-x-2.html"><a href="a-tibble-6-x-2.html"><i class="fa fa-check"></i><b>4</b> A tibble: 6 x 2</a></li>
+<li class="chapter" data-level="5" data-path="a-tibble-1-x-1.html"><a href="a-tibble-1-x-1.html"><i class="fa fa-check"></i><b>5</b> A tibble: 1 x 1</a></li>
+<li class="chapter" data-level="6" data-path="a-tibble-1-x-2.html"><a href="a-tibble-1-x-2.html"><i class="fa fa-check"></i><b>6</b> A tibble: 1 x 2</a></li>
+<li class="chapter" data-level="7" data-path="a-tibble-1-x-3.html"><a href="a-tibble-1-x-3.html"><i class="fa fa-check"></i><b>7</b> A tibble: 1 x 3</a></li>
+<li class="chapter" data-level="8" data-path="a-tibble-1-x-4.html"><a href="a-tibble-1-x-4.html"><i class="fa fa-check"></i><b>8</b> A tibble: 1 x 4</a></li>
+<li class="chapter" data-level="9" data-path="a-tibble-2-x-1.html"><a href="a-tibble-2-x-1.html"><i class="fa fa-check"></i><b>9</b> A tibble: 2 x 1</a></li>
+<li class="chapter" data-level="10" data-path="a-tibble-21-x-2.html"><a href="a-tibble-21-x-2.html"><i class="fa fa-check"></i><b>10</b> A tibble: 21 x 2</a></li>
+<li class="chapter" data-level="11" data-path="a-tibble-25-x-2.html"><a href="a-tibble-25-x-2.html"><i class="fa fa-check"></i><b>11</b> A tibble: 25 x 2</a></li>
+<li class="chapter" data-level="12" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html"><i class="fa fa-check"></i><b>12</b> A tibble: 3 x 2</a><ul>
+<li class="chapter" data-level="12.1" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicios-2"><i class="fa fa-check"></i><b>12.1</b> Ejercicios</a></li>
+<li class="chapter" data-level="12.2" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#gráficas-univariadas"><i class="fa fa-check"></i><b>12.2</b> Gráficas univariadas</a></li>
+<li class="chapter" data-level="12.3" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#gráficas-bivariadas"><i class="fa fa-check"></i><b>12.3</b> Gráficas bivariadas</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-7"><i class="fa fa-check"></i><b>12.3.1</b> Ejercicio</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#estadísticos-bivariados"><i class="fa fa-check"></i><b>12.4</b> Estadísticos bivariados</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-8"><i class="fa fa-check"></i><b>12.4.1</b> Ejercicio</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-9"><i class="fa fa-check"></i><b>12.5</b> Ejercicio</a></li>
+<li class="chapter" data-level="12.6" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ajuste-funcional"><i class="fa fa-check"></i><b>12.6</b> Ajuste funcional</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-10"><i class="fa fa-check"></i><b>12.6.1</b> Ejercicio</a></li>
+<li class="chapter" data-level="12.6.2" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-sugerido"><i class="fa fa-check"></i><b>12.6.2</b> Ejercicio sugerido</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/RodrigoZepeda" target="blank">Elaborado por Rodrigo Zepeda y Luis Carlos Bernal</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inferencia</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="a-tibble-3-x-2" class="section level1">
+<h1><span class="header-section-number">Capítulo 12</span> A tibble: 3 x 2</h1>
+<p>fecha n
+<date> <int>
+1 2018-12-02 1
+2 2018-12-13 1
+3 2018-12-20 1</p>
+<p><strong>13. Moda</strong>
+En términos simples, la moda es el conjunto de los valores que más se repiten. Matemáticamente (ver <span class="citation">Peck, Olsen, and Devore (<a href="#ref-peck2015introduction" role="doc-biblioref">2015</a>)</span>) la moda es el conjunto <span class="math inline">\(\textrm{Moda}_{\vec{y}} = \{ m_1, m_2, \dots, m_k \}\)</span> tal que <span class="math inline">\(m \in \textrm{Moda}\)</span> sí y sólo si
+<span class="math display">\[
+\sum_{i = 1}^{n} \mathbb{I}_{\{m\}}(y_i) \geq \sum_{i = 1}^{n} \mathbb{I}_{\{ \ell\}}(y_i) \qquad \forall \ell \neq m \textrm{ donde } y_i \in \vec{y}.
+\]</span></p>
+<p>Para calcularla en <code>R</code> no existe una función predefinida para calcular la moda. Nosotros podemos crearla con el comando <code>function</code>. El término <code>function</code> nos sirve para construir funciones; por ejemplo, una función que eleva al cuadrado:</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="a-tibble-3-x-2.html#cb156-1"></a>elevar.cuadrado &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb156-2"><a href="a-tibble-3-x-2.html#cb156-2"></a>  <span class="kw">return</span>(x<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb156-3"><a href="a-tibble-3-x-2.html#cb156-3"></a>}</span></code></pre></div>
+<p>Observa la estructura que siempre será de esta forma:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="a-tibble-3-x-2.html#cb157-1"></a>nombre de la función &lt;-<span class="st"> </span><span class="cf">function</span>(parámetro, otro parámetro){</span>
+<span id="cb157-2"><a href="a-tibble-3-x-2.html#cb157-2"></a>  <span class="co">#Lo que sea que haga</span></span>
+<span id="cb157-3"><a href="a-tibble-3-x-2.html#cb157-3"></a>  <span class="kw">return</span>(lo que devuelve)</span>
+<span id="cb157-4"><a href="a-tibble-3-x-2.html#cb157-4"></a>}</span></code></pre></div>
+<p>Podemos llamar a la función con un número:</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="a-tibble-3-x-2.html#cb158-1"></a><span class="kw">elevar.cuadrado</span>(<span class="dv">8</span>)</span></code></pre></div>
+<p>[1] 64
+o bien con un vector:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="a-tibble-3-x-2.html#cb159-1"></a><span class="kw">elevar.cuadrado</span>(<span class="dv">12</span>)</span></code></pre></div>
+<p>[1] 144</p>
+<p>En nuestro caso vamos a crear una función que se llame <code>moda</code> para estimar la moda:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="a-tibble-3-x-2.html#cb160-1"></a><span class="co">#Función para estimar la moda de un vector x</span></span>
+<span id="cb160-2"><a href="a-tibble-3-x-2.html#cb160-2"></a>moda &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
+<span id="cb160-3"><a href="a-tibble-3-x-2.html#cb160-3"></a>  </span>
+<span id="cb160-4"><a href="a-tibble-3-x-2.html#cb160-4"></a>  <span class="co">#Contar cuántas veces aparecen las observaciones</span></span>
+<span id="cb160-5"><a href="a-tibble-3-x-2.html#cb160-5"></a>  conteo &lt;-<span class="st"> </span><span class="kw">table</span>(x)</span>
+<span id="cb160-6"><a href="a-tibble-3-x-2.html#cb160-6"></a>  </span>
+<span id="cb160-7"><a href="a-tibble-3-x-2.html#cb160-7"></a>  <span class="co">#Obtengo el máximo que aparece</span></span>
+<span id="cb160-8"><a href="a-tibble-3-x-2.html#cb160-8"></a>  max_aparece &lt;-<span class="st"> </span><span class="kw">max</span>(conteo)</span>
+<span id="cb160-9"><a href="a-tibble-3-x-2.html#cb160-9"></a>  </span>
+<span id="cb160-10"><a href="a-tibble-3-x-2.html#cb160-10"></a>  <span class="co">#Busco cuáles aparecen más y obtengo los nombres</span></span>
+<span id="cb160-11"><a href="a-tibble-3-x-2.html#cb160-11"></a>  moda &lt;-<span class="st"> </span><span class="kw">names</span>(conteo)[<span class="kw">which</span>(conteo <span class="op">==</span><span class="st"> </span>max_aparece)]</span>
+<span id="cb160-12"><a href="a-tibble-3-x-2.html#cb160-12"></a>  </span>
+<span id="cb160-13"><a href="a-tibble-3-x-2.html#cb160-13"></a>  <span class="co">#Finalmente checo que si los datos eran numéricos moda debe</span></span>
+<span id="cb160-14"><a href="a-tibble-3-x-2.html#cb160-14"></a>  <span class="co">#ser numérico</span></span>
+<span id="cb160-15"><a href="a-tibble-3-x-2.html#cb160-15"></a>  <span class="cf">if</span> (<span class="kw">is.numeric</span>(x)){</span>
+<span id="cb160-16"><a href="a-tibble-3-x-2.html#cb160-16"></a>    moda &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(moda)</span>
+<span id="cb160-17"><a href="a-tibble-3-x-2.html#cb160-17"></a>  }</span>
+<span id="cb160-18"><a href="a-tibble-3-x-2.html#cb160-18"></a>  </span>
+<span id="cb160-19"><a href="a-tibble-3-x-2.html#cb160-19"></a>  <span class="kw">return</span>(moda)</span>
+<span id="cb160-20"><a href="a-tibble-3-x-2.html#cb160-20"></a>}</span></code></pre></div>
+<p>Podemos probar nuestra función con datos que ya sepamos su resultado nada más para asegurarnos que funciona:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="a-tibble-3-x-2.html#cb161-1"></a><span class="co">#Creamos un vector numérico con dos modas</span></span>
+<span id="cb161-2"><a href="a-tibble-3-x-2.html#cb161-2"></a>vector.ejemplo<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">10</span>)</span>
+<span id="cb161-3"><a href="a-tibble-3-x-2.html#cb161-3"></a><span class="kw">moda</span>(vector.ejemplo<span class="fl">.1</span>)</span></code></pre></div>
+<p>[1] 1 6
+Podemos probarlo también con caracteres:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="a-tibble-3-x-2.html#cb162-1"></a><span class="co">#Creamos un vector numérico con dos modas</span></span>
+<span id="cb162-2"><a href="a-tibble-3-x-2.html#cb162-2"></a>vector.ejemplo<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;manzana&quot;</span>,<span class="st">&quot;pera&quot;</span>,<span class="st">&quot;guayaba&quot;</span>,<span class="st">&quot;perejil&quot;</span>,<span class="st">&quot;manzana&quot;</span>)</span>
+<span id="cb162-3"><a href="a-tibble-3-x-2.html#cb162-3"></a><span class="kw">moda</span>(vector.ejemplo<span class="fl">.2</span>)</span></code></pre></div>
+<p>[1] “manzana”</p>
+<p>Una vez sabemos funciona podemos buscar el delito que ocurrió más:</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="a-tibble-3-x-2.html#cb163-1"></a><span class="kw">moda</span>(datos<span class="op">$</span>delito)</span></code></pre></div>
+<p>[1] “VIOLENCIA FAMILIAR”</p>
+<div id="ejercicios-2" class="section level2">
+<h2><span class="header-section-number">12.1</span> Ejercicios</h2>
+<ol style="list-style-type: decimal">
+<li>Construye una función que tome de input dos variables: <span class="math inline">\(x\)</span> un vector y <span class="math inline">\(k\)</span> un entero de tal manera que calcule el <strong><span class="math inline">\(k\)</span>-ésimo momento central</strong> de los datos:
+<span class="math display">\[
+\text{Momento}_{\vec{x}}(k) = \frac{1}{n} \sum\limits_{i=1}^n (x_i - \bar{x})^k
+\]</span>
+La función debe tener la siguiente estructura:</li>
+</ol>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="a-tibble-3-x-2.html#cb164-1"></a>kesimo.momento &lt;-<span class="st"> </span><span class="cf">function</span>(x, k){</span>
+<span id="cb164-2"><a href="a-tibble-3-x-2.html#cb164-2"></a>  <span class="co">#Rellena aquí</span></span>
+<span id="cb164-3"><a href="a-tibble-3-x-2.html#cb164-3"></a>}</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Sin usar la opción de <code>trim</code> ni <code>trimmed.mean</code> crea una función que calcule la media de los datos que están entre el cuantil <span class="math inline">\(\alpha/2\)</span> y el cuantil <span class="math inline">\(1 - \alpha/2\)</span> (<span class="math inline">\(0 \leq \alpha \leq 1\)</span>. A esta media se le conoce como <strong>media truncada al nivel <span class="math inline">\(\alpha \times 100\%\)</span></strong>. Matemáticamente se define como:
+<span class="math display">\[
+\textrm{Media Truncada}_{\vec{x}}(\alpha) = \frac{1}{n_\alpha} \sum\limits_{i = 1}^{n} x_i \cdot  \mathbb{I}_{[q_{\alpha/2}, q_{1-\alpha/2}]}(x_i)
+\]</span>
+donde <span class="math inline">\(n_{\alpha} = \sum_{i=1}^n \mathbb{I}_{[q_{\alpha/2}, q_{1-\alpha/2}]}(x_i)\)</span> es la cantidad de <span class="math inline">\(x_i\)</span> que están en el intervalo <span class="math inline">\([q_{\alpha/2}, q_{1-\alpha/2}]\)</span> donde <span class="math inline">\(q_{\alpha/2} = \text{Cuantil}_{\vec{x}}(\alpha/2)\)</span> y <span class="math inline">\(q_{1 - \alpha/2} = \text{Cuantil}_{\vec{x}}(1 - \alpha/2)\)</span>.</p></li>
+<li><p>Una función llamada <code>jesimo.dato</code> de dos argumentos que dado un vector de datos <span class="math inline">\(\vec{x}\)</span> me devuelva el <span class="math inline">\(j\)</span>-ésimo dato ordenado (es decir el <span class="math inline">\(x_{(j)}\)</span>). <strong>NOTA</strong> No confundir con devolver el <span class="math inline">\(x_j\)</span> que es la <span class="math inline">\(j\)</span>-ésima entrada. Como sugerencia usar <code>arrange</code>, <code>order</code> ó <code>sort</code>. Un ejemplo de lo que debe hacer la función es:</p></li>
+</ol>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="a-tibble-3-x-2.html#cb165-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">14</span>, <span class="dv">21</span>)</span>
+<span id="cb165-2"><a href="a-tibble-3-x-2.html#cb165-2"></a><span class="kw">jesimo.dato</span>(x, <span class="dv">4</span>)</span></code></pre></div>
+<p>[1] 12</p>
+</div>
+<div id="gráficas-univariadas" class="section level2">
+<h2><span class="header-section-number">12.2</span> Gráficas univariadas</h2>
+<p><strong>1. Gráfica de caja (boxplot)</strong>
+Una gráfica de caja pretende resumir los cuartiles, la mediana e identificar los <em>outliers</em> todo en una sola imagen (<span class="citation">Panaretos (<a href="#ref-panaretos2016statistics" role="doc-biblioref">2016</a>)</span>). Para ello considera un vector numérico <span class="math inline">\(\vec{x} = (x_1, x_2, \dots, x_n)^T\)</span> tal que:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(q_1\)</span> sea el primer cuartil (<span class="math inline">\(\textrm{Cuantil}_{\vec{x}}(0.25)\)</span>), <span class="math inline">\(q_2\)</span> sea la mediana (que es lo mismo que el segundo cuartil o bien <span class="math inline">\(\textrm{Cuantil}_{\vec{x}}(0.5)\)</span>) y <span class="math inline">\(q_3\)</span> corresponda al tercer cuartil (<span class="math inline">\(\textrm{Cuantil}_{\vec{x}}(0.75)\)</span>).</li>
+<li><span class="math inline">\(w_1 = \min \{x_j \in \vec{x} | x_j \geq q_1 - \frac{3}{2} IQR \}\)</span> es el valor más pequeño de <span class="math inline">\(\vec{x}\)</span> que <em>no es outlier</em> y <span class="math inline">\(w_2 = \max \{x_j \in \vec{x} | x_j \leq q_3 + \frac{3}{2} IQR \}\)</span> es el valor más grande de <span class="math inline">\(\vec{x}\)</span> que <em>no es outlier</em>.</li>
+<li>Sea <span class="math inline">\(\textrm{Outliers}_{\vec{x}}\)</span> el conjunto de outliers como lo definimos anteriormente:
+<span class="math display">\[
+\textrm{Outliers}_{\vec{x}} = \Big\{ x_i \in \vec{x} \big| x_i \not\in \big[ q_1 - \frac{3}{2} \text{IQR}_{\vec{x}}, q_3 + \frac{3}{2} \text{IQR}_{\vec{x}}\big] \Big\}
+\]</span>
+donde <span class="math inline">\(\textrm{Outliers}_{\vec{x}} = \{ o_1, o_2, \dots, o_d \}\)</span>. Una gráfica de caja corresponde al siguiente diagrama:</li>
+</ol>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-216-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>La imagen anota la mediana, los cuartiles así como el rango de valores donde se sabe que no hay outliers. Finalmente la gráfica identifica los <em>outliers</em> si es que hay. Para armar una gráfica de boxplot usamos la librería de <em>ggplot2</em> especificando dentro de la función <code>ggplot</code> la base de datos de donde sale nuestra información:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="a-tibble-3-x-2.html#cb166-1"></a><span class="kw">ggplot</span>(conteo_delitos) <span class="op">+</span></span>
+<span id="cb166-2"><a href="a-tibble-3-x-2.html#cb166-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> n))</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-217-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>la cual pone la mediana en 646 como habíamos calculado, los cuartiles en 568 y 721 respectivamente. Finalmente no presenta <em>outliers</em> pues nuestro análisis previo nos mostraba que no había <em>outliers</em>.</p>
+<p>Podemos personalizar nuestra gráfica agregando títulos con la función lab:</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="a-tibble-3-x-2.html#cb167-1"></a><span class="kw">ggplot</span>(conteo_delitos) <span class="op">+</span></span>
+<span id="cb167-2"><a href="a-tibble-3-x-2.html#cb167-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> n)) <span class="op">+</span></span>
+<span id="cb167-3"><a href="a-tibble-3-x-2.html#cb167-3"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb167-4"><a href="a-tibble-3-x-2.html#cb167-4"></a>    <span class="dt">x =</span> <span class="st">&quot;Cantidad de carpetas de investigación abiertas por día&quot;</span>,</span>
+<span id="cb167-5"><a href="a-tibble-3-x-2.html#cb167-5"></a>    <span class="dt">y =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb167-6"><a href="a-tibble-3-x-2.html#cb167-6"></a>    <span class="dt">title =</span> <span class="st">&quot;Gráfica de cajas de los delitos en CDMX&quot;</span>,</span>
+<span id="cb167-7"><a href="a-tibble-3-x-2.html#cb167-7"></a>    <span class="dt">subtitle =</span> <span class="st">&quot;Fuente: Carpetas de investigación FGJ de la Ciudad de México&quot;</span>,</span>
+<span id="cb167-8"><a href="a-tibble-3-x-2.html#cb167-8"></a>    <span class="dt">caption =</span> <span class="st">&quot;Datos de Diciembre 2018&quot;</span></span>
+<span id="cb167-9"><a href="a-tibble-3-x-2.html#cb167-9"></a>  )</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-218-1.png" width="384" style="display: block; margin: auto;" />
+Finalmente, podemos personalizar los colores de la gráfica editando directamente en el <code>geom_boxplot</code>:</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="a-tibble-3-x-2.html#cb168-1"></a><span class="kw">ggplot</span>(conteo_delitos) <span class="op">+</span></span>
+<span id="cb168-2"><a href="a-tibble-3-x-2.html#cb168-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> n), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;deepskyblue4&quot;</span>) <span class="op">+</span></span>
+<span id="cb168-3"><a href="a-tibble-3-x-2.html#cb168-3"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb168-4"><a href="a-tibble-3-x-2.html#cb168-4"></a>    <span class="dt">x =</span> <span class="st">&quot;Cantidad de carpetas de investigación abiertas por día&quot;</span>,</span>
+<span id="cb168-5"><a href="a-tibble-3-x-2.html#cb168-5"></a>    <span class="dt">y =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb168-6"><a href="a-tibble-3-x-2.html#cb168-6"></a>    <span class="dt">title =</span> <span class="st">&quot;Gráfica de cajas de los delitos en CDMX&quot;</span>,</span>
+<span id="cb168-7"><a href="a-tibble-3-x-2.html#cb168-7"></a>    <span class="dt">subtitle =</span> <span class="st">&quot;Fuente: Carpetas de investigación FGJ de la Ciudad de México&quot;</span>,</span>
+<span id="cb168-8"><a href="a-tibble-3-x-2.html#cb168-8"></a>    <span class="dt">caption =</span> <span class="st">&quot;Datos de Diciembre 2018&quot;</span></span>
+<span id="cb168-9"><a href="a-tibble-3-x-2.html#cb168-9"></a>  )</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-219-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><strong>2. Gráfica de barras</strong> Sea <span class="math inline">\(\vec{c} = (c_1, c_2, \dots, c_n)^T\)</span> un vector de datos categóricos. Sea <span class="math inline">\(C = \{ a_i | a_i \in \vec{c} \}\)</span> el conjunto de <span class="math inline">\(\ell\)</span> valores únicos que se tienen registrados en el vector <span class="math inline">\(\vec{c}\)</span>. Denotamos la cantidad de veces que aparece <span class="math inline">\(a_i\)</span> en <span class="math inline">\(\vec{c}\)</span> como <span class="math inline">\(n_i\)</span>; es decir:</p>
+<p><span class="math display">\[
+n_i = \sum\limits_{k = 1}^n \mathbb{I}_{\{a_i\}}(c_k)
+\]</span></p>
+<p>Una gráfica de barras consiste en una representación gráfica del conjunto:
+<span class="math display">\[
+\text{Barras} = \{ (a_i, n_i) | a_i \in C  \}
+\]</span>
+Gráficamente:</p>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-220-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Podemos crear una gráfica de barras con el comando <code>geom_col</code> para ello creemos unas barras correspondientes al tipo de delito (sólo en delitos que <code>categoria_delito</code> dice <code>ROBO</code>) haciendo una nueva base que cuente por delito:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="a-tibble-3-x-2.html#cb169-1"></a>conteo_tipo &lt;-<span class="st"> </span>datos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(categoria_delito,<span class="st">&quot;ROBO&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb169-2"><a href="a-tibble-3-x-2.html#cb169-2"></a><span class="st">  </span><span class="kw">group_by</span>(delito) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</span></code></pre></div>
+<p>Y hagamos la gráfica:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="a-tibble-3-x-2.html#cb170-1"></a><span class="kw">ggplot</span>(conteo_tipo) <span class="op">+</span></span>
+<span id="cb170-2"><a href="a-tibble-3-x-2.html#cb170-2"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">x =</span> delito, <span class="dt">y =</span> n), <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></span>
+<span id="cb170-3"><a href="a-tibble-3-x-2.html#cb170-3"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-222-1.png" width="384" style="display: block; margin: auto;" />
+Para evitar que se encime todo el texto podemos establecer un ángulo del mismo al usar <code>theme</code>:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="a-tibble-3-x-2.html#cb171-1"></a><span class="kw">ggplot</span>(conteo_tipo) <span class="op">+</span></span>
+<span id="cb171-2"><a href="a-tibble-3-x-2.html#cb171-2"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">x =</span> delito, <span class="dt">y =</span> n), <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></span>
+<span id="cb171-3"><a href="a-tibble-3-x-2.html#cb171-3"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></span>
+<span id="cb171-4"><a href="a-tibble-3-x-2.html#cb171-4"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">size =</span> <span class="dv">3</span>))</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-223-1.png" width="384" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p><strong>NOTA</strong> Una mala praxis <a href="https://www.data-to-viz.com/caveat/pie.html">es usar gráficas de pay</a> pues es muy complicado contar una historia a partir de ellas. ¡No lo hagas!</p>
+</blockquote>
+</div>
+<div id="gráficas-bivariadas" class="section level2">
+<h2><span class="header-section-number">12.3</span> Gráficas bivariadas</h2>
+<p><strong>1. Gráfica de puntos (scatterplot)</strong> Dada una matriz de datos <span class="math inline">\(Z\)</span> consideramos dos columnas numéricas <span class="math inline">\(z_i\)</span> y <span class="math inline">\(z_j\)</span> (<span class="math inline">\(i \neq j\)</span>) de dicha matriz. Sea <span class="math inline">\(\mathbb{X} = \{ (z_{i,1}, z_{j,1}), (z_{i,2}, z_{j,2}), \dots, (z_{i,n}, z_{j,n}) \}\)</span> el conjunto de parejas ordenadas correspondientes a dichas columnas. Una gráfica de puntos consiste en la proyección de dichos puntos sobre <span class="math inline">\(\mathbb{R}^2\)</span>. Para generarla en <code>R</code> podemos usar <code>ggplot</code>:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="a-tibble-3-x-2.html#cb172-1"></a><span class="kw">ggplot</span>(datos) <span class="op">+</span></span>
+<span id="cb172-2"><a href="a-tibble-3-x-2.html#cb172-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> longitud, <span class="dt">y =</span> latitud), <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>,</span>
+<span id="cb172-3"><a href="a-tibble-3-x-2.html#cb172-3"></a>             <span class="dt">alpha =</span> <span class="fl">0.2</span>)</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-224-1.png" width="384" style="display: block; margin: auto;" />
+donde los parámetros <code>size</code> establecen el tamaño del punto, <code>color</code> su color y <code>alpha</code> su nivel de transparencia (<span class="math inline">\(0 \leq \alpha \leq 1\)</span>).</p>
+<p><strong>2. Gráfica de líneas (lineplot)</strong> Dada una matriz de datos <span class="math inline">\(Z\)</span> consideramos dos columnas numéricas <span class="math inline">\(z_i\)</span> y <span class="math inline">\(z_j\)</span> (<span class="math inline">\(i \neq j\)</span>) de dicha matriz. Sea <span class="math inline">\(\mathbb{X} = \{ (z_{i,1}, z_{j,1}), (z_{i,2}, z_{j,2}), \dots, (z_{i,n}, z_{j,n}) \}\)</span> el conjunto de parejas ordenadas correspondientes a dichas columnas. Para evitar confusión de subíndices escribiré a las <span class="math inline">\(z_i\)</span> como <span class="math inline">\(x\)</span> y a las <span class="math inline">\(z_j\)</span> como <span class="math inline">\(y\)</span> de tal forma que <span class="math inline">\(\mathbb{X} = \{ (x_1, y_1), (x_2, y_2), \dots, (x_n, y_n) \}\)</span>
+Supongamos, sin pérdida de generalidad que los datos están ordenados según las <span class="math inline">\(x\)</span>: <span class="math inline">\(x_1 \leq x_2 \leq \dots \leq x_n\)</span>. Sea <span class="math inline">\(f\)</span> la función de interpolación lineal dada por:
+<span class="math display">\[
+f(x) = \begin{cases}
+y_1 + \frac{y_2 - y_1}{x_2 - x_1} (x -x_1) &amp; \text{ si } x_1 \leq x \leq x_2 \\
+\vdots \\
+y_{k-1} + \frac{y_k - y_{k-1}}{x_k - x_{k-1}} (x -x_{k-1}) &amp; \text{ si } x_{k-1} \leq x \leq x_k \\
+\vdots \\
+y_{n-1} + \frac{y_{n} - y_{n-1}}{x_n - x_{n-1}} (x -x_{n-1}) &amp; \text{ si } x_{n-1} \leq x \leq x_n \\
+\end{cases}
+\]</span>
+Una gráfica de líneas corresponde a la representación gráfica del conjunto
+<span class="math display">\[
+\textrm{Gr}_f = \Big\{ \big(x, f(x)\big) |  x_1 \leq x \leq x_n \Big\}
+\]</span>
+De manera un poco más intuitiva notamos que si tenemos, por ejemplo, <span class="math inline">\(\mathbb{X} = \{(x_1, y_1),(x_2, y_2), (x_3, y_3), (x_4, y_4)\}\)</span> una gráfica de líneas se construye interpolando una línea entre <span class="math inline">\((x_1, y_1)\)</span> y <span class="math inline">\((x_2, y_2)\)</span>, otra línea entre <span class="math inline">\((x_2, y_2)\)</span> y <span class="math inline">\((x_3, y_3)\)</span> y, finalmente, otra recta entre <span class="math inline">\((x_3, y_3)\)</span> y <span class="math inline">\((x_4, y_4)\)</span>. Usando la ecuación de la línea
+<span class="math display">\[
+y = \frac{y_2 - y_1}{x_2 - x_1} (x - x_1) + y_1
+\]</span>
+interpolamos cada uno de los puntos como en la gráfica siguiente:</p>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-225-1.png" width="384" style="display: block; margin: auto;" />
+Para realizar una gráfica de líneas podemos usar de nuevo ggplot2 con la opción de <code>geom_line</code>:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="a-tibble-3-x-2.html#cb173-1"></a><span class="kw">ggplot</span>(conteo_delitos) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb173-2"><a href="a-tibble-3-x-2.html#cb173-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fecha, <span class="dt">y =</span> n))</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-226-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Podemos cambiar el tema y agregar puntos de otro color para que nuestra gráfica se vea más bonita:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="a-tibble-3-x-2.html#cb174-1"></a><span class="kw">ggplot</span>(conteo_delitos) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb174-2"><a href="a-tibble-3-x-2.html#cb174-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fecha, <span class="dt">y =</span> n)) <span class="op">+</span></span>
+<span id="cb174-3"><a href="a-tibble-3-x-2.html#cb174-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fecha, <span class="dt">y =</span> n), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb174-4"><a href="a-tibble-3-x-2.html#cb174-4"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb174-5"><a href="a-tibble-3-x-2.html#cb174-5"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb174-6"><a href="a-tibble-3-x-2.html#cb174-6"></a>    <span class="dt">x =</span> <span class="st">&quot;Fecha de apertura de la carpeta de investigación&quot;,</span></span>
+<span id="cb174-7"><a href="a-tibble-3-x-2.html#cb174-7"></a><span class="st">    y = &quot;</span>Cantidad de carpetas de investigación en FGJ<span class="st">&quot;</span></span>
+<span id="cb174-8"><a href="a-tibble-3-x-2.html#cb174-8"></a><span class="st">  )</span></span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-227-1.png" width="384" style="display: block; margin: auto;" />
+Finalmente con <code>geom_label</code> podemos agregar anotaciones a nuestra gráfica:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="a-tibble-3-x-2.html#cb175-1"></a><span class="kw">ggplot</span>(conteo_delitos) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb175-2"><a href="a-tibble-3-x-2.html#cb175-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fecha, <span class="dt">y =</span> n)) <span class="op">+</span></span>
+<span id="cb175-3"><a href="a-tibble-3-x-2.html#cb175-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fecha, <span class="dt">y =</span> n), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb175-4"><a href="a-tibble-3-x-2.html#cb175-4"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb175-5"><a href="a-tibble-3-x-2.html#cb175-5"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb175-6"><a href="a-tibble-3-x-2.html#cb175-6"></a>    <span class="dt">x =</span> <span class="st">&quot;Fecha de apertura de la carpeta de investigación&quot;,</span></span>
+<span id="cb175-7"><a href="a-tibble-3-x-2.html#cb175-7"></a><span class="st">    y = &quot;</span>Cantidad de carpetas de investigación en FGJ<span class="st">&quot;</span></span>
+<span id="cb175-8"><a href="a-tibble-3-x-2.html#cb175-8"></a><span class="st">  ) +</span></span>
+<span id="cb175-9"><a href="a-tibble-3-x-2.html#cb175-9"></a><span class="st">  geom_label(aes(x = dmy(&quot;</span><span class="dv">25</span><span class="op">/</span><span class="dv">12</span><span class="op">/</span><span class="dv">2018</span><span class="st">&quot;), y = 425), label = &quot;</span>Efecto de Navidad<span class="st">&quot;)</span></span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-228-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div id="ejercicio-7" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> Ejercicio</h3>
+<p>Utiliza las siguiente bases de datos para replicar exactamente el formato de las gráficas que se muestran abajo de las bases. No todo viene en estas notas, la idea es que investigues y para ello te sugiero <a href="https://ggplot2-book.org">consultar este libro</a></p>
+<p><em>Gráfica de barras</em></p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="a-tibble-3-x-2.html#cb176-1"></a>datos.barras &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Pais =</span> <span class="kw">c</span>(<span class="st">&quot;EEUU&quot;</span>,<span class="st">&quot;Canadá&quot;</span>,<span class="st">&quot;México&quot;</span>), </span>
+<span id="cb176-2"><a href="a-tibble-3-x-2.html#cb176-2"></a>                           <span class="dt">PIB =</span> <span class="kw">c</span>(<span class="fl">20.54</span>, <span class="fl">17.13</span>, <span class="fl">1.21</span>))</span></code></pre></div>
+<p>Los colores usados son <code>firebrick</code>, <code>deepskyblue3</code> y <code>forestgreen</code>:</p>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-230-1.png" width="384" style="display: block; margin: auto;" />
+<em>Línea</em></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="a-tibble-3-x-2.html#cb177-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>pi, <span class="dv">2</span><span class="op">*</span>pi, <span class="dt">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb177-2"><a href="a-tibble-3-x-2.html#cb177-2"></a>datos.linea &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> <span class="kw">sin</span>(x))</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-232-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><em>Boxplot</em></p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="a-tibble-3-x-2.html#cb178-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">-2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">-8</span>, <span class="dv">31</span>, <span class="dv">2</span>, pi, <span class="dv">3</span>)</span>
+<span id="cb178-2"><a href="a-tibble-3-x-2.html#cb178-2"></a>datos.linea &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Dientes =</span> x)</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-234-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><em>Puntos</em></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="a-tibble-3-x-2.html#cb179-1"></a>datos.arbol &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">altura =</span> <span class="kw">c</span>(<span class="fl">1.7</span>, <span class="fl">1.4</span>, <span class="fl">1.8</span>, <span class="fl">1.9</span>, <span class="fl">1.5</span>, <span class="fl">1.7</span>,</span>
+<span id="cb179-2"><a href="a-tibble-3-x-2.html#cb179-2"></a>                                     <span class="fl">1.6</span>, <span class="fl">1.8</span>, <span class="fl">1.7</span>, <span class="fl">1.8</span>),</span>
+<span id="cb179-3"><a href="a-tibble-3-x-2.html#cb179-3"></a>                          <span class="dt">ancho =</span> <span class="kw">c</span>(<span class="fl">1.2</span>, <span class="fl">1.4</span>, <span class="fl">1.2</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="fl">1.7</span>, <span class="fl">1.6</span>,</span>
+<span id="cb179-4"><a href="a-tibble-3-x-2.html#cb179-4"></a>                                    <span class="fl">1.2</span>, <span class="fl">1.2</span>, <span class="dv">1</span>),</span>
+<span id="cb179-5"><a href="a-tibble-3-x-2.html#cb179-5"></a>                          <span class="dt">tipo =</span> <span class="kw">c</span>(<span class="st">&quot;Pino&quot;</span>,<span class="st">&quot;Sauce&quot;</span>,<span class="st">&quot;Sauce&quot;</span>,<span class="st">&quot;Sauce&quot;</span>,<span class="st">&quot;Pino&quot;</span>,</span>
+<span id="cb179-6"><a href="a-tibble-3-x-2.html#cb179-6"></a>                                   <span class="st">&quot;Pino&quot;</span>,<span class="st">&quot;Pino&quot;</span>,<span class="st">&quot;Sauce&quot;</span>,<span class="st">&quot;Sauce&quot;</span>,<span class="st">&quot;Sauce&quot;</span>))</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-236-1.png" width="384" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="estadísticos-bivariados" class="section level2">
+<h2><span class="header-section-number">12.4</span> Estadísticos bivariados</h2>
+<p><strong>NOTACIÓN</strong> Para esta sección vamos a considerar dos (vectores) columnas de la matriz de datos <span class="math inline">\(Z\)</span> y los denominaremos <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span> (en lugar de <span class="math inline">\(z_i\)</span> y <span class="math inline">\(z_j\)</span>). En particular, denotaremos <span class="math inline">\(\mathcal{X} = \{ a_{i, x } | a_{i,x} \in \vec{x} \}\)</span> el conjunto de valores únicos del vector <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\mathcal{Y} = \{ a_{y ,j} | a_{y ,j} \in \vec{y} \}\)</span> el conjunto de valores únicos de <span class="math inline">\(\vec{y}\)</span>. La cardinalidad de dichos conjuntos es <span class="math inline">\(\ell_{x}\)</span> y <span class="math inline">\(\ell_{y}\)</span> respectivamente. Finalmente, definimos el conteo de cuántas veces aparece el valor <span class="math inline">\(a_{i,x }\)</span> (respectivamente el <span class="math inline">\(a_{y ,j}\)</span>) en los vectores <span class="math inline">\(\vec{x}\)</span> (respectivamente <span class="math inline">\(\vec{y}\)</span>) como:
+<span class="math display">\[\begin{equation}
+\begin{aligned}
+n_{i,x } &amp; = \sum\limits_{k=1}^{n} \mathbb{I}_{\{ a_{i,x } \}}(x_k) \\
+n_{y ,j} &amp; = \sum\limits_{k=1}^{n} \mathbb{I}_{\{ a_{y ,j} \}}(y_k)
+\end{aligned}
+\end{equation}\]</span>
+para <span class="math inline">\(1 \leq i \leq \ell_{x}\)</span> y <span class="math inline">\(1 \leq j \leq \ell_{y}\)</span>.</p>
+<blockquote>
+Por poner un ejemplo, considera el siguiente conjunto de datos:
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+x
+</th>
+<th style="text-align:left;">
+y
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rojo
+</td>
+<td style="text-align:left;">
+Coche
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Azul
+</td>
+<td style="text-align:left;">
+Taza
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Verde
+</td>
+<td style="text-align:left;">
+Árbol
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rojo
+</td>
+<td style="text-align:left;">
+Taza
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Verde
+</td>
+<td style="text-align:left;">
+Libro
+</td>
+</tr>
+</tbody>
+</table>
+<p>En este sentido el vector es <span class="math inline">\(\vec{x} = (\text{Rojo},\text{Azul},\text{Verde},\text{Rojo},\text{Verde})^T\)</span> mientras que el conjunto de valores únicos asociados está dado por <span class="math inline">\(\mathcal{X} = \{ \text{Rojo},\text{Azul},\text{Verde} \}\)</span>. En este sentido (siguiendo el conjunto) se tiene que <span class="math inline">\(a_{1,x} = \text{Rojo}\)</span>, <span class="math inline">\(a_{2,x} = \text{Azul}\)</span> y <span class="math inline">\(a_{3,x } = \text{Verde}\)</span> mientras que (siguiendo el vector) se observa <span class="math inline">\(x_1 = \text{Rojo}\)</span>, <span class="math inline">\(x_2 = \text{Azul}\)</span>, <span class="math inline">\(x_3 = \text{Verde}\)</span>, <span class="math inline">\(x_4 = \text{Rojo}\)</span>, <span class="math inline">\(x_5 = \text{Verde}\)</span>. Finalmente notamos que el conteo de veces que aparece cada cosa es: <span class="math inline">\(n_{1,x} = 2\)</span> (aparece el <span class="math inline">\(a_{1, x}\)</span> que es rojo dos veces), <span class="math inline">\(n_{2,x} = 1\)</span> y <span class="math inline">\(n_{3,x } = 2\)</span> (el azul y verde dados por <span class="math inline">\(a_{2,x}\)</span> y <span class="math inline">\(a_{3,x}\)</span> respectivamente aparecen una vez para azul y dos veces para verde). Por otro lado, <span class="math inline">\(\vec{y} = (\text{Coche},\text{Taza},\text{Árbol},\text{Taza},\text{Libro})^T\)</span> con su conjunto de valores únicos <span class="math inline">\(\mathcal{Y} = \{ \text{Coche},\text{Taza},\text{Árbol}, \text{Libro} \}\)</span>. Para el caso de <span class="math inline">\(\vec{y}\)</span> se tiene que <span class="math inline">\(y_1 = \text{Coche}\)</span>, <span class="math inline">\(y_2 = \text{Taza}\)</span>, <span class="math inline">\(y_3 = \text{Árbol}\)</span>, <span class="math inline">\(y_4 = \text{Taza}\)</span>, <span class="math inline">\(y_5 = \text{Libro}\)</span> mientras que en el caso de valores únicos <span class="math inline">\(a_{y, 1} = \text{Coche}\)</span>, <span class="math inline">\(a_{y, 2} = \text{Taza}\)</span>, <span class="math inline">\(a_{y, 3} = \text{Árbol}\)</span>, <span class="math inline">\(a_{\cdot, 4} = \text{Libro}\)</span>. Los conteos asociados son: <span class="math inline">\(n_{y,1} = n_{y,3} = n_{y,4} = 1\)</span> (aparecen el coche, el árbol y el libro una vez) mientras que <span class="math inline">\(n_{y,2} = 2\)</span> representa que la taza está dos veces.</p>
+</blockquote>
+<p>Por otro lado denotamos a la submatriz de <span class="math inline">\(Z\)</span> compuesta solamente por las columnas <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span> como:</p>
+<p><span class="math display">\[
+Z_{(x,y)} = 
+\begin{pmatrix}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2 \\
+\vdots &amp; \vdots \\
+x_n &amp; y_n \\
+\end{pmatrix}
+\]</span>
+Sea <span class="math inline">\(\mathcal{X}\times\mathcal{Y} = \{ a_{i,j} = (x_i,y_j) | x_i \in \mathcal{X} \quad \&amp; \quad y_j \in \mathcal{Y}\}\)</span> el conjunto de observaciones únicas <em>posibles</em> de las parejas <span class="math inline">\((x,y)\)</span> (todas las permutaciones). Finalmente, el conteo de cuántas veces aparece el vector bivariado <span class="math inline">\(a_{i,j}\)</span> en los datos está dado por:
+<span class="math display">\[
+n_{i,j} = \sum\limits_{k = 1}^{n}  \mathbb{I}_{\{ a_{i,j} \}}\big( (x_k, y_k) \big)
+\]</span>
+<!--Lo anterior puede representarse en la tabla \eqref{tab:resumen}:
+\begin{table}[!htb]
+\centering
+\begin{tabular}{l||r|cccc|r}
+                   & \multicolumn{1}{l}{} & \multicolumn{5}{c}{$\vec{y}$}                                                                               \\
+                   \hline
+                   \hline
+\multirow{6}{*}{$\vec{x}$} & \multicolumn{1}{l}{} & $a_{y,1}$      & $a_{y,2}$      & $\dots$  & $a_{y,\ell_y}$      & \multicolumn{1}{c}{Total (fila)} \\
+\hline
+
+                   & $a_{1,x}$            & $n_{1,1}$      & $n_{1,2}$      & $\dots$  & $n_{1,\ell_y}$      & $n_{1,x}$                        \\
+                   & $a_{2,x}$            & $n_{2,1}$      & $n_{2,2}$      & $\dots$  & $n_{2,\ell_y}$      & $n_{2,x}$                        \\
+                   & $\vdots$             & $\vdots$       & $\vdots$       & $\ddots$ & $\vdots$            & $n_{3,x}$                        \\
+                   & $a_{\ell_x,x}$       & $n_{\ell_x,1}$ & $n_{\ell_x,2}$ & $\dots$  & $n_{\ell_x,\ell_y}$ & $n_{\ell_x,x}$                   \\
+                   \hline
+                   & Total (columna)      & $n_{y,1}$      & $n_{y,2}$      & $\dots$  & $n_{y,\ell_y}$      & \multicolumn{1}{l}{$n$}       \\   
+                   \hline
+                   \hline
+\end{tabular}
+\caption{Tabla resumen}
+\label{tab:resumen}
+\end{table}-->
+En el ejemplo anterior, la tabla se vería:</p>
+<pre><code>## Warning: Setting row names on a tibble is deprecated.</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Coche
+</th>
+<th style="text-align:right;">
+Taza
+</th>
+<th style="text-align:right;">
+Árbol
+</th>
+<th style="text-align:right;">
+Libro
+</th>
+<th style="text-align:right;">
+Total (fila)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rojo
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Azul
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Verde
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total (columna)
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+<p>Una excelente referencia para esta sección es el capítulo 4 de <span class="citation">Peck, Olsen, and Devore (<a href="#ref-peck2015introduction" role="doc-biblioref">2015</a>)</span>.</p>
+<p><strong>1. Tabla de contingencia </strong>
+Para <span class="math inline">\(\vec{x}\)</span>, <span class="math inline">\(\vec{y}\)</span> definidas como al inicio de la sección (y siguiendo la notación anterior), definimos una tabla de contingencia como la matriz <span class="math inline">\(N_{x,y}\)</span> dada por:
+<span class="math display">\[
+N_{x,y} = \begin{pmatrix}
+n_{1,1} &amp; n_{1,2} &amp; \dots &amp; n_{1, \ell_y} \\
+n_{2,1} &amp; n_{2,2} &amp; \dots &amp; n_{2, \ell_y} \\
+\vdots  &amp; \vdots  &amp; \ddots &amp; \vdots \\
+n_{\ell_x,1} &amp; n_{\ell_x,2} &amp; \dots &amp; n_{\ell_x, \ell_y} \\
+\end{pmatrix}
+\]</span>
+Al vector <span class="math inline">\(n_x = (n_{1,x}, n_{2,x}, \dots, n_{\ell_x,x})^T\)</span> se le conoce como <strong>distribución frecuencial (observada) marginal</strong> de <span class="math inline">\(\vec{x}\)</span> mientras que <span class="math inline">\(n_y = (n_{y,1}, n_{y,2}, \dots, n_{y,\ell_y})^T\)</span> es la <strong>distribución frecuencial (observada) marginal</strong> de <span class="math inline">\(\vec{y}\)</span>.</p>
+<p>Una tabla de contingencia representa el conteo de observaciones de una variable ajustado por la otra. Para crear una tabla de contingencia en <code>R</code> podemos usar el mismo comando <code>table</code> que ya usamos antes pero esta vez introduciendo dos vectores como en el siguiente ejemplo donde notamos alcaldía contra año del registo:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="a-tibble-3-x-2.html#cb181-1"></a><span class="kw">table</span>(datos<span class="op">$</span>alcaldia_hechos, datos<span class="op">$</span>ao_inicio)</span></code></pre></div>
+<pre><code>      2018 2019</code></pre>
+<p>VERACRUZ 0 1
+VILLAGRAN 1 0
+XALATLACO 2 0
+XOCHIMILCO 465 115
+XOCHITEPEC 1 0
+ZACATECAS 0 2
+Para agregar las distribuciones frecuenciales marginales a la tabla podemos usar el comando <code>addmargins</code>:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="a-tibble-3-x-2.html#cb183-1"></a><span class="kw">addmargins</span>(<span class="kw">table</span>(datos<span class="op">$</span>alcaldia_hechos, datos<span class="op">$</span>ao_inicio))</span></code></pre></div>
+<pre><code>       2018  2019   Sum</code></pre>
+<p>VILLAGRAN 1 0 1
+XALATLACO 2 0 2
+XOCHIMILCO 465 115 580
+XOCHITEPEC 1 0 1
+ZACATECAS 0 2 2
+Sum 15952 3896 19848</p>
+<p><strong>2. Tabla de frecuencias</strong></p>
+<p>Una tabla de frecuencia es la matriz <span class="math inline">\(\text{Freq}_{x,y}\)</span> dada por:
+<span class="math display">\[
+\text{Freq}_{x,y} = \begin{pmatrix}
+f_{1,1} &amp; f_{1,2} &amp; \dots &amp; f_{1, \ell_y} \\
+f_{2,1} &amp; f_{2,2} &amp; \dots &amp; f_{2, \ell_y} \\
+\vdots  &amp; \vdots  &amp; \ddots &amp; \vdots \\
+f_{\ell_x,1} &amp; f_{\ell_x,2} &amp; \dots &amp; f_{\ell_x, \ell_y} \\
+\end{pmatrix}
+\]</span></p>
+<p>donde <span class="math inline">\(f_{i,j} = \frac{n_{i,j}}{n}\)</span> representa la frecuencia relativa de la observación de <span class="math inline">\((a_{i,x}, a_{y,j})\)</span> <em>i.e.</em> cuánto representa del total. Al vector <span class="math inline">\(f_{x} = (f_{1,x}, f_{2,x}, \dots, f_{\ell_x,x})^T\)</span> se le conoce como <strong>la distribución frecuencial marginal relativa</strong> de <span class="math inline">\(\vec{x}\)</span>. Análogamente para <span class="math inline">\(y\)</span> se tiene <strong>la distribución frecuencial marginal relativa</strong> de <span class="math inline">\(\vec{y}\)</span> dada por: <span class="math inline">\(f_{y} = (f_{y,1}, f_{y,2}, \dots, f_{y,\ell_y})^T\)</span>. Las entradas de dichos vectores son de la forma <span class="math inline">\(f_{i,x} = n_{i,x}/n\)</span> y <span class="math inline">\(f_{y,j} = n_{y,j}/n\)</span>.</p>
+<p>En <code>R</code> podemos obtener las frecuencias mediante <code>prop.table</code>:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="a-tibble-3-x-2.html#cb185-1"></a><span class="kw">prop.table</span>(<span class="kw">table</span>(datos<span class="op">$</span>alcaldia_hechos, datos<span class="op">$</span>ao_inicio))</span></code></pre></div>
+<pre><code>             2018        2019</code></pre>
+<p>VERACRUZ 0.00000e+00 5.03829e-05
+VILLAGRAN 5.03829e-05 0.00000e+00
+XALATLACO 1.00766e-04 0.00000e+00
+XOCHIMILCO 2.34281e-02 5.79403e-03
+XOCHITEPEC 5.03829e-05 0.00000e+00
+ZACATECAS 0.00000e+00 1.00766e-04</p>
+<p>Así mismo, podemos agregar las marginales:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="a-tibble-3-x-2.html#cb187-1"></a><span class="kw">addmargins</span>(<span class="kw">prop.table</span>(<span class="kw">table</span>(datos<span class="op">$</span>alcaldia_hechos, datos<span class="op">$</span>ao_inicio)))</span></code></pre></div>
+<pre><code>             2018        2019         Sum</code></pre>
+<p>VILLAGRAN 5.03829e-05 0.00000e+00 5.03829e-05
+XALATLACO 1.00766e-04 0.00000e+00 1.00766e-04
+XOCHIMILCO 2.34281e-02 5.79403e-03 2.92221e-02
+XOCHITEPEC 5.03829e-05 0.00000e+00 5.03829e-05
+ZACATECAS 0.00000e+00 1.00766e-04 1.00766e-04
+Sum 8.03708e-01 1.96292e-01 1.00000e+00</p>
+<p><strong>3. Riesgo Relativo (discreto)</strong>
+Para definir Riesgo Relativo empezaremos por un ejemplo. Tomamos la tabla  donde se guardó un registro de personas según si fumaban o no así como si dichas personas desarrollaron o no enfisema pulmonar.</p>
+<pre><code>## Warning: Setting row names on a tibble is deprecated.</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+FUMA
+</th>
+<th style="text-align:right;">
+NO FUMA
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Con enfisema
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sin enfisema
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+</tbody>
+</table>
+<p>Si quisiéramos analizar la hipótesis de que FUMAR está asociado con ENFISEMA tendríamos que ver, dentro de la población de fumadores (FUMAR = SÍ) cuántos hay (proporcionalmente) con ENFISEMA. La hipótesis es que si no hubiera relación, saldría que las proporciones de fumadores con y sin enfisema serían <span class="math inline">\(50\%\)</span> cada una. La proporción de fumadores con enfisema está dada por <span class="math inline">\(100/130\)</span> mientras que la de no fumadores con enfisema es <span class="math inline">\(40/90\)</span>. El riesgo relativo (intuitivamente). se define como la división entre ambas proporciones:
+<span class="math display">\[
+\text{Riesgo Relativo de Enfisema} = \dfrac{\frac{\text{Expuestos enfermos}}{\text{Total de expuestos}}}{\frac{\text{No Expuestos enfermos}}{\text{Total de no expuestos}}} =  \dfrac{100/130}{40/90} \approx 1.73
+\]</span>
+Lo que se interpreta como que los fumadores tienen <span class="math inline">\(1.73\)</span> veces más riesgo de desarrollar enfisema que los no fumadores ya que si despejamos de la fórmula anterior:
+<span class="math display">\[
+\frac{\text{Expuestos enfermos}}{\text{Total de expuestos}}   \approx 1.73 \times \frac{\text{No Expuestos enfermos}}{\text{Total de no expuestos}}
+\]</span>
+De manera general, dadas dos vectores lógicos <span class="math inline">\(\vec{x}\)</span> (interpretada como el resultado) y <span class="math inline">\(\vec{y}\)</span> (interpretada como la exposición) con una tabla de contingencia y frecuencias marginales dadas por la tabla:</p>
+<pre><code>## Warning: Setting row names on a tibble is deprecated.</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Expuesto (y)
+</th>
+<th style="text-align:left;">
+NO expuesto (y)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Resultado (x)
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:left;">
+b
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sin resultado (x)
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:left;">
+d
+</td>
+</tr>
+</tbody>
+</table>
+<p>definimos el riesgo relativo de <span class="math inline">\(\vec{x}\)</span> dado <span class="math inline">\(\vec{y}\)</span> como:
+<span class="math display">\[
+RR(\vec{x}|\vec{y}) = \dfrac{\frac{a}{a + c}}{\frac{b}{b + d}}
+\]</span>
+Mientras que el riesgo relativo de no <span class="math inline">\(\vec{x}\)</span> dado <span class="math inline">\(\vec{y}\)</span> está dado por:
+<span class="math display">\[
+RR(\neg \vec{x}|\vec{y}) = \dfrac{\frac{c}{a + c}}{\frac{d}{b + d}}
+\]</span></p>
+<p>La base de datos de los delitos no contiene información suficiente para poder calcular un riesgo relativo pero podemos crear la base de datos correspondiente a la tabla  como sigue:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="a-tibble-3-x-2.html#cb191-1"></a>fumadores &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">SI_FUMA =</span> <span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">30</span>), <span class="dt">NO_FUMA =</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>))</span></code></pre></div>
+<p>Podemos agregar nombres a las filas para tener la base de datos mejor:</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="a-tibble-3-x-2.html#cb192-1"></a><span class="kw">rownames</span>(fumadores) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ENFISEMA&quot;</span>,<span class="st">&quot;NO_ENFISEMA&quot;</span>)</span></code></pre></div>
+<p>La tabla se ve así:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="a-tibble-3-x-2.html#cb193-1"></a>fumadores</span></code></pre></div>
+<pre><code>     SI_FUMA NO_FUMA</code></pre>
+<p>ENFISEMA 100 40
+NO_ENFISEMA 30 50</p>
+<p>Luego el riesgo relativo de ENFISEMA está dado por:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="a-tibble-3-x-2.html#cb195-1"></a>numerador   &lt;-<span class="st"> </span>fumadores[<span class="st">&quot;ENFISEMA&quot;</span>,<span class="st">&quot;SI_FUMA&quot;</span>]<span class="op">/</span><span class="kw">sum</span>(fumadores<span class="op">$</span>SI_FUMA)</span>
+<span id="cb195-2"><a href="a-tibble-3-x-2.html#cb195-2"></a>denominador &lt;-<span class="st"> </span>fumadores[<span class="st">&quot;ENFISEMA&quot;</span>,<span class="st">&quot;NO_FUMA&quot;</span>]<span class="op">/</span><span class="kw">sum</span>(fumadores<span class="op">$</span>NO_FUMA)</span>
+<span id="cb195-3"><a href="a-tibble-3-x-2.html#cb195-3"></a></span>
+<span id="cb195-4"><a href="a-tibble-3-x-2.html#cb195-4"></a>rr &lt;-<span class="st"> </span>numerador<span class="op">/</span>denominador <span class="co">#El riesgo relativo</span></span>
+<span id="cb195-5"><a href="a-tibble-3-x-2.html#cb195-5"></a>rr</span></code></pre></div>
+<p>[1] 1.73077</p>
+<p>Por otro lado, el riesgo relativo de no enfisema es:</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="a-tibble-3-x-2.html#cb196-1"></a>numerador   &lt;-<span class="st"> </span>fumadores[<span class="st">&quot;NO_ENFISEMA&quot;</span>,<span class="st">&quot;SI_FUMA&quot;</span>]<span class="op">/</span><span class="kw">sum</span>(fumadores<span class="op">$</span>SI_FUMA)</span>
+<span id="cb196-2"><a href="a-tibble-3-x-2.html#cb196-2"></a>denominador &lt;-<span class="st"> </span>fumadores[<span class="st">&quot;NO_ENFISEMA&quot;</span>,<span class="st">&quot;NO_FUMA&quot;</span>]<span class="op">/</span><span class="kw">sum</span>(fumadores<span class="op">$</span>NO_FUMA)</span>
+<span id="cb196-3"><a href="a-tibble-3-x-2.html#cb196-3"></a></span>
+<span id="cb196-4"><a href="a-tibble-3-x-2.html#cb196-4"></a>rr_neg &lt;-<span class="st"> </span>numerador<span class="op">/</span>denominador <span class="co">#El riesgo relativo</span></span>
+<span id="cb196-5"><a href="a-tibble-3-x-2.html#cb196-5"></a>rr_neg</span></code></pre></div>
+<p>[1] 0.415385
+Éste último se interpreta como si la proporción de individuos sin enfisema es <span class="math inline">\(0.41\)</span> veces más pequeña entre fumadores que no fumadores.</p>
+<p><strong>4. Razón de momios (discreto)</strong>
+Para dos vectores lógicos <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span> definimos la razón de momios como:
+<span class="math display">\[
+\textrm{OR}(\vec{x}|\vec{y}) =\dfrac{RR(\vec{x}|\vec{y})}{RR(\neg\vec{x}|\vec{y})} 
+\]</span>
+Podemos calcular en <code>R</code> la razón de momios a partir de los datos:</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="a-tibble-3-x-2.html#cb197-1"></a>razon.momios &lt;-<span class="st"> </span>rr<span class="op">/</span>rr_neg</span></code></pre></div>
+<p>donde la razón de momios de 4.17 se interpreta como “si un individuo tiene enfisema, la factibilidad de que dicho individuo sea fumador es 4.17 veces más alta”. Esta interpretación se obtiene a partir de un despeje y sustitución:
+<span class="math display">\[\begin{equation}\nonumber
+\begin{aligned}
+RR(\vec{x}|\vec{y})  &amp; = 4.16 \cdot RR(\neg\vec{x}|\vec{y}) \\  \\
+\Leftrightarrow  \dfrac{\frac{\text{Expuestos enfermos}}{\text{Total de expuestos}}}{\frac{\text{No Expuestos enfermos}}{\text{Total de no expuestos}}} &amp; = 4.16 \cdot \dfrac{\frac{\text{Expuestos no enfermos}}{\text{Total de expuestos}}}{\frac{\text{No Expuestos no enfermos}}{\text{Total de no expuestos}}} \\ \\
+\Leftrightarrow \frac{\text{Expuestos enfermos}}{\text{No Expuestos enfermos}} &amp; = 4.16\cdot \frac{\text{Expuestos no enfermos}}{\text{No Expuestos no enfermos}}  \\
+\\ \Leftrightarrow  \frac{\text{Expuestos enfermos}}{\text{Expuestos no enfermos}} &amp; = 4.16\cdot \frac{\text{No Expuestos enfermos}}{\text{No Expuestos no enfermos}}
+\end{aligned}
+\end{equation}\]</span></p>
+<p><strong>5. Correlación (Bravais-Pearson)</strong> Sean <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span> dos vectores columa numéricos de nuestra matriz de datos <span class="math inline">\(Z\)</span>. Tomemos <span class="math inline">\(\tilde{x} = (x_1 - \bar{x}, x_2 - \bar{x}, \dots, x_n - \bar{x})\)</span> la versión centrada de <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\tilde{y} = (y_1 - \bar{y}, y_2 - \bar{y}, \dots, y_n - \bar{y})\)</span> la versión centrada de <span class="math inline">\(\vec{y}\)</span>.
+Al coseno entre dichos vectores (bajo el producto punto) se le conoce como correlación de Bravais-Pearson y se le denota <span class="math inline">\(\rho_{\vec{x},\vec{y}}\)</span>. Es decir:
+<span class="math display">\[
+\rho_{\vec{x},\vec{y}} = \cos(\tilde{x},\tilde{y}) = \dfrac{\tilde{x} \cdot \tilde{y}}{\|\tilde{x}\| \cdot \|\tilde{y}\|}
+\]</span>
+donde <span class="math inline">\(\tilde{x}\cdot\tilde{y} = \sum_{i=1}^{n} (x_i - \bar{x}) \cdot (y_i - \bar{y})\)</span> representa el producto de los vectores <span class="math inline">\(\tilde{x}\)</span> y <span class="math inline">\(\tilde{y}\)</span> y se conoce como <strong>covarianza entre <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span></strong>. Por otro lado,
+<span class="math display">\[
+\|\tilde{x}\| = \sqrt{\sum\limits_{i=1}^{n} (x_i - \bar{x})^2} = \sigma_{\vec{x}}
+\]</span>
+Por tanto la correlación también puede medirse como:
+<span class="math display">\[
+\rho_{\vec{x},\vec{y}} = \cos(\tilde{x},\tilde{y}) = \frac{1}{\sigma_{\vec{y}} \sigma_{\vec{x}}}\sum\limits_{i=1}^{n} (x_i - \bar{x}) \cdot (y_i - \bar{y})  
+\]</span></p>
+<p>Para matriz de datos <span class="math inline">\(Z\)</span> con <span class="math inline">\(\ell\)</span> columnas, definimos la matriz de correlaciones <span class="math inline">\(\mathcal{C}\)</span> como la matriz dada por:
+<span class="math display">\[
+\mathcal{C} = \begin{pmatrix}
+\rho(z_1,z_1) &amp; \rho(z_1,z_2) &amp; \dots &amp; \rho(z_1,z_{\ell}) \\
+\rho(z_2,z_1) &amp; \rho(z_2,z_2) &amp; \dots &amp; \rho(z_2,z_{\ell}) \\
+\vdots        &amp; \vdots &amp; \ddots &amp; \vdots \\
+\rho(z_{\ell},z_1) &amp; \rho(z_{\ell},z_2) &amp; \dots &amp; \rho(z_{\ell},z_{\ell})
+\end{pmatrix}
+\]</span>
+Donde notamos (<strong>demuestra</strong>) que <span class="math inline">\(\rho(z_i, z_i) = 1\)</span>.</p>
+<p>Podemos usar la base <code>mtcars</code> precargada en <code>R</code> para analizar las correlaciones:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="a-tibble-3-x-2.html#cb198-1"></a><span class="kw">data</span>(mtcars)</span>
+<span id="cb198-2"><a href="a-tibble-3-x-2.html#cb198-2"></a>datos.coches &lt;-<span class="st"> </span>mtcars</span></code></pre></div>
+<p>La base está explicada en la ayuda de <code>R</code>:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="a-tibble-3-x-2.html#cb199-1"></a>?mtcars</span></code></pre></div>
+<p>Podemos obtener la correlación entre el número de millas por galón <code>mpg</code> y el peso del automóvil <code>wt</code> haciendo:</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="a-tibble-3-x-2.html#cb200-1"></a><span class="kw">cor</span>(datos.coches<span class="op">$</span>mpg, datos.coches<span class="op">$</span>wt, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<p>[1] -0.867659
+Esta correlación se interpreta como que por cada aumento en el peso corresponde una disminución en las millas por galón. Podemos ver gráficamente que esto es así:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="a-tibble-3-x-2.html#cb201-1"></a><span class="kw">ggplot</span>(datos.coches) <span class="op">+</span></span>
+<span id="cb201-2"><a href="a-tibble-3-x-2.html#cb201-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg), <span class="dt">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span></span>
+<span id="cb201-3"><a href="a-tibble-3-x-2.html#cb201-3"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-258-1.png" width="384" style="display: block; margin: auto;" />
+Para obtener toda la matriz de correlaciones de la base podemos tomar <code>cor</code> aplicado a toda la base de datos:</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="a-tibble-3-x-2.html#cb202-1"></a><span class="kw">cor</span>(datos.coches, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>    mpg       cyl      disp        hp       drat        wt       qsec</code></pre>
+<p>mpg 1.000000 -0.852162 -0.847551 -0.776168 0.6811719 -0.867659 0.4186840
+cyl -0.852162 1.000000 0.902033 0.832447 -0.6999381 0.782496 -0.5912421
+disp -0.847551 0.902033 1.000000 0.790949 -0.7102139 0.887980 -0.4336979
+hp -0.776168 0.832447 0.790949 1.000000 -0.4487591 0.658748 -0.7082234
+drat 0.681172 -0.699938 -0.710214 -0.448759 1.0000000 -0.712441 0.0912048
+wt -0.867659 0.782496 0.887980 0.658748 -0.7124406 1.000000 -0.1747159
+qsec 0.418684 -0.591242 -0.433698 -0.708223 0.0912048 -0.174716 1.0000000
+vs 0.664039 -0.810812 -0.710416 -0.723097 0.4402785 -0.554916 0.7445354
+am 0.599832 -0.522607 -0.591227 -0.243204 0.7127111 -0.692495 -0.2298609
+gear 0.480285 -0.492687 -0.555569 -0.125704 0.6996101 -0.583287 -0.2126822
+carb -0.550925 0.526988 0.394977 0.749812 -0.0907898 0.427606 -0.6562492
+vs am gear carb
+mpg 0.664039 0.5998324 0.480285 -0.5509251
+cyl -0.810812 -0.5226070 -0.492687 0.5269883
+disp -0.710416 -0.5912270 -0.555569 0.3949769
+hp -0.723097 -0.2432043 -0.125704 0.7498125
+drat 0.440278 0.7127111 0.699610 -0.0907898
+wt -0.554916 -0.6924953 -0.583287 0.4276059
+qsec 0.744535 -0.2298609 -0.212682 -0.6562492
+vs 1.000000 0.1683451 0.206023 -0.5696071
+am 0.168345 1.0000000 0.794059 0.0575344
+gear 0.206023 0.7940588 1.000000 0.2740728
+carb -0.569607 0.0575344 0.274073 1.0000000</p>
+<p>Finalmente, el paquete <code>ggcorrplot</code> puede ayudarnos a visualizar gráficamente dicha matriz:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="a-tibble-3-x-2.html#cb204-1"></a><span class="kw">ggcorrplot</span>(<span class="kw">cor</span>(datos.coches, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>), </span>
+<span id="cb204-2"><a href="a-tibble-3-x-2.html#cb204-2"></a>           <span class="dt">lab =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb204-3"><a href="a-tibble-3-x-2.html#cb204-3"></a>           <span class="dt">type =</span> <span class="st">&quot;upper&quot;</span>) <span class="op">+</span></span>
+<span id="cb204-4"><a href="a-tibble-3-x-2.html#cb204-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Matriz de Correlaciones&quot;</span>)</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-260-1.png" width="384" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p>Una correlación de Pearson igual a <span class="math inline">\(1\)</span> ó <span class="math inline">\(-1\)</span> se interpreta como que hay una relación lineal perfecta mientras que una correlación igual a <span class="math inline">\(0\)</span> se interpreta como que no hay relación lineal (aunque puede existir de otro tipo)</p>
+</blockquote>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="a-tibble-3-x-2.html#cb205-1"></a><span class="co">#Ejemplo de correlación lineal perfecta</span></span>
+<span id="cb205-2"><a href="a-tibble-3-x-2.html#cb205-2"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">4</span>, <span class="dt">length.out =</span> <span class="dv">9</span>)</span>
+<span id="cb205-3"><a href="a-tibble-3-x-2.html#cb205-3"></a>y &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<p>Gráficamente:</p>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-262-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>El valor en este caso de la correlación es:</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="a-tibble-3-x-2.html#cb206-1"></a><span class="kw">cor</span>(x,y, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<p>[1] 1</p>
+<p>Mientras que por otro lado podemos tener variables relacionadas pero <em>sin correlación</em> :</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="a-tibble-3-x-2.html#cb207-1"></a><span class="co">#Ejemplo sin correlación lineal pero con variables relacionadas</span></span>
+<span id="cb207-2"><a href="a-tibble-3-x-2.html#cb207-2"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>,<span class="dt">length.out =</span> <span class="dv">9</span>)</span>
+<span id="cb207-3"><a href="a-tibble-3-x-2.html#cb207-3"></a>y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb207-4"><a href="a-tibble-3-x-2.html#cb207-4"></a><span class="kw">cor</span>(x,y, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<p>[1] 0</p>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-265-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><strong>6. Correlación de rango de Spearman</strong> Para hablar de la correlación de rango de Spearman es necesario definir una variable como <strong>ordinal</strong>.</p>
+<p>Un vector <span class="math inline">\(\vec{x} = (x_1, x_2, \dots, x_n)^T\)</span> de variables numéricas o categóricas es <strong>ordinal</strong> si existe una relación <span class="math inline">\(\leq\)</span> de <a href="https://en.wikipedia.org/wiki/Total_order">orden total</a> sobre los elementos del vector tal que:</p>
+<ol style="list-style-type: decimal">
+<li><p>Es <em>antisimétrica</em>: si <span class="math inline">\(x_i \leq x_j\)</span> y <span class="math inline">\(x_j \leq x_i\)</span> entonces <span class="math inline">\(x_i = x_j\)</span>.</p></li>
+<li><p>Es <em>transitiva</em>: si <span class="math inline">\(x_i \leq x_j\)</span> y <span class="math inline">\(x_j \leq x_k\)</span> entonces <span class="math inline">\(x_i \leq x_k\)</span>.</p></li>
+<li><p>Es <em>conexa</em>: <span class="math inline">\(x_i \leq x_j\)</span> ó <span class="math inline">\(x_j \leq x_i\)</span>.</p></li>
+</ol>
+<p>De manera intuitiva un vector es <strong>ordinal</strong> si hay un orden para sus entradas. Por ejemplo, cuando calificas un servicio como <code>Malo</code> <span class="math inline">\(\leq\)</span> <code>Regular</code> <span class="math inline">\(\leq\)</span> <code>Bueno</code> o bien cuando se compara nivel educativo (en términos de años) <code>Primaria</code> <span class="math inline">\(\leq\)</span> <code>Secundaria</code> <span class="math inline">\(\leq\)</span> <code>Preparatoria</code> <span class="math inline">\(\leq\)</span> <code>Educación superior</code>. <strong>Toda variable numérica es ordinal</strong>.</p>
+<p>Para un vector ordinal definimos su ordenamiento como <span class="math inline">\(x_{(1)} = \min \{ x_1, x_2, \dots, x_n \}\)</span> y <span class="math inline">\(x_{(j)} = \min \{ x_1, x_2, \dots, x_n \} \setminus \{ x_{(1)}, x_{(2)}, \dots, x_{(j-1)} \}\)</span> de tal forma que <span class="math inline">\(x_{(1)} \leq x_{(2)} \leq \dots \leq x_{(n)}\)</span>. El rango de <span class="math inline">\(x_{(j)}\)</span> denotado como <span class="math inline">\(R(x_{(j)})\)</span> es <span class="math inline">\(j\)</span> (su posición en el ordenamiento). Es decir:
+<span class="math display">\[
+R(x_i) = j \Leftrightarrow x_i = x_{(j)}
+\]</span></p>
+<p>Dado un vector <span class="math inline">\(\vec{x}\)</span> definimos su <strong>vector de rango</strong> como:</p>
+<p><span class="math display">\[
+R(\vec{x}) = \big( R(x_1), R(x_2), \dots, R(x_n) )^T
+\]</span></p>
+<p>Para dos variables ordinales, <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span> se define la <strong>correlación de rango de Spearman</strong> como la correlación de Pearson entre sus vectores de rangos:</p>
+<p><span class="math display">\[
+\rho_{\text{Spearman}} =\rho\big( R(\vec{x}), R(\vec{y}))
+\]</span></p>
+<blockquote>
+<p>Mientras que la correlación de Pearson mide linealidad; la de Spearman mide monotonicidad (que si una aumenta la otra también; que si una disminuye la otra también).</p>
+</blockquote>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="a-tibble-3-x-2.html#cb208-1"></a><span class="co">#Comparativo de correlaciones: la de Pearson no encuentra mucha línea</span></span>
+<span id="cb208-2"><a href="a-tibble-3-x-2.html#cb208-2"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">25</span>)</span>
+<span id="cb208-3"><a href="a-tibble-3-x-2.html#cb208-3"></a>y &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span><span class="op">/</span>x<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-267-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>En este caso la correlación de Pearson es muy mala:</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="a-tibble-3-x-2.html#cb209-1"></a><span class="kw">cor</span>(x,y, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<p>[1] -0.339683</p>
+<p>Mientras que la de Spearman sí muestra la relación:</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="a-tibble-3-x-2.html#cb210-1"></a><span class="kw">cor</span>(x,y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<p>[1] -1</p>
+<p><strong>8. Ajuste de modelo lineal (versión 1)</strong></p>
+<p>Sean <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span> dos vectores columna de una matriz de datos <span class="math inline">\(Z\)</span>. Supongamos, además, se tiene la hipótesis de que existe una relación afín entre los vectores; es decir que:
+<span class="math display">\[
+\vec{y} \approx \beta_1 \vec{x} + \beta_0 \vec{1} 
+\]</span>
+donde <span class="math inline">\(\vec{1} = (1, 1, \dots, 1)^T\)</span> es un vector con todas las entradas idénticas a <span class="math inline">\(1\)</span> y <span class="math inline">\(\beta_0, \beta_1 \in \mathbb{R}\)</span>. Algunas razónes para tener esta hipótesis podría ser una correlación de Pearson cercana a <span class="math inline">\(\pm 1\)</span> o por inspección gráfica. Esta hipótesis implica que:
+<span class="math display">\[
+y \approx \underbrace{\beta_1 x + \beta_0}_{\hat{y}}
+\]</span>
+Podemos entonces trazar la línea <span class="math inline">\(y = \beta_0 + \beta_1 x\)</span> y graficar contra los puntos <span class="math inline">\(\{(x_i,y_i)\}_{i=1}^{n}\)</span>, Si la línea no ajusta perfecto tendremos errores <span class="math inline">\(e_i = (y_i - \hat{y}_i)^2\)</span> de predicción las cuales representan la diferencia entre la <span class="math inline">\(y\)</span> observada (<span class="math inline">\(y_i\)</span>) y la <span class="math inline">\(y\)</span> predicha por la línea <span class="math inline">\(\hat{y}_i = \beta_1 x_i + \beta_0\)</span>. La suma de estos errores es:
+<span class="math display">\[
+\textrm{SSR}(\beta_0, \beta_1) = \sum\limits_{i=1}^{n} e_i = \sum\limits_{i=1}^{n} \big( y_i - \hat{y}_i \big)^2 = \sum\limits_{i=1}^{n} \big( y_i - (\beta_1 x_i + \beta_0) \big)^2 
+\]</span></p>
+<p>El nombre de <em>SSR</em> es por ( <em>Sum of Squared Residuals</em> ) dado que en estadística se define un residual como <span class="math inline">\(r_i = (y_i - \hat{y}_i)\)</span>
+Gráficamente:</p>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-270-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Lo que se busca entonces es minimizar el error respecto a las constantes a determinar: <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span>. Para ello buscamos un punto de inflexión derivando:
+<span class="math display">\[
+\dfrac{\partial\textrm{SSR}}{\partial \beta_0} = \sum\limits_{i=1}^{n} 2\big(y_i - (\beta_1 x_i + \beta_0 ) \big) = 0
+\]</span></p>
+<p>De donde se sigue que:
+<span class="math display">\[
+\sum\limits_{i=1}^n y_i - \beta_1 \sum\limits_{i=1}^{n} x_i - n \beta_0 = 0 \Rightarrow \beta_0 = \dfrac{1}{n} \sum\limits_{i=1}^n y_i - \beta_1 \dfrac{1}{n} \sum\limits_{i=1}^n x_i \Rightarrow \bar{y} - \beta_1 \bar{x},
+\]</span></p>
+<p>de donde concluimos que de cumplirse la relación lineal se tiene que:
+<span class="math display">\[
+\beta_0 = \bar{y} - \beta_1 \bar{x}.
+\]</span></p>
+<p>Por otro lado, la derivada respecto a <span class="math inline">\(\beta_1\)</span> es:
+<span class="math display">\[
+\dfrac{\partial\textrm{SSR}}{\partial \beta_1} = - \sum\limits_{i=1}^{n} 2\big(y_i - (\beta_1 x_i + \beta_0 ) \big) \cdot x_i = 0
+\]</span></p>
+<p>De donde se sigue (si suponemos que existe al menos un <span class="math inline">\(x_i \neq 0\)</span>):
+<span class="math display">\[\begin{equation}\nonumber
+\begin{aligned}
+0 &amp; = - \sum\limits_{i=1}^n \Big( x_i y_i - \beta_1  x_i^2 - \underbrace{\beta_0}_{\bar{y} - \beta_1 \bar{x}} x_i \Big)  \\
+&amp; = \sum\limits_{i=1}^n \Big( x_i y_i - \beta_1  x_i^2 - \bar{y}x_i + \beta_1 \bar{x} x_i \Big) \\
+&amp; = \sum\limits_{i=1}^n \Big( y_i + \beta_1  x_i - \bar{y} - \beta_1 \bar{x} \Big) x_i \\
+&amp; = \sum\limits_{i=1}^n \Big( y_i  - \bar{y} \Big) x_i - \beta_1  \sum\limits_{i=1}^n\Big(   x_i -   \bar{x} \Big) x_i
+\end{aligned}
+\end{equation}\]</span>
+de donde se sigue (suponiendo que existen <span class="math inline">\(i,j\)</span> tales que <span class="math inline">\(x_i \neq x_j\)</span> que:
+<span class="math display">\[
+\beta_1 = \dfrac{\sum_{i=1}^n \Big( y_i  - \bar{y} \Big)x_i}{\sum_{i=1}^n\Big(   x_i -   \bar{x} \Big)x_i} = \dfrac{\sum_{i=1}^n \Big( y_i  - \bar{y} \Big)\Big(   x_i -   \bar{x} \Big)}{\sum_{i=1}^n\Big(   x_i -   \bar{x} \Big)^2} = \dfrac{\sigma_{\vec{x}} \cdot \sigma_{\vec{y}} \cdot \rho_{\vec{x},\vec{y}}}{n \sigma_{\vec{x}}^2}
+\]</span>
+por lo cual:
+<span class="math display">\[
+\beta_1 = \dfrac{\sigma_{\vec{y}}}{\sigma_{\vec{x}}} \cdot \dfrac{\rho_{\vec{x},\vec{y}}}{n}
+\]</span></p>
+<p>De donde se tienen las fórmulas para el <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span>.</p>
+<div id="ejercicio-8" class="section level3">
+<h3><span class="header-section-number">12.4.1</span> Ejercicio</h3>
+<p>Demuestra la igualdad que usamos anteriormente:</p>
+<p><span class="math display">\[
+\dfrac{\sum_{i=1}^n \Big( y_i  - \bar{y} \Big) x_i}{\sum_{i=1}^n\Big(   x_i -   \bar{x} \Big)x_i} = \dfrac{\sum_{i=1}^n \Big( y_i  - \bar{y} \Big)\Big(   x_i -   \bar{x} \Big)}{\sum_{i=1}^n\Big(   x_i -   \bar{x} \Big)^2} 
+\]</span></p>
+<p>En <code>R</code> podemos ajustar un modelo lineal para dos variables de una base de datos con <code>lm</code>:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="a-tibble-3-x-2.html#cb211-1"></a>modelo.lineal &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>wt, <span class="dt">data =</span> datos.coches)</span>
+<span id="cb211-2"><a href="a-tibble-3-x-2.html#cb211-2"></a><span class="kw">coef</span>(modelo.lineal)</span></code></pre></div>
+<p>(Intercept) wt
+37.28513 -5.34447</p>
+<p>Gráficamente podemos ver el modelo:</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="a-tibble-3-x-2.html#cb212-1"></a><span class="kw">ggplot</span>(datos.coches) <span class="op">+</span></span>
+<span id="cb212-2"><a href="a-tibble-3-x-2.html#cb212-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> mpg, <span class="dt">x =</span> wt)) <span class="op">+</span></span>
+<span id="cb212-3"><a href="a-tibble-3-x-2.html#cb212-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">y =</span> mpg, <span class="dt">x =</span> wt), <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, </span>
+<span id="cb212-4"><a href="a-tibble-3-x-2.html#cb212-4"></a>              <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb212-5"><a href="a-tibble-3-x-2.html#cb212-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
+<pre><code>## Warning: Computation failed in `stat_smooth()`:
+## unable to load shared object &#39;/Users/rod/Library/R/4.0/library/mgcv/libs/mgcv.so&#39;:
+##   dlopen(/Users/rod/Library/R/4.0/library/mgcv/libs/mgcv.so, 6): Library not loaded: /usr/local/opt/r/lib/R/lib/libRblas.dylib
+##   Referenced from: /Users/rod/Library/R/4.0/library/mgcv/libs/mgcv.so
+##   Reason: image not found</code></pre>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-272-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Para predecir, dada una nueva observación, cuál debe haber sido el valor de <span class="math inline">\(\hat{y}\)</span> para una nueva observación <span class="math inline">\(x_*\)</span> (o varias nuevas observaciones) puede usarse la función <code>predict</code></p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="a-tibble-3-x-2.html#cb214-1"></a>datos_a_predecir &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">wt =</span> <span class="kw">c</span>(<span class="fl">5.5</span>, <span class="dv">6</span>, <span class="fl">6.5</span>))</span>
+<span id="cb214-2"><a href="a-tibble-3-x-2.html#cb214-2"></a><span class="kw">predict</span>(modelo.lineal, datos_a_predecir)</span></code></pre></div>
+<p>1 2 3
+7.89053 5.21830 2.54606</p>
+<p>Hay que tener mucho cuidado con la generalización de un modelo lineal como los siguientes valores muestran:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="a-tibble-3-x-2.html#cb215-1"></a>datos_a_predecir &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">wt =</span> <span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>))</span>
+<span id="cb215-2"><a href="a-tibble-3-x-2.html#cb215-2"></a><span class="kw">predict</span>(modelo.lineal, datos_a_predecir)</span></code></pre></div>
+<pre><code>  1          2          3 </code></pre>
+<p>-0.126175 -5.470646 -10.815118</p>
+<p>O bien el siguiente <a href="https://xkcd.com/605/">comic de xkcd</a>:</p>
+<p><img src="images/extrapolating.png" width="230" style="display: block; margin: auto;" /></p>
+<p>Para hacer la extrapolación gráfica podemos agregar un <code>fullrange = TRUE</code> combinado con un <code>xlim</code></p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="a-tibble-3-x-2.html#cb217-1"></a><span class="kw">ggplot</span>(datos.coches) <span class="op">+</span></span>
+<span id="cb217-2"><a href="a-tibble-3-x-2.html#cb217-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> mpg, <span class="dt">x =</span> wt)) <span class="op">+</span></span>
+<span id="cb217-3"><a href="a-tibble-3-x-2.html#cb217-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">y =</span> mpg, <span class="dt">x =</span> wt), <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, </span>
+<span id="cb217-4"><a href="a-tibble-3-x-2.html#cb217-4"></a>              <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">fullrange=</span><span class="ot">TRUE</span>) <span class="op">+</span></span>
+<span id="cb217-5"><a href="a-tibble-3-x-2.html#cb217-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb217-6"><a href="a-tibble-3-x-2.html#cb217-6"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">6.5</span>))</span></code></pre></div>
+<pre><code>## Warning: Computation failed in `stat_smooth()`:
+## unable to load shared object &#39;/Users/rod/Library/R/4.0/library/mgcv/libs/mgcv.so&#39;:
+##   dlopen(/Users/rod/Library/R/4.0/library/mgcv/libs/mgcv.so, 6): Library not loaded: /usr/local/opt/r/lib/R/lib/libRblas.dylib
+##   Referenced from: /Users/rod/Library/R/4.0/library/mgcv/libs/mgcv.so
+##   Reason: image not found</code></pre>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-276-1.png" width="384" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="ejercicio-9" class="section level2">
+<h2><span class="header-section-number">12.5</span> Ejercicio</h2>
+<ol style="list-style-type: decimal">
+<li>Generaliza el proceso de estimación para cuando se tiene un polinomio <span class="math inline">\(y = \beta_0 + \beta_1 x + \beta_2 x^2\)</span></li>
+<li>Utiliza los datos confirmados de COVID-19 a nivel nacional (sólo los confirmados) disponibles en <a href="https://datos.gob.mx/busca/dataset/informacion-referente-a-casos-covid-19-en-mexico">este link</a>. Ajusta un modelo cuadrático (en el <code>lm</code> la fórmula ahora es del estilo de <code>y ~ poly(x,2)</code> ) y predice cuántos casos confirmados habrá el 29 de junio. Grafica tu ajuste así como tu predicción en la misma gráfica.</li>
+</ol>
+<p><strong>9. Ajuste general</strong>
+Podemos generalizar el ajuste de mínimos cuadrados planteando el modelo <span class="math inline">\(y = f(x, \vec{\beta})\)</span> donde <span class="math inline">\(x\)</span> puede ser una matriz y <span class="math inline">\(\vec{\beta}\)</span> es un vector de parámetros. Supondremos que <span class="math inline">\(f\)</span> es diferenciable en <span class="math inline">\(\vec{\beta}\)</span>.</p>
+<p>Como ejemplo, en el caso del ajuste lineal:
+<span class="math display">\[
+y = f(x, \vec{\beta}) = \beta_0 + \beta_1 x \qquad \text{con} \qquad \vec{\beta}= (\beta_0,\beta_1)^T.
+\]</span>
+o bien podríamos pensar en un ajuste polinomial:
+<span class="math display">\[
+y = f(x, \vec{\beta}) = \sum\limits_{i = 0}^n \beta_i x^i \qquad \text{con} \qquad \vec{\beta}= (\beta_0,\beta_1, \dots, \beta_n)^T.
+\]</span>
+No tiene que ser un polinomio, <span class="math inline">\(f\)</span> puede ser lo que ella quiera ser siempre y cuando sea diferenciable en los parámetros:
+<span class="math display">\[
+y = f(x, \vec{\beta}) = \Bigg[\cos(\beta_0 + x) + \int\limits_{0}^{\beta_1 x} e^{-t^2} dx \Bigg] \cdot \beta_2 \ln(x) \qquad \text{con} \qquad \vec{\beta}= (\beta_0,\beta_1, \beta_3)^T.
+\]</span></p>
+</div>
+<div id="ajuste-funcional" class="section level2">
+<h2><span class="header-section-number">12.6</span> Ajuste funcional</h2>
+<p>Hacemos una apuesta por teléfono. Yo voy a tirar una moneda <span class="math inline">\(10\)</span> veces y si salen más <code>Soles</code> que <code>Águilas</code> yo gano 50 pesos. Si salen más <code>Águilas</code> que <code>Soles</code> tú ganas la misma cantidad. Al realizar el ejercicio yo te comunico que salieron en total <span class="math inline">\(10\)</span> <code>Soles</code> y por tanto me debes el dinero. <em>¿Sospecharías algo de mí?</em></p>
+<p>Si no hablamos de probabilidad no hay forma en la que se pueda justificar que <em>aparentemente</em> hay algo raro con la moneda. Claro, siempre puede ser un caso improbable (<a href="https://www.youtube.com/watch?v=rwvIGNXY21Y">hay gente que lo ha hecho</a>) pero es <em>raro</em> que me hayan salido tantos <code>Soles</code>. Para cuantificar qué tan raro es el evento podemos suponer que las monedas siguen un modelo Binomial con parámetro <span class="math inline">\(p = 1/2\)</span> y en este caso <span class="math inline">\(n = 10\)</span> (fueron 10 tiros). La probabilidad de que haya obtenido <span class="math inline">\(10\)</span> soles bajo este modelo es de:</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="a-tibble-3-x-2.html#cb219-1"></a><span class="kw">dbinom</span>(<span class="dv">10</span>,<span class="dv">10</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span></code></pre></div>
+<p>[1] 0.000976562</p>
+<p>¡Rarísimo! Este resultado te haría sospechar que quizá mi moneda no es <em>justa</em> y no se obtienen la misma cantidad de <code>Águilas</code> que <code>Soles</code> cuando la tiro. Esto porque, aparentemente, en mi moneda la probabilidad de <code>Sol</code> debería de ser <span class="math inline">\(p = 1\)</span> (por tu triste experiencia). Si por ejemplo en el onceavo tiro saliera un <code>Águila</code>, concluirías que, en mi moneda, aparentemente, la probabilidad de <code>Sol</code> es <span class="math inline">\(p = \frac{10}{11}\)</span>. Por supuesto, entre más tiros y más información obtienes, mejor podrás caracterizar la moneda y con mayor sustento tendrás sospechas (o no) de que mi moneda es tramposa.</p>
+<p>Formalmente, en el ejemplo anterior, lo que se hace es suponer que existe una variable aleatoria <span class="math inline">\(X \in\{ \text{Águila}, \text{Sol}\}\)</span> (el resultado de la moneda) de la cual observamos <span class="math inline">\(n = 11\)</span> realizaciones codificadas en el siguiente vector:</p>
+<p><span class="math display">\[
+\vec{x} = \big( \text{Sol}, \text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Águila}\big)^T
+\]</span></p>
+<p>Aproximamos entonces la probabilidad <span class="math inline">\(\mathbb{P}(X = \text{Sol})\)</span> mediante:</p>
+<p><span class="math display">\[
+\mathbb{P}(X = \text{Sol}) \approx \dfrac{1}{n}\sum\limits_{i=1}^n \mathbb{I}_{\{\text{Sol}\}}(x_i) = \dfrac{10}{11}
+\]</span></p>
+<p>Mientras que la de Águila se aproxima mediante:</p>
+<p><span class="math display">\[
+\mathbb{P}(X = \text{Águila}) \approx \dfrac{1}{n}\sum\limits_{i=1}^n \mathbb{I}_{\{\text{Águila}\}}(x_i) = \dfrac{1}{11}
+\]</span></p>
+<p>Para ver que éstas son buenas aproximaciones, podemos considerar un vector aleatorio de los <em>posibles</em> datos observados:
+<span class="math display">\[
+\vec{X} = (X_1, X_2, \dots, X_{11})^T
+\]</span>
+Donde <span class="math inline">\(X_1\)</span> es una variable aleatoria que representa lo que <em>pudo</em> haber salido en el primer tiro, <span class="math inline">\(X_2\)</span> es una v.a. que representa lo que <em>pudo</em> haber salido en el segundo tiro y en general <span class="math inline">\(X_k\)</span> es una v.a. que representa lo que <em>pudo</em> haber salido en el <span class="math inline">\(k\)</span>-ésimo tiro.</p>
+<p>Suponiendo que la moneda tiene una probabilidad <span class="math inline">\(p\)</span> de arrojar <code>Sol</code> y <span class="math inline">\(1-p\)</span> de arrojar <code>Águila</code>, notamos que las variables indicadoras evaluadas en las <span class="math inline">\(X_i\)</span> (aleatorias) son variables aleatorias
+<span class="math display">\[
+\mathbb{I}_{\{\text{Sol}\}}(X_i) \sim \text{Beroulli}(p)
+\]</span>
+y que por tanto
+<span class="math display">\[
+\hat{p} = \dfrac{1}{n}\sum\limits_{i=1}^n \mathbb{I}_{\{\text{Sol}\}}(X_i)
+\]</span>
+es una variable aleatoria (al ser suma de variables aleatorias). Podemos entonces calcular su valor esperado:
+<span class="math display">\[
+\mathbb{E}\big[\hat{p}\big] = \mathbb{E}\bigg[\dfrac{1}{n}\sum\limits_{i=1}^n \mathbb{I}_{\{\text{Sol}\}}(X_i)\bigg] = \dfrac{1}{n}\sum\limits_{i=1}^n \mathbb{E}\big[ \mathbb{I}_{\{\text{Sol}\}}(X_i)\big] = \dfrac{1}{n}\sum\limits_{i=1}^n p = \dfrac{1}{n}\cdot np = p
+\]</span>
+Es decir, que en promedio el estimador <span class="math inline">\(\hat{p}\)</span> va a atinarle al verdadero valor <span class="math inline">\(p\)</span>. Esto lo podemos ver si hacemos <code>nsim</code><span class="math inline">\(= 1000\)</span> simulaciones de <span class="math inline">\(100\)</span> <code>tiros</code> de una moneda con probabilidad <code>p</code><span class="math inline">\(= 8/10\)</span> de sol.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="a-tibble-3-x-2.html#cb220-1"></a>nsim  &lt;-<span class="st"> </span><span class="dv">1000</span></span>
+<span id="cb220-2"><a href="a-tibble-3-x-2.html#cb220-2"></a>tiros &lt;-<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb220-3"><a href="a-tibble-3-x-2.html#cb220-3"></a>p.val &lt;-<span class="st"> </span><span class="dv">8</span><span class="op">/</span><span class="dv">10</span></span>
+<span id="cb220-4"><a href="a-tibble-3-x-2.html#cb220-4"></a></span>
+<span id="cb220-5"><a href="a-tibble-3-x-2.html#cb220-5"></a><span class="co">#Creamos un vector para guardar los valores de p gorro</span></span>
+<span id="cb220-6"><a href="a-tibble-3-x-2.html#cb220-6"></a>p.gorro &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, nsim)</span>
+<span id="cb220-7"><a href="a-tibble-3-x-2.html#cb220-7"></a></span>
+<span id="cb220-8"><a href="a-tibble-3-x-2.html#cb220-8"></a><span class="co">#Loop recorriendo cada una de las nsim simulaciones</span></span>
+<span id="cb220-9"><a href="a-tibble-3-x-2.html#cb220-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nsim){</span>
+<span id="cb220-10"><a href="a-tibble-3-x-2.html#cb220-10"></a>  experimento &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Sol&quot;</span>,<span class="st">&quot;Águila&quot;</span>), tiros, <span class="dt">replace =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb220-11"><a href="a-tibble-3-x-2.html#cb220-11"></a>                        <span class="dt">prob =</span> <span class="kw">c</span>(p.val, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span>p.val))</span>
+<span id="cb220-12"><a href="a-tibble-3-x-2.html#cb220-12"></a>  soles       &lt;-<span class="st"> </span><span class="kw">table</span>(experimento)[<span class="st">&quot;Sol&quot;</span>]</span>
+<span id="cb220-13"><a href="a-tibble-3-x-2.html#cb220-13"></a>  p.gorro[i]  &lt;-<span class="st"> </span>soles<span class="op">/</span>tiros</span>
+<span id="cb220-14"><a href="a-tibble-3-x-2.html#cb220-14"></a>}</span></code></pre></div>
+<p>Podemos ver que en promedio le atinamos al valor verdadero:</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="a-tibble-3-x-2.html#cb221-1"></a><span class="co">#Vemos que en promedio le atina:</span></span>
+<span id="cb221-2"><a href="a-tibble-3-x-2.html#cb221-2"></a><span class="kw">mean</span>(p.gorro)</span></code></pre></div>
+<p>[1] 0.80131</p>
+<p>Lo mismo podemos verlo gráficamente:</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="a-tibble-3-x-2.html#cb222-1"></a><span class="co">#Graficamos</span></span>
+<span id="cb222-2"><a href="a-tibble-3-x-2.html#cb222-2"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb222-3"><a href="a-tibble-3-x-2.html#cb222-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span>nsim, <span class="dt">y =</span> p.gorro, <span class="dt">color =</span> <span class="kw">as.character</span>(p.gorro)), </span>
+<span id="cb222-4"><a href="a-tibble-3-x-2.html#cb222-4"></a>             <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span></span>
+<span id="cb222-5"><a href="a-tibble-3-x-2.html#cb222-5"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> p.val), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>) <span class="op">+</span></span>
+<span id="cb222-6"><a href="a-tibble-3-x-2.html#cb222-6"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb222-7"><a href="a-tibble-3-x-2.html#cb222-7"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb222-8"><a href="a-tibble-3-x-2.html#cb222-8"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb222-9"><a href="a-tibble-3-x-2.html#cb222-9"></a>    <span class="dt">x =</span> <span class="st">&quot;Simulaciones&quot;</span>,</span>
+<span id="cb222-10"><a href="a-tibble-3-x-2.html#cb222-10"></a>    <span class="dt">y =</span> <span class="st">&quot;Estimación de p&quot;</span>,</span>
+<span id="cb222-11"><a href="a-tibble-3-x-2.html#cb222-11"></a>    <span class="dt">title =</span> <span class="st">&quot;Simulación de proceso de estimación\nde que una moneda caiga Sol&quot;</span></span>
+<span id="cb222-12"><a href="a-tibble-3-x-2.html#cb222-12"></a>  ) <span class="op">+</span></span>
+<span id="cb222-13"><a href="a-tibble-3-x-2.html#cb222-13"></a><span class="st">  </span><span class="kw">geom_label</span>(<span class="kw">aes</span>(<span class="dt">x =</span> nsim<span class="op">/</span><span class="dv">2</span>, <span class="dt">y =</span> p.val), <span class="dt">label =</span> <span class="st">&quot;Verdadero valor de p&quot;</span>)</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-280-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><em>¿Qué significa esto?</em> El que en promedio <span class="math inline">\(\hat{p}\)</span> sea <span class="math inline">\(p\)</span> (formalmente, que <span class="math inline">\(\mathbb{E}\big[\hat{p}\big] = p\)</span>) significa que, si yo hago muchísimos experimentos (o procesos de muestreo) de la misma cosa, mi <span class="math inline">\(\hat{p}\)</span> es un buen estimador porque en promedio le va a atinar. Empero, esto no dice nada de qué tan bueno es mi estimador <span class="math inline">\(\hat{p}\)</span> para mi caso (mi muestra o mi experimento) específico. Puedes pensarlo con los exámenes: que alguien tenga un promedio de <em>8</em> dice que en general le ha ido bien en los exámenes, pero no dice nada respecto al primer examen de cálculo que hizo (donde pudo tener <span class="math inline">\(10\)</span> ó <span class="math inline">\(5\)</span> para llegar a ese promedio de <span class="math inline">\(8\)</span> <em>pero no podemos saber de manera específica cuánto fue</em> ). Esto es igual: en promedio el estimador <span class="math inline">\(\hat{p}\)</span> será <span class="math inline">\(p\)</span> pero para un análisis específico <em>no sabemos</em>.</p>
+<blockquote>
+<p><strong>OJO</strong> Los datos observados no son variables aleatorias: esos ya son fijos, ya los viste. Los <em>posibles</em> datos observados sí son variables aleatorias ya que ellos, consisten en las variables que se <em>pudieron</em> haber observado y te permiten calcular las probabilidades de tus datos observados bajo algún modelo. En el caso de la moneda, los datos observados son <span class="math inline">\(\vec{x} = \big( \text{Sol}, \text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Sol},\text{Águila}\big)^T\)</span> pero los que se <em>pudieron</em> haber observado son todas las <span class="math inline">\(\binom{n}{2}\)</span> formas en las que la moneda pudo haber salido.</p>
+</blockquote>
+<p><strong>1. Estimación de una función de masa de probabilidad</strong>
+Formalmente, para una variable aleatoria discreta <span class="math inline">\(X\)</span> que puede tomar los valores <span class="math inline">\(\{ a_1, a_2, \dots, a_{\ell} \}\)</span> de la cual se observaron <span class="math inline">\(n\)</span> realizaciones descritas mediante <span class="math inline">\(\vec{x} = (x_1, x_2, \dots, x_n)^T\)</span> (observados, fijos, constantes). Definimos la <strong>función de masa de probabilidad empírica</strong> como:
+<span class="math display">\[
+\hat{p}(x) = \begin{cases}
+\\
+\frac{1}{n} \sum_{i=1}^{n} \mathbb{I}_{\{a_1\}}(x_i) &amp; \text{ si } x = a_1 \\ \\
+\frac{1}{n} \sum_{i=1}^{n} \mathbb{I}_{\{a_2\}}(x_i) &amp; \text{ si } x = a_2 \\ \\
+\vdots \\ \\
+\frac{1}{n} \sum_{i=1}^{n} \mathbb{I}_{\{a_{\ell}\}}(x_i) &amp; \text{ si } x = a_{\ell} \\
+0 &amp; \text{ en otro caso}
+\end{cases}
+\]</span></p>
+<p>donde se supone que <span class="math inline">\(\mathbb{P}(X = x) \approx \hat{p}(x)\)</span>. Notamos que lo anterior puede resumirse en:
+<span class="math display">\[
+\hat{p}(x) = \frac{1}{n} \sum_{i=1}^{n} \mathbb{I}_{\{ x\}}(x_i)
+\]</span></p>
+<p>Análogamente, nota que para un conjunto (medible) <span class="math inline">\(A\)</span>, la aproximación para <span class="math inline">\(\mathbb{P}(X \in A)\)</span> está dada por:</p>
+<p><span class="math display">\[
+\hat{p}(A) = \dfrac{1}{n}\sum\limits_{i=1}^{n} \mathbb{I}_A (x_i).
+\]</span></p>
+<p>Podemos graficar para la base de datos <code>conteo_delitos</code> la probabilidad de que, dado que se cometió un delito, éste haya ocurrido en el dia <span class="math inline">\(d_i\)</span> de diciembre. Para ello usamos un <code>geom_col</code>:</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="a-tibble-3-x-2.html#cb223-1"></a><span class="kw">ggplot</span>(conteo_delitos) <span class="op">+</span></span>
+<span id="cb223-2"><a href="a-tibble-3-x-2.html#cb223-2"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">x =</span> fecha, <span class="dt">y =</span> n<span class="op">/</span><span class="kw">sum</span>(n), <span class="dt">fill =</span> n)) <span class="op">+</span></span>
+<span id="cb223-3"><a href="a-tibble-3-x-2.html#cb223-3"></a><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="st">&quot;Delito&quot;</span>, <span class="dt">low =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb223-4"><a href="a-tibble-3-x-2.html#cb223-4"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></span>
+<span id="cb223-5"><a href="a-tibble-3-x-2.html#cb223-5"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb223-6"><a href="a-tibble-3-x-2.html#cb223-6"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb223-7"><a href="a-tibble-3-x-2.html#cb223-7"></a>    <span class="dt">y =</span> <span class="st">&quot;p(x)&quot;</span>,</span>
+<span id="cb223-8"><a href="a-tibble-3-x-2.html#cb223-8"></a>    <span class="dt">x =</span> <span class="st">&quot;x&quot;</span>,</span>
+<span id="cb223-9"><a href="a-tibble-3-x-2.html#cb223-9"></a>    <span class="dt">title =</span> <span class="st">&quot;Aproximación a p(x)&quot;</span></span>
+<span id="cb223-10"><a href="a-tibble-3-x-2.html#cb223-10"></a>  )</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-281-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Una propiedad interesante de la función de masa de probabilidad es que, en promedio, le atina al verdadero valor (lo que comentábamos antes de que <span class="math inline">\(\hat{p} = p\)</span>). Es decir, suponiendo que <span class="math inline">\(X\)</span> tiene una función de masa dada por:</p>
+<p><span class="math display">\[
+p(x) = \begin{cases}
+p_1 &amp; \text{ si } x = a_1 \\
+p_2 &amp; \text{ si } x = a_2 \\
+\vdots \\
+p_{\ell} &amp; \text{ si } x = a_{\ell} \\
+\end{cases}
+\]</span></p>
+<p>y suponiendo un vector de muestras posibles <span class="math inline">\(\vec{X} = (X_1, X_2, \dots, X_n)^T\)</span> notamos que
+<span class="math display">\[
+\mathbb{I}_{\{ a_j \}}(X_i) \sim \text{Bernoulli} (p_j)
+\]</span></p>
+<p>Luego para cualquier <span class="math inline">\(x\)</span> se tiene que:</p>
+<p><span class="math display">\[
+\mathbb{E}\big[ \hat{p}(x)\big] = \mathbb{E}\bigg[ \dfrac{1}{n}\sum\limits_{i=1}^{n} \mathbb{I}_{\{ x \}}(X_i)  \bigg] = 
+ \dfrac{1}{n}\sum\limits_{i=1}^{n}\mathbb{E}\big[ \mathbb{I}_{\{ x \}}(X_i)  \big] = \frac{1}{n} n \cdot p_j = p_j.
+\]</span></p>
+<p><strong>2. Función de distribución empírica</strong></p>
+<p>Recuerda que para cualquier variable aleatoria <span class="math inline">\(X:\mathbb{R}\to\mathbb{R}\)</span> existe su función de distribución <span class="math inline">\(F_X\)</span> dada por:
+<span class="math display">\[
+F_X(x) = \mathbb{P}(X \leq x)
+\]</span>
+La idea de la función de distribución empírica es reconstruir (a partir de los datos observados) a <span class="math inline">\(F_X\)</span>. Para ello, notamos que queremos estimar
+<span class="math display">\[
+\mathbb{P}(X \leq x) \qquad \forall x\in\mathbb{R}
+\]</span>
+esto es equivalente a estimar:
+<span class="math display">\[
+\mathbb{P}\big(X \in (-\infty, x] \big)
+\]</span>
+y podemos aplicar la aproximación que usamos arriba para un conjunto <span class="math inline">\(A\)</span>:
+<span class="math display">\[
+\mathbb{P}\big(X \in (-\infty, x] \big) \approx \sum\limits_{i=1}^n \mathbb{I}_{(-\infty, x]}(x_i)
+\]</span></p>
+<p>La función de distribución empírica está definida para un vector numérico <span class="math inline">\(\vec{x} = (x_1, x_2, \dots, x_n)^T\)</span> por:
+<span class="math display">\[
+\hat{F} (x) = \frac{1}{n} \sum\limits_{i=1}^{n} \mathbb{I}_{(-\infty, x]}(x_i)
+\]</span></p>
+<p>La función de distribución empírica es una función de distribución pues cumple las siguientes propiedades (demuéstralo):</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\lim_{x \to -\infty} \hat{F}(x) = 0\)</span></p></li>
+<li><p><span class="math inline">\(\lim_{x \to \infty} \hat{F}(x) = 1\)</span></p></li>
+<li><p>Si <span class="math inline">\(x &lt; y\)</span> entonces <span class="math inline">\(\hat{F}(x) \leq \hat{F}(y)\)</span> (no decreciente)</p></li>
+<li><p><span class="math inline">\(\hat{F}\)</span> es continua por la derecha con límites por la izquierda (càdlàg).</p></li>
+</ol>
+<p>Para demostrar 4. basta con demostrar que para <span class="math inline">\(x_i\)</span> fija, la función <span class="math inline">\(i(x) = \mathbb{I}_{(-\infty, x]}(x_i)\)</span> es continua por la derecha con límites por la izquierda pues <span class="math inline">\(\hat{F}(x)\)</span> es una suma de dichas funciones.</p>
+<p>En particular, podemos notar que la función de distribución empírica <span class="math inline">\(\hat{F} (x)\)</span> le atina a la función de distribución; es decir:</p>
+<p><span class="math display">\[
+\mathbb{E}\big[\hat{F} (x) \big] = F(x) 
+\]</span></p>
+<p>Para ello consideramos un vector de valores posibles <span class="math inline">\(\vec{X} = (X_1, X_2, \dots, X_n)^T\)</span> donde las <span class="math inline">\(X_i\)</span> tienen la misma distribución que <span class="math inline">\(X\)</span>. Y notamos que:
+<span class="math display">\[
+\mathbb{I}_{(-\infty, x]}(X_i) \sim \textrm{Bernoulli}\big(F(x)\big)
+\]</span>
+pues <span class="math inline">\(\mathbb{I}_{(-\infty, x]}(X_i) = 1\)</span> si <span class="math inline">\(X_i \leq x\)</span> y <span class="math inline">\(\mathbb{I}_{(-\infty, x]}(X_i) = 0\)</span> si <span class="math inline">\(X_i &gt; x\)</span>. Luego:
+<span class="math display">\[
+\mathbb{P}\Big( \mathbb{I}_{(-\infty, x]}(X_i) = 1 \Big) = \mathbb{P}(X_i \leq x) = \mathbb{P}(X\leq x) = F(x)
+\]</span></p>
+<p>donde la igualdad del medio se sigue de que <span class="math inline">\(X_i\)</span> y <span class="math inline">\(X\)</span> tienen la misma distribución. Entonces:
+<span class="math display">\[
+\mathbb{E}\big[ \hat{F}(x) \big] = \mathbb{E}\Big[ \dfrac{1}{n} \sum\limits_{i=1}^{n} \mathbb{I}_{(-\infty, x]}(X_i) \Big] = \dfrac{1}{n}\sum\limits_{i=1}^{n} \mathbb{E}\big[  \mathbb{I}_{(-\infty, x]}(X_i)\big] = \dfrac{1}{n} n \cdot F(x) = F(x)
+\]</span></p>
+<p>En <code>R</code> podemos calcular la función de distribución empírica con el comando <code>ecdf</code> el cual cuenta la cantidad de observaciones y regresa una función. Así, para la base de datos <code>conteo_delitos</code> podemos calcular la función de distribución empírica <code>ecdf</code> asociada a la cantidad de delitos que se cometen en un día mediante:</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="a-tibble-3-x-2.html#cb224-1"></a>Fgorro &lt;-<span class="st"> </span><span class="kw">ecdf</span>(conteo_delitos<span class="op">$</span>n)</span></code></pre></div>
+<p>De esta forma podemos calcular la probabilidad de que en un día se cometan menos de 500 delitos:</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="a-tibble-3-x-2.html#cb225-1"></a><span class="kw">Fgorro</span>(<span class="dv">500</span>)</span></code></pre></div>
+<p>[1] 0.0967742</p>
+<p>O bien podemos graficar la función:</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="a-tibble-3-x-2.html#cb226-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">300</span>, <span class="dv">1000</span>, <span class="dt">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb226-2"><a href="a-tibble-3-x-2.html#cb226-2"></a>y &lt;-<span class="st"> </span><span class="kw">Fgorro</span>(x)</span>
+<span id="cb226-3"><a href="a-tibble-3-x-2.html#cb226-3"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb226-4"><a href="a-tibble-3-x-2.html#cb226-4"></a><span class="st">  </span><span class="kw">geom_step</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb226-5"><a href="a-tibble-3-x-2.html#cb226-5"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb226-6"><a href="a-tibble-3-x-2.html#cb226-6"></a>    <span class="dt">x =</span> <span class="st">&quot;Número de carpetas de investigación (x)&quot;</span>,</span>
+<span id="cb226-7"><a href="a-tibble-3-x-2.html#cb226-7"></a>    <span class="dt">y =</span> <span class="st">&quot;Probabilidad de que en un día</span><span class="ch">\n</span><span class="st">se abran menos de x carpetas&quot;</span>,</span>
+<span id="cb226-8"><a href="a-tibble-3-x-2.html#cb226-8"></a>    <span class="dt">title =</span> <span class="st">&quot;Distribución acumulada de carpetas de investigación en CDMX&quot;</span></span>
+<span id="cb226-9"><a href="a-tibble-3-x-2.html#cb226-9"></a>  ) <span class="op">+</span></span>
+<span id="cb226-10"><a href="a-tibble-3-x-2.html#cb226-10"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-284-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Mediante simulaciones, podemos observar que <span class="math inline">\(\hat{F}\)</span> realmente le atina a <span class="math inline">\(F\)</span> como sigue:</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="a-tibble-3-x-2.html#cb227-1"></a><span class="co">#Cantidad de simulaciones</span></span>
+<span id="cb227-2"><a href="a-tibble-3-x-2.html#cb227-2"></a>nsim       &lt;-<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb227-3"><a href="a-tibble-3-x-2.html#cb227-3"></a></span>
+<span id="cb227-4"><a href="a-tibble-3-x-2.html#cb227-4"></a><span class="co">#Tamaño de la muestra en cada simulacion</span></span>
+<span id="cb227-5"><a href="a-tibble-3-x-2.html#cb227-5"></a>n_muestra  &lt;-<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb227-6"><a href="a-tibble-3-x-2.html#cb227-6"></a></span>
+<span id="cb227-7"><a href="a-tibble-3-x-2.html#cb227-7"></a><span class="co">#Valores a evaluar la función</span></span>
+<span id="cb227-8"><a href="a-tibble-3-x-2.html#cb227-8"></a>x          &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">length.out =</span> <span class="dv">200</span>)</span>
+<span id="cb227-9"><a href="a-tibble-3-x-2.html#cb227-9"></a></span>
+<span id="cb227-10"><a href="a-tibble-3-x-2.html#cb227-10"></a><span class="co">#Base de datos para guardar resultados de simulaciones</span></span>
+<span id="cb227-11"><a href="a-tibble-3-x-2.html#cb227-11"></a>F_simulado &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">ncol =</span> nsim, <span class="dt">nrow =</span> <span class="kw">length</span>(x)))</span>
+<span id="cb227-12"><a href="a-tibble-3-x-2.html#cb227-12"></a></span>
+<span id="cb227-13"><a href="a-tibble-3-x-2.html#cb227-13"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nsim){</span>
+<span id="cb227-14"><a href="a-tibble-3-x-2.html#cb227-14"></a>  valores_simulados &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n_muestra)</span>
+<span id="cb227-15"><a href="a-tibble-3-x-2.html#cb227-15"></a>  F_empirica        &lt;-<span class="st"> </span><span class="kw">ecdf</span>(valores_simulados)</span>
+<span id="cb227-16"><a href="a-tibble-3-x-2.html#cb227-16"></a>  F_simulado[,i]    &lt;-<span class="st"> </span><span class="kw">F_empirica</span>(x)</span>
+<span id="cb227-17"><a href="a-tibble-3-x-2.html#cb227-17"></a>}</span>
+<span id="cb227-18"><a href="a-tibble-3-x-2.html#cb227-18"></a></span>
+<span id="cb227-19"><a href="a-tibble-3-x-2.html#cb227-19"></a>F_simulado<span class="op">$</span>Valor_x &lt;-<span class="st"> </span>x</span>
+<span id="cb227-20"><a href="a-tibble-3-x-2.html#cb227-20"></a></span>
+<span id="cb227-21"><a href="a-tibble-3-x-2.html#cb227-21"></a><span class="co">#Cambiamos el formato de la base para graficar</span></span>
+<span id="cb227-22"><a href="a-tibble-3-x-2.html#cb227-22"></a>F_simulado &lt;-<span class="st"> </span>F_simulado <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="op">-</span>Valor_x)</span>
+<span id="cb227-23"><a href="a-tibble-3-x-2.html#cb227-23"></a></span>
+<span id="cb227-24"><a href="a-tibble-3-x-2.html#cb227-24"></a><span class="kw">ggplot</span>(F_simulado) <span class="op">+</span></span>
+<span id="cb227-25"><a href="a-tibble-3-x-2.html#cb227-25"></a><span class="st">  </span><span class="kw">geom_step</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Valor_x, <span class="dt">y =</span> value, <span class="dt">color =</span> name), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></span>
+<span id="cb227-26"><a href="a-tibble-3-x-2.html#cb227-26"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Valor_x, <span class="dt">y =</span> <span class="kw">pnorm</span>(Valor_x)), <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span></span>
+<span id="cb227-27"><a href="a-tibble-3-x-2.html#cb227-27"></a><span class="st">  </span><span class="kw">theme_classic</span>() <span class="op">+</span></span>
+<span id="cb227-28"><a href="a-tibble-3-x-2.html#cb227-28"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb227-29"><a href="a-tibble-3-x-2.html#cb227-29"></a><span class="st">  </span><span class="kw">labs</span>(</span>
+<span id="cb227-30"><a href="a-tibble-3-x-2.html#cb227-30"></a>    <span class="dt">x =</span> <span class="st">&quot;x&quot;</span>,</span>
+<span id="cb227-31"><a href="a-tibble-3-x-2.html#cb227-31"></a>    <span class="dt">y =</span> <span class="st">&quot;F(x)&quot;</span>,</span>
+<span id="cb227-32"><a href="a-tibble-3-x-2.html#cb227-32"></a>    <span class="dt">title =</span> <span class="st">&quot;Simulaciones de funciones de distribuciones acumuladas empíricas&quot;</span>,</span>
+<span id="cb227-33"><a href="a-tibble-3-x-2.html#cb227-33"></a>    <span class="dt">subtitle =</span> <span class="st">&quot;Para X ~ Normal(0,1)&quot;</span></span>
+<span id="cb227-34"><a href="a-tibble-3-x-2.html#cb227-34"></a>  )</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-285-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><strong>2. Histograma</strong>
+Para una variable aleatoria continua, la aproximación <span class="math inline">\(\hat{p}\)</span> que hicimos no funciona (la masa siempre es <span class="math inline">\(0\)</span>). Por lo que es necesario analizar alternativas para estudiar la densidad si suponemos que los datos pueden modelarse mediante algo continuo. Para construir un histograma consideremos <span class="math inline">\(\vec{x} = (x_1, x_2, \dots, x_n)^T\)</span> y una constante <span class="math inline">\(h &gt; 0\)</span> llamada el <strong>ancho de banda (binwidth)</strong>. Sea <span class="math inline">\(\{ I_j \}\)</span> una colección de intervalos no vacíos de <span class="math inline">\(\mathbb{R}\)</span> tal que <span class="math inline">\(\cup_{j=1} I_j = \mathbb{R}\)</span> e <span class="math inline">\(I_j \cap I_k = \emptyset\)</span> (<em>i.e.</em> los <span class="math inline">\(\{ I_j \}\)</span> forman una partición de <span class="math inline">\(\mathbb{R}\)</span>). Supongamos, además, los <span class="math inline">\(I_j\)</span> son de la forma:
+<span class="math display">\[
+I_j = \Big[\kappa + (j-1) h, \kappa + jh  \Big)
+\]</span>
+para algún <span class="math inline">\(\kappa \in \mathbb{R}\)</span> fijo. Sea
+<span class="math display">\[
+n_j(\vec{x}) = \sum\limits_{i=1}^n \mathbb{I}_{I_j}(x_i)
+\]</span>
+la cantidad de <span class="math inline">\(x_i\)</span> en el intervalo <span class="math inline">\(I_j\)</span>.</p>
+<p>Un histograma es la gráfica de la función (ver <span class="citation">Panaretos (<a href="#ref-panaretos2016statistics" role="doc-biblioref">2016</a>)</span>):
+<span class="math display">\[
+\text{hist}_{\vec{x}}(x) = \frac{1}{n \cdot h} \sum\limits_{j} n_j(\vec{x}) \cdot \mathbb{I}_{I_j}(x)
+\]</span></p>
+<p>Una propiedad interesante de un histograma es que éste aproxima correctamente las probabilidades <span class="math inline">\(\mathbb{P}(X \in I_j)\)</span>. Para ver esto, consideramos un vector de valores posibles <span class="math inline">\(\vec{X} = (X_1, X_2, \dots, X_n)^T\)</span> y que <span class="math inline">\(x\in I_j\)</span>, luego:</p>
+<p><span class="math display">\[
+\mathbb{E}\Big[ \int_{I_j} \text{hist}_{\vec{X}}(x) dx \Big] = \mathbb{E}\bigg[ \frac{1}{n \cdot h} \sum\limits_{j} n_j(\vec{X}) \cdot \int_{I_j} \mathbb{I}_{I_j}(x) dx \bigg] =  \frac{1}{n \cdot h} \sum\limits_{j} \mathbb{E}\big[ n_j(\vec{X}) \big] \cdot h  = \dfrac{1}{n}\sum\limits_{j} \mathbb{E}\big[ n_j(\vec{X}) \big]
+\]</span>
+donde las <span class="math inline">\(n_j(\vec{X})\)</span> son variables aleatorias en este caso y:
+<span class="math display">\[
+\mathbb{E}\big[ n_j(\vec{X})\big] = \sum\limits_{i=1}^n \mathbb{E}\big[\mathbb{I}_{I_j}(X_i)\big] = \sum\limits_{i=1}^n\mathbb{P}(X_i \in I_j) = n \mathbb{P}(X \in I_j)
+\]</span>
+donde la última igualdad se da pues las <span class="math inline">\(X_i\)</span> tienen la misma distribución que <span class="math inline">\(X\)</span>. Luego:
+<span class="math display">\[
+\mathbb{E}\Big[ \int_{I_j} \text{hist}_{\vec{X}}(x) dx \Big] = \mathbb{P}(X \in I_j)
+\]</span>
+Es decir, el valor esperado del área bajo un histograma en un intervalo <span class="math inline">\(I_j\)</span> coincide con la probabilidad de que <span class="math inline">\(X\)</span> pertenezca a dicho intervalo.</p>
+<p>Gráficamente:</p>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-286-1.png" width="384" style="display: block; margin: auto;" />
+En <code>R</code> podemos hacer un histograma a través de <code>geom_histogram</code>. En este caso lo haremos de la latitud:</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="a-tibble-3-x-2.html#cb228-1"></a><span class="co">#En este caso binwidth = h y kappa = boundary</span></span>
+<span id="cb228-2"><a href="a-tibble-3-x-2.html#cb228-2"></a><span class="kw">ggplot</span>(datos) <span class="op">+</span></span>
+<span id="cb228-3"><a href="a-tibble-3-x-2.html#cb228-3"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> latitud, <span class="dt">y =</span> ..density..), </span>
+<span id="cb228-4"><a href="a-tibble-3-x-2.html#cb228-4"></a>                 <span class="dt">binwidth =</span> <span class="fl">0.02</span>, <span class="dt">boundary =</span> <span class="dv">-99</span>,</span>
+<span id="cb228-5"><a href="a-tibble-3-x-2.html#cb228-5"></a>                 <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>) <span class="op">+</span></span>
+<span id="cb228-6"><a href="a-tibble-3-x-2.html#cb228-6"></a><span class="st">  </span><span class="kw">theme_light</span>() </span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-287-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div id="ejercicio-10" class="section level3">
+<h3><span class="header-section-number">12.6.1</span> Ejercicio</h3>
+<p>Considera la siguiente base de datos (obtenida de <a href="https://stats.stackexchange.com/questions/51718/assessing-approximate-distribution-of-data-based-on-a-histogram">Cross Validated</a>):</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="a-tibble-3-x-2.html#cb229-1"></a>mis.datos &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb229-2"><a href="a-tibble-3-x-2.html#cb229-2"></a>  <span class="dt">A =</span>  <span class="kw">c</span>(<span class="fl">3.15</span>, <span class="fl">5.46</span>, <span class="fl">3.28</span>, <span class="fl">4.20</span>, <span class="fl">1.98</span>, <span class="fl">2.28</span>, <span class="fl">3.12</span>, <span class="fl">4.10</span>, <span class="fl">3.42</span>, <span class="fl">3.91</span>, </span>
+<span id="cb229-3"><a href="a-tibble-3-x-2.html#cb229-3"></a>         <span class="fl">2.06</span>, <span class="fl">5.53</span>, <span class="fl">5.19</span>, <span class="fl">2.39</span>, <span class="fl">1.88</span>, <span class="fl">3.43</span>, <span class="fl">5.51</span>, <span class="fl">2.54</span>, <span class="fl">3.64</span>, <span class="fl">4.33</span>, </span>
+<span id="cb229-4"><a href="a-tibble-3-x-2.html#cb229-4"></a>         <span class="fl">4.85</span>, <span class="fl">5.56</span>, <span class="fl">1.89</span>, <span class="fl">4.84</span>, <span class="fl">5.74</span>, <span class="fl">3.22</span>, <span class="fl">5.52</span>, <span class="fl">1.84</span>, <span class="fl">4.31</span>, <span class="fl">2.01</span>, </span>
+<span id="cb229-5"><a href="a-tibble-3-x-2.html#cb229-5"></a>         <span class="fl">4.01</span>, <span class="fl">5.31</span>, <span class="fl">2.56</span>, <span class="fl">5.11</span>, <span class="fl">2.58</span>, <span class="fl">4.43</span>, <span class="fl">4.96</span>, <span class="fl">1.90</span>, <span class="fl">5.60</span>, <span class="fl">1.92</span>),</span>
+<span id="cb229-6"><a href="a-tibble-3-x-2.html#cb229-6"></a>  <span class="dt">B =</span>  <span class="kw">c</span>(<span class="fl">2.90</span>, <span class="fl">5.21</span>, <span class="fl">3.03</span>, <span class="fl">3.95</span>, <span class="fl">1.73</span>, <span class="fl">2.03</span>, <span class="fl">2.87</span>, <span class="fl">3.85</span>, <span class="fl">3.17</span>, <span class="fl">3.66</span>,</span>
+<span id="cb229-7"><a href="a-tibble-3-x-2.html#cb229-7"></a>         <span class="fl">1.81</span>, <span class="fl">5.28</span>, <span class="fl">4.94</span>, <span class="fl">2.14</span>, <span class="fl">1.63</span>, <span class="fl">3.18</span>, <span class="fl">5.26</span>, <span class="fl">2.29</span>, <span class="fl">3.39</span>, <span class="fl">4.08</span>,</span>
+<span id="cb229-8"><a href="a-tibble-3-x-2.html#cb229-8"></a>         <span class="fl">4.60</span>, <span class="fl">5.31</span>, <span class="fl">1.64</span>, <span class="fl">4.59</span>, <span class="fl">5.49</span>, <span class="fl">2.97</span>, <span class="fl">5.27</span>, <span class="fl">1.59</span>, <span class="fl">4.06</span>, <span class="fl">1.76</span>, </span>
+<span id="cb229-9"><a href="a-tibble-3-x-2.html#cb229-9"></a>         <span class="fl">3.76</span>, <span class="fl">5.06</span>, <span class="fl">2.31</span>, <span class="fl">4.86</span>, <span class="fl">2.33</span>, <span class="fl">4.18</span>, <span class="fl">4.71</span>, <span class="fl">1.65</span>, <span class="fl">5.35</span>, <span class="fl">1.67</span>),</span>
+<span id="cb229-10"><a href="a-tibble-3-x-2.html#cb229-10"></a>  <span class="dt">C =</span>  <span class="kw">c</span>(<span class="fl">2.65</span>, <span class="fl">4.96</span>, <span class="fl">2.78</span>, <span class="fl">3.70</span>, <span class="fl">1.48</span>, <span class="fl">1.78</span>, <span class="fl">2.62</span>, <span class="fl">3.60</span>, <span class="fl">2.92</span>, <span class="fl">3.41</span>,</span>
+<span id="cb229-11"><a href="a-tibble-3-x-2.html#cb229-11"></a>         <span class="fl">1.56</span>, <span class="fl">5.03</span>, <span class="fl">4.69</span>, <span class="fl">1.89</span>, <span class="fl">1.38</span>, <span class="fl">2.93</span>, <span class="fl">5.01</span>, <span class="fl">2.04</span>, <span class="fl">3.14</span>, <span class="fl">3.83</span>,</span>
+<span id="cb229-12"><a href="a-tibble-3-x-2.html#cb229-12"></a>         <span class="fl">4.35</span>, <span class="fl">5.06</span>, <span class="fl">1.39</span>, <span class="fl">4.34</span>, <span class="fl">5.24</span>, <span class="fl">2.72</span>, <span class="fl">5.02</span>, <span class="fl">1.34</span>, <span class="fl">3.81</span>, <span class="fl">1.51</span>, </span>
+<span id="cb229-13"><a href="a-tibble-3-x-2.html#cb229-13"></a>         <span class="fl">3.51</span>, <span class="fl">4.81</span>, <span class="fl">2.06</span>, <span class="fl">4.61</span>, <span class="fl">2.08</span>, <span class="fl">3.93</span>, <span class="fl">4.46</span>, <span class="fl">1.4</span>, <span class="fl">5.1</span>, <span class="fl">1.42</span>),</span>
+<span id="cb229-14"><a href="a-tibble-3-x-2.html#cb229-14"></a>  <span class="dt">D =</span>  <span class="kw">c</span>(<span class="fl">2.40</span>, <span class="fl">4.71</span>, <span class="fl">2.53</span>, <span class="fl">3.45</span>, <span class="fl">1.23</span>, <span class="fl">1.53</span>, <span class="fl">2.37</span>, <span class="fl">3.35</span>, <span class="fl">2.67</span>, <span class="fl">3.16</span>,</span>
+<span id="cb229-15"><a href="a-tibble-3-x-2.html#cb229-15"></a>         <span class="fl">1.31</span>, <span class="fl">4.78</span>, <span class="fl">4.44</span>, <span class="fl">1.64</span>, <span class="fl">1.13</span>, <span class="fl">2.68</span>, <span class="fl">4.76</span>, <span class="fl">1.79</span>, <span class="fl">2.89</span>, <span class="fl">3.58</span>,</span>
+<span id="cb229-16"><a href="a-tibble-3-x-2.html#cb229-16"></a>         <span class="fl">4.10</span>, <span class="fl">4.81</span>, <span class="fl">1.14</span>, <span class="fl">4.09</span>, <span class="fl">4.99</span>, <span class="fl">2.47</span>, <span class="fl">4.77</span>, <span class="fl">1.09</span>, <span class="fl">3.56</span>, <span class="fl">1.26</span>, </span>
+<span id="cb229-17"><a href="a-tibble-3-x-2.html#cb229-17"></a>         <span class="fl">3.26</span>, <span class="fl">4.56</span>, <span class="fl">1.81</span>, <span class="fl">4.36</span>, <span class="fl">1.83</span>, <span class="fl">3.68</span>, <span class="fl">4.21</span>, <span class="fl">1.15</span>, <span class="fl">4.85</span>, <span class="fl">1.17</span>)</span>
+<span id="cb229-18"><a href="a-tibble-3-x-2.html#cb229-18"></a>)</span></code></pre></div>
+<p>Grafica un histograma de las variables <code>A</code>, <code>B</code>, <code>C</code> y <code>D</code> de dicha base con un ancho de banda (binwidth) igual a <code>1</code>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>¿Podemos concluir la forma de la distribución a partir del histograma? Es decir ¿hay distribuciones sesgadas a la izquierda, a la derecha, uniformes, centradas o con colas pesadas?</p></li>
+<li><p>Realiza el mismo histograma pero ahora con un ancho de banda de 0.25 ¿por qué hubo cambios?</p></li>
+<li><p>Analiza la base de datos (los valores en función de la columna A) y concluye.</p></li>
+</ol>
+<p><strong>3. Densidad kernel</strong>
+Un histograma tiene muchos bemoles: en particular, es necesario decidir quién es <span class="math inline">\(h\)</span> y quién <span class="math inline">\(\kappa\)</span> y no hay una regla clara de cómo hacerlo. La densidad <code>kernel</code> es un intento de mejorar esta situación. Para ello recordamos que si <span class="math inline">\(X\)</span> es una variable aleatoria continua con densidad <span class="math inline">\(F\)</span> entonces:
+<span class="math display">\[
+f(x) = F&#39;(x) = \lim_{h \to 0} \dfrac{F(x + h) - F(x - h)}{2h}
+\]</span>
+Por lo que para un <span class="math inline">\(h\)</span> positiva con <span class="math inline">\(h \approx 0\)</span> tenemos que:
+<span class="math display">\[
+f(x) \approx \dfrac{F(x + h) - F(x - h)}{2h} 
+\]</span>
+En el caso de un vector de observaciones <span class="math inline">\(\vec{x} = (x_1, x_2, \dots, x_n)^T\)</span> recordamos que podemos asociar una función de distribución empírica <span class="math inline">\(\hat{F}\)</span> y por tanto obtener el <em>estimador de Rosenblatt</em> de la densidad <span class="math inline">\(f\)</span> mediante:
+<span class="math display">\[
+\hat{f}(x) =  \dfrac{\hat{F}(x + h) -\hat{F}(x - h)}{2h} 
+\]</span>
+Podemos reescribir esto como:
+<span class="math display">\[
+\hat{f}(x) =  \dfrac{1}{2nh} \sum\limits_{i = 1}^n \mathbb{I}_{(x-h, x+h]}(x_i) = \dfrac{1}{nh}\sum\limits_{i = 1}^n K\Big( \frac{x_i - x}{h}\Big)
+\]</span>
+donde:
+<span class="math display">\[
+K(u) = \frac{1}{2} \mathbb{I}_{(-1, 1]}(u)
+\]</span></p>
+<p>se conoce como el <em>kernel rectangular</em>. Una vez que llegamos hasta este punto notamos que para cualquier <span class="math inline">\(K\)</span> que cumple:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\int\limits_{-\infty}^{\infty} K(u) du = 1\)</span></p></li>
+<li><p><span class="math inline">\(K(u) \geq 0\)</span></p></li>
+</ol>
+<p>la función <span class="math inline">\(\hat{f}\)</span> es una función de densidad. La función <span class="math inline">\(\hat{f}\)</span> se conoce como el <em>estimador de densidad del kernel K</em>. Algunos ejemplos de kernels <span class="math inline">\(K\)</span> son:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Rectangular:</strong> <span class="math inline">\(K(u) = \frac{1}{2} \mathbb{I}_{(-1, 1]}(u)\)</span></p></li>
+<li><p><strong>Triangular:</strong> <span class="math inline">\(K(u) = (1 - |u|) \mathbb{I}_{(-1, 1]}(u)\)</span></p></li>
+<li><p><strong>Epanechnikov:</strong> <span class="math inline">\(K(u) = \frac{3}{4}(1 - u^2) \mathbb{I}_{(-1, 1]}(u)\)</span></p></li>
+<li><p><strong>Gaussiano:</strong> <span class="math inline">\(K(u) = \frac{1}{\sqrt{2\pi}}\text{exp}(-u^2/2)\)</span></p></li>
+</ol>
+<blockquote>
+<p><strong>OJO</strong> No confundir el Kernel <span class="math inline">\(K\)</span> (que es una función que integra a <span class="math inline">\(1\)</span>) con <em>función de densidad kernel</em> que es una función de los datos que utiliza un kernel y es una densidad por sí misma.</p>
+</blockquote>
+<p>En <code>R</code> podemos calcular la densidad <code>kernel</code> en <code>n</code> puntos con relativa facilidad mediante <code>density</code>:</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="a-tibble-3-x-2.html#cb230-1"></a>densidad_kernel &lt;-<span class="st"> </span><span class="kw">density</span>(datos<span class="op">$</span>latitud, <span class="dt">kernel =</span> <span class="st">&quot;gaussian&quot;</span>, <span class="dt">n =</span> <span class="dv">700</span>,</span>
+<span id="cb230-2"><a href="a-tibble-3-x-2.html#cb230-2"></a>                           <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p>Nota que <code>R</code> en automático preselecciona los valores de <code>h</code> mediante un criterio preprogramado de optimización. Podemos ver dicha densidad gráficamente (y compararla con un histograma):</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="a-tibble-3-x-2.html#cb231-1"></a><span class="kw">ggplot</span>(datos) <span class="op">+</span></span>
+<span id="cb231-2"><a href="a-tibble-3-x-2.html#cb231-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> latitud, <span class="dt">y =</span> ..density..), </span>
+<span id="cb231-3"><a href="a-tibble-3-x-2.html#cb231-3"></a>                 <span class="dt">binwidth =</span> <span class="fl">0.01</span>, <span class="dt">boundary =</span> <span class="dv">19</span>,</span>
+<span id="cb231-4"><a href="a-tibble-3-x-2.html#cb231-4"></a>                 <span class="dt">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></span>
+<span id="cb231-5"><a href="a-tibble-3-x-2.html#cb231-5"></a><span class="st">  </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">x =</span> latitud), <span class="dt">kernel =</span> <span class="st">&quot;gaussian&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>) <span class="op">+</span></span>
+<span id="cb231-6"><a href="a-tibble-3-x-2.html#cb231-6"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-290-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Esto no se queda ahí, podemos generalizar el concepto de kernel a dos dimensiones para aproximar una función de densidad <span class="math inline">\(f(x,y)\)</span> de dos variables aleatorias sí tenemos dos vectores <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span> y calculamos:</p>
+<p><span class="math display">\[
+\hat{f}(x,y) =\dfrac{1}{nh^2} \sum\limits_{i = 1}^n K \Big( \frac{x_i - x}{h}\Big) K \Big( \frac{y_i - y}{h}\Big)
+\]</span></p>
+<p>En particular esto nos permite generar una densidad en <code>R</code> para saber en qué coordenadas de latitud y longitud ocurren más los delitos:</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="a-tibble-3-x-2.html#cb232-1"></a><span class="kw">ggplot</span>(datos) <span class="op">+</span></span>
+<span id="cb232-2"><a href="a-tibble-3-x-2.html#cb232-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> longitud, <span class="dt">y =</span> latitud), <span class="dt">alpha =</span> <span class="fl">0.025</span>) <span class="op">+</span></span>
+<span id="cb232-3"><a href="a-tibble-3-x-2.html#cb232-3"></a><span class="st">  </span><span class="kw">geom_density_2d_filled</span>(<span class="kw">aes</span>(<span class="dt">x =</span> longitud, <span class="dt">y =</span> latitud), <span class="dt">alpha =</span> <span class="fl">0.75</span>) <span class="op">+</span></span>
+<span id="cb232-4"><a href="a-tibble-3-x-2.html#cb232-4"></a><span class="st">  </span><span class="kw">geom_density2d</span>(<span class="kw">aes</span>(<span class="dt">x =</span> longitud, <span class="dt">y =</span> latitud)) <span class="op">+</span></span>
+<span id="cb232-5"><a href="a-tibble-3-x-2.html#cb232-5"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-291-1.png" width="384" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ejercicio-sugerido" class="section level3">
+<h3><span class="header-section-number">12.6.2</span> Ejercicio sugerido</h3>
+<p>Este ejercicio es para que tengas la seguridad de que comprendiste los conceptos previos y sabes calcularlos. Es tedioso pero bueno para aclarar dudas.</p>
+Considera la siguiente base de datos:
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+x
+</th>
+<th style="text-align:right;">
+y
+</th>
+<th style="text-align:left;">
+z
+</th>
+<th style="text-align:left;">
+w
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-100
+</td>
+<td style="text-align:left;">
+Rojo
+</td>
+<td style="text-align:left;">
+Bueno
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-2
+</td>
+<td style="text-align:left;">
+Azul
+</td>
+<td style="text-align:left;">
+Malo
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Azul
+</td>
+<td style="text-align:left;">
+Regular
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Rojo
+</td>
+<td style="text-align:left;">
+Bueno
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Verde
+</td>
+<td style="text-align:left;">
+Bueno
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Amarillo
+</td>
+<td style="text-align:left;">
+Malo
+</td>
+</tr>
+</tbody>
+</table>
+<p>Calcula <strong>a mano</strong> (es decir puedes usar calculadora pero no lo calcules en <code>R</code>) y luego <strong>verifica tus cálculos haciéndolo en <code>R</code></strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>El total de <span class="math inline">\(\vec{x}\)</span></p></li>
+<li><p>La media y varianza de <span class="math inline">\(\vec{y}\)</span></p></li>
+<li><p>La curtosis y la asimetría de <span class="math inline">\(\vec{x}\)</span> (su media es 2 y su varianza 0.8). Determina si tiene un sesgo a la derecha, a la izquierda o ninguno.</p></li>
+<li><p>Determina mediante la curtosis si <span class="math inline">\(\vec{x}\)</span> tiene colas más pesadas que <span class="math inline">\(\vec{y}\)</span>.</p></li>
+<li><p>Calcula el cuantil <span class="math inline">\(0.25\)</span> y el <span class="math inline">\(0.75\)</span> de <span class="math inline">\(\vec{y}\)</span> así como su rango intercuartílico (IQR).</p></li>
+<li><p>¿Hay valores atípicos (<em>outliers</em>) en <span class="math inline">\(\vec{y}\)</span>? En caso afirmativo, determina cuáles son.</p></li>
+<li><p>¿Cuál es el rango de <span class="math inline">\(\vec{y}\)</span>? (no confundir con el IQR).</p></li>
+<li><p>Determina la moda de <span class="math inline">\(\vec{z}\)</span></p></li>
+<li><p>Determina la mediana de <span class="math inline">\(\vec{x}\)</span>.</p></li>
+<li><p>Determina la MAD de <span class="math inline">\(\vec{x}\)</span></p></li>
+<li><p>Realiza el conteo de cuáles <span class="math inline">\(\vec{z}\)</span> pertenecen al conjunto <span class="math inline">\(A = \{ \text{Rojo}, \text{Amarillo} \}\)</span></p></li>
+<li><p>Realiza una tabla de contingencia de <span class="math inline">\(\vec{w}\)</span> y <span class="math inline">\(\vec{z}\)</span>.</p></li>
+<li><p>Determina la distribución frecuencial (observada) marginal de <span class="math inline">\(\vec{w}\)</span>.</p></li>
+<li><p>Realiza una tabla de frecuencias de <span class="math inline">\(\vec{w}\)</span> y <span class="math inline">\(\vec{z}\)</span>.</p></li>
+<li><p>Calcula el riesgo relativo de estar en un choque dado que manejas en CDMX a partir de los datos en la tabla:</p></li>
+</ol>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+CDMX
+</th>
+<th style="text-align:right;">
+MTY
+</th>
+<th style="text-align:right;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Chocó
+</td>
+<td style="text-align:right;">
+1100
+</td>
+<td style="text-align:right;">
+4000
+</td>
+<td style="text-align:right;">
+5100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+No Chocó
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+5080
+</td>
+<td style="text-align:right;">
+5200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+1220
+</td>
+<td style="text-align:right;">
+9080
+</td>
+<td style="text-align:right;">
+10300
+</td>
+</tr>
+</tbody>
+</table>
+<p>Interpreta tu resultado.</p>
+<ol start="16" style="list-style-type: decimal">
+<li><p>De la tabla anterior calcula la razón de momios asociada a chocar dado que manejas en CDMX. Interprétala.</p></li>
+<li><p>Calcula la correlación de Bravais Pearson de <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span>. Interpreta.</p></li>
+<li><p>Obtén la correlación de Spearman de <span class="math inline">\(\vec{x}\)</span> y <span class="math inline">\(\vec{y}\)</span></p></li>
+<li><p>Para <span class="math inline">\(\vec{w}\)</span> y <span class="math inline">\(\vec{x}\)</span> obtén la <span class="math inline">\(\tau\)</span> de Kendall (son 15 comparaciones para generarla)</p></li>
+<li><p>Descartando el <em>outlier</em> de <span class="math inline">\(\vec{y}\)</span> (y su <span class="math inline">\(\vec{x}\)</span> asociada), ajusta un modelo lineal <span class="math inline">\(\hat{y} = \hat{\beta}_1 x + \hat{\beta}_0\)</span> y grafícalo para ver qué tan buen modelo es.</p></li>
+<li><p>Realiza una gráfica de caja (boxplot) para <span class="math inline">\(\vec{y}\)</span></p></li>
+<li><p>Realiza un scatterplot para la submatriz <span class="math inline">\(Z_{(x,y)}\)</span>.</p></li>
+<li><p>Realiza una gráfica de líneas para <span class="math inline">\(Z_{(x,y)}\)</span> identificando la función de interpolación lineal <span class="math inline">\(f(x)\)</span> asociada.</p></li>
+<li><p>Realiza una gráfica de barras de <span class="math inline">\(\vec{w}\)</span> especificando quiénes son los <span class="math inline">\(a_i\)</span> y los <span class="math inline">\(n_j\)</span>.</p></li>
+<li><p>Estima mediante <span class="math inline">\(\hat{p}\)</span> la función de probabilidad de <span class="math inline">\(\vec{w}\)</span>.</p></li>
+<li><p>Identifica la función de distribución empírica para <span class="math inline">\(\vec{x}\)</span>, <span class="math inline">\(\hat{F}\)</span> y grafícala.</p></li>
+<li><p>Realiza un histograma con <span class="math inline">\(h = 2\)</span> para <span class="math inline">\(x\)</span>. Toma <span class="math inline">\(\kappa = 4\)</span>.</p></li>
+<li><p>Ajusta una densidad kernel a <span class="math inline">\(\vec{x}\)</span> con <span class="math inline">\(h = 1\)</span> y usando un kernel <span class="math inline">\(K\)</span> triangular. Calcula <span class="math inline">\(\hat{f}(x)\)</span> para <span class="math inline">\(x = 0,1,2,3,4\)</span>.</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-panaretos2016statistics">
+<p>Panaretos, Victor M. 2016. “Statistics for Mathematicians.” <em>Compact Textbook in Mathematics. Birkhäuser/Springer</em> 142: 9–15.</p>
+</div>
+<div id="ref-peck2015introduction">
+<p>Peck, Roxy, Chris Olsen, and Jay L Devore. 2015. <em>Introduction to Statistics and Data Analysis</em>. Cengage Learning.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-tibble-25-x-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["InferenciaEstadistica.pdf", "InferenciaEstadistica.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

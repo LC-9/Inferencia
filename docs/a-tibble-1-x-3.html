@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 A tibble: 1 x 3 | Inferencia</title>
+  <meta name="description" content="Notas para un curso de inferencia estadística" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 A tibble: 1 x 3 | Inferencia" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas para un curso de inferencia estadística" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 A tibble: 1 x 3 | Inferencia" />
+  
+  <meta name="twitter:description" content="Notas para un curso de inferencia estadística" />
+  
+
+<meta name="author" content="Rodrigo Zepeda-Tello y Luis Carlos Bernal" />
+
+
+<meta name="date" content="2021-01-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="a-tibble-1-x-2.html"/>
+<link rel="next" href="a-tibble-1-x-4.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas a un curso de inferencia estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#estadística-y-muestras"><i class="fa fa-check"></i><b>1.1</b> Estadística y muestras</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modelos"><i class="fa fa-check"></i><b>1.2</b> Modelos</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#inferencia-estadística-ejemplo."><i class="fa fa-check"></i><b>1.3</b> Inferencia estadística: ejemplo.</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#estimador-de-momentos"><i class="fa fa-check"></i><b>1.3.1</b> Estimador de momentos</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#estimador-de-máxima-verosimilitud-maximización-discreta"><i class="fa fa-check"></i><b>1.3.2</b> Estimador de máxima verosimilitud (maximización discreta)</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#ejemplo-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo"><i class="fa fa-check"></i><b>1.3.3</b> Ejemplo 5: Muestreo de urna con dos clases, con orden, con reemplazo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#resumen-de-la-sección"><i class="fa fa-check"></i><b>1.4</b> Resumen de la sección</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="R.html"><a href="R.html"><i class="fa fa-check"></i><b>2</b> R</a><ul>
+<li class="chapter" data-level="2.1" data-path="R.html"><a href="R.html#programación-en-r"><i class="fa fa-check"></i><b>2.1</b> Programación en <code>R</code></a><ul>
+<li class="chapter" data-level="2.1.1" data-path="R.html"><a href="R.html#puntos-a-favor-de-r"><i class="fa fa-check"></i><b>2.1.1</b> Puntos a favor de <code>R</code></a></li>
+<li class="chapter" data-level="2.1.2" data-path="R.html"><a href="R.html#bienvenidx-a-r-bunny-wunnies-freak-out-sí-así-se-llama-esta-versión"><i class="fa fa-check"></i><b>2.1.2</b> Bienvenidx a <code>R</code>, Bunny-Wunnies Freak Out (sí, así se llama esta versión)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="R.html"><a href="R.html#instalando-cosas"><i class="fa fa-check"></i><b>2.2</b> Instalando cosas</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="R.html"><a href="R.html#instalación-de-r"><i class="fa fa-check"></i><b>2.2.1</b> Instalación de <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="R.html"><a href="R.html#instalación-de-rstudio"><i class="fa fa-check"></i><b>2.3</b> Instalación de <code>RStudio</code></a></li>
+<li class="chapter" data-level="2.4" data-path="R.html"><a href="R.html#primeros-pasos-en-r-usando-rstudio"><i class="fa fa-check"></i><b>2.4</b> Primeros pasos en <code>R</code> usando <code>RStudio</code></a></li>
+<li class="chapter" data-level="2.5" data-path="R.html"><a href="R.html#cálculos-numéricos"><i class="fa fa-check"></i><b>2.5</b> Cálculos numéricos</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="R.html"><a href="R.html#ejercicio"><i class="fa fa-check"></i><b>2.5.1</b> Ejercicio</a></li>
+<li class="chapter" data-level="2.5.2" data-path="R.html"><a href="R.html#ejercicio-1"><i class="fa fa-check"></i><b>2.5.2</b> Ejercicio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="R.html"><a href="R.html#respuestas"><i class="fa fa-check"></i><b>2.5.3</b> Respuestas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="R.html"><a href="R.html#variables"><i class="fa fa-check"></i><b>2.6</b> Variables</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="R.html"><a href="R.html#ejercicios"><i class="fa fa-check"></i><b>2.6.1</b> Ejercicios</a></li>
+<li class="chapter" data-level="2.6.2" data-path="R.html"><a href="R.html#nivel-3"><i class="fa fa-check"></i><b>2.6.2</b> NIVEL 3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="R.html"><a href="R.html#observaciones-sobre-la-aritmética-de-punto-flotante"><i class="fa fa-check"></i><b>2.7</b> Observaciones sobre la aritmética de punto flotante</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="R.html"><a href="R.html#cómo-checar-un-if"><i class="fa fa-check"></i><b>2.7.1</b> ¿Cómo checar un if?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="R.html"><a href="R.html#leer-y-almacenar-variables-en-r"><i class="fa fa-check"></i><b>2.8</b> Leer y almacenar variables en <code>R</code></a><ul>
+<li class="chapter" data-level="2.8.1" data-path="R.html"><a href="R.html#ejercicio-2"><i class="fa fa-check"></i><b>2.8.1</b> Ejercicio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="R.html"><a href="R.html#instalación-de-paquetes"><i class="fa fa-check"></i><b>2.9</b> Instalación de paquetes</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="R.html"><a href="R.html#ejercicios-1"><i class="fa fa-check"></i><b>2.9.1</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="R.html"><a href="R.html#comentarios-adicionales-sobre-el-formato"><i class="fa fa-check"></i><b>2.10</b> Comentarios adicionales sobre el formato</a></li>
+<li class="chapter" data-level="2.11" data-path="R.html"><a href="R.html#loops"><i class="fa fa-check"></i><b>2.11</b> Loops</a></li>
+<li class="chapter" data-level="2.12" data-path="R.html"><a href="R.html#for"><i class="fa fa-check"></i><b>2.12</b> For</a></li>
+<li class="chapter" data-level="2.13" data-path="R.html"><a href="R.html#while"><i class="fa fa-check"></i><b>2.13</b> While</a></li>
+<li class="chapter" data-level="2.14" data-path="R.html"><a href="R.html#if-else-condicionales"><i class="fa fa-check"></i><b>2.14</b> If-else (condicionales)</a></li>
+<li class="chapter" data-level="2.15" data-path="R.html"><a href="R.html#and-or-operadores-lógicos"><i class="fa fa-check"></i><b>2.15</b> And-or (Operadores lógicos)</a><ul>
+<li class="chapter" data-level="2.15.1" data-path="R.html"><a href="R.html#and"><i class="fa fa-check"></i><b>2.15.1</b> And</a></li>
+</ul></li>
+<li class="chapter" data-level="2.16" data-path="R.html"><a href="R.html#or"><i class="fa fa-check"></i><b>2.16</b> Or</a></li>
+<li class="chapter" data-level="2.17" data-path="R.html"><a href="R.html#ejercicio-1-1"><i class="fa fa-check"></i><b>2.17</b> Ejercicio 1</a></li>
+<li class="chapter" data-level="2.18" data-path="R.html"><a href="R.html#media"><i class="fa fa-check"></i><b>2.18</b> Media</a></li>
+<li class="chapter" data-level="2.19" data-path="R.html"><a href="R.html#desviación-estándar"><i class="fa fa-check"></i><b>2.19</b> Desviación estándar</a></li>
+<li class="chapter" data-level="2.20" data-path="R.html"><a href="R.html#ejercicio-2-1"><i class="fa fa-check"></i><b>2.20</b> Ejercicio 2</a></li>
+<li class="chapter" data-level="2.21" data-path="R.html"><a href="R.html#ejercicio-3"><i class="fa fa-check"></i><b>2.21</b> Ejercicio 3</a></li>
+<li class="chapter" data-level="2.22" data-path="R.html"><a href="R.html#advertencias-y-otras-cosas-poco-intuitivas"><i class="fa fa-check"></i><b>2.22</b> Advertencias y otras cosas poco intuitivas</a></li>
+<li class="chapter" data-level="2.23" data-path="R.html"><a href="R.html#donde-fallan-estas-cosas"><i class="fa fa-check"></i><b>2.23</b> Donde fallan estas cosas</a></li>
+<li class="chapter" data-level="2.24" data-path="R.html"><a href="R.html#números-pseudoaleatorios"><i class="fa fa-check"></i><b>2.24</b> Números pseudoaleatorios</a></li>
+<li class="chapter" data-level="2.25" data-path="R.html"><a href="R.html#ejercicio-4"><i class="fa fa-check"></i><b>2.25</b> Ejercicio 4</a></li>
+<li class="chapter" data-level="2.26" data-path="R.html"><a href="R.html#aleatoreidad-en-r"><i class="fa fa-check"></i><b>2.26</b> Aleatoreidad en R</a></li>
+<li class="chapter" data-level="2.27" data-path="R.html"><a href="R.html#las-semillas"><i class="fa fa-check"></i><b>2.27</b> Las semillas</a></li>
+<li class="chapter" data-level="2.28" data-path="R.html"><a href="R.html#ejercicio-5"><i class="fa fa-check"></i><b>2.28</b> Ejercicio 5</a></li>
+<li class="chapter" data-level="2.29" data-path="R.html"><a href="R.html#ejercicio-6"><i class="fa fa-check"></i><b>2.29</b> Ejercicio 6</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html"><i class="fa fa-check"></i><b>3</b> Análisis Exploratorio de Datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#inicio"><i class="fa fa-check"></i><b>3.1</b> Inicio</a></li>
+<li class="chapter" data-level="3.2" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#librerías"><i class="fa fa-check"></i><b>3.2</b> Librerías</a></li>
+<li class="chapter" data-level="3.3" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#base-a-analizar"><i class="fa fa-check"></i><b>3.3</b> Base a analizar</a></li>
+<li class="chapter" data-level="3.4" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#definiciones-y-notación"><i class="fa fa-check"></i><b>3.4</b> Definiciones y notación</a></li>
+<li class="chapter" data-level="3.5" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#estadísticos-univariados"><i class="fa fa-check"></i><b>3.5</b> Estadísticos univariados</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="análisis-exploratorio-de-datos.html"><a href="análisis-exploratorio-de-datos.html#definición-estadístico-observado"><i class="fa fa-check"></i><b>3.5.1</b> Definición [Estadístico observado]</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="a-tibble-6-x-2.html"><a href="a-tibble-6-x-2.html"><i class="fa fa-check"></i><b>4</b> A tibble: 6 x 2</a></li>
+<li class="chapter" data-level="5" data-path="a-tibble-1-x-1.html"><a href="a-tibble-1-x-1.html"><i class="fa fa-check"></i><b>5</b> A tibble: 1 x 1</a></li>
+<li class="chapter" data-level="6" data-path="a-tibble-1-x-2.html"><a href="a-tibble-1-x-2.html"><i class="fa fa-check"></i><b>6</b> A tibble: 1 x 2</a></li>
+<li class="chapter" data-level="7" data-path="a-tibble-1-x-3.html"><a href="a-tibble-1-x-3.html"><i class="fa fa-check"></i><b>7</b> A tibble: 1 x 3</a></li>
+<li class="chapter" data-level="8" data-path="a-tibble-1-x-4.html"><a href="a-tibble-1-x-4.html"><i class="fa fa-check"></i><b>8</b> A tibble: 1 x 4</a></li>
+<li class="chapter" data-level="9" data-path="a-tibble-2-x-1.html"><a href="a-tibble-2-x-1.html"><i class="fa fa-check"></i><b>9</b> A tibble: 2 x 1</a></li>
+<li class="chapter" data-level="10" data-path="a-tibble-21-x-2.html"><a href="a-tibble-21-x-2.html"><i class="fa fa-check"></i><b>10</b> A tibble: 21 x 2</a></li>
+<li class="chapter" data-level="11" data-path="a-tibble-25-x-2.html"><a href="a-tibble-25-x-2.html"><i class="fa fa-check"></i><b>11</b> A tibble: 25 x 2</a></li>
+<li class="chapter" data-level="12" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html"><i class="fa fa-check"></i><b>12</b> A tibble: 3 x 2</a><ul>
+<li class="chapter" data-level="12.1" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicios-2"><i class="fa fa-check"></i><b>12.1</b> Ejercicios</a></li>
+<li class="chapter" data-level="12.2" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#gráficas-univariadas"><i class="fa fa-check"></i><b>12.2</b> Gráficas univariadas</a></li>
+<li class="chapter" data-level="12.3" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#gráficas-bivariadas"><i class="fa fa-check"></i><b>12.3</b> Gráficas bivariadas</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-7"><i class="fa fa-check"></i><b>12.3.1</b> Ejercicio</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#estadísticos-bivariados"><i class="fa fa-check"></i><b>12.4</b> Estadísticos bivariados</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-8"><i class="fa fa-check"></i><b>12.4.1</b> Ejercicio</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-9"><i class="fa fa-check"></i><b>12.5</b> Ejercicio</a></li>
+<li class="chapter" data-level="12.6" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ajuste-funcional"><i class="fa fa-check"></i><b>12.6</b> Ajuste funcional</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-10"><i class="fa fa-check"></i><b>12.6.1</b> Ejercicio</a></li>
+<li class="chapter" data-level="12.6.2" data-path="a-tibble-3-x-2.html"><a href="a-tibble-3-x-2.html#ejercicio-sugerido"><i class="fa fa-check"></i><b>12.6.2</b> Ejercicio sugerido</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/RodrigoZepeda" target="blank">Elaborado por Rodrigo Zepeda y Luis Carlos Bernal</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inferencia</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="a-tibble-1-x-3" class="section level1">
+<h1><span class="header-section-number">Capítulo 7</span> A tibble: 1 x 3</h1>
+<p><code>mean(n)</code> <code>sum(n)</code> <code>var(n)</code>
+<dbl> <int> <dbl>
+1 641. 19861 10046.
+La raíz cuadrada de la varianza se conoce como <strong>desviación estándar</strong> y se denota como sigue:
+<span class="math display">\[
+\sigma_{\vec{x}} = \sqrt{\sigma^2_{\vec{x}}}
+\]</span></p>
+<p>Recuerda que la varianza se interpreta como la distancia cuadrática promedio a la que están los datos. En particular la varianza casi no considera valores que están a menos de <span class="math inline">\(1\)</span> de distancia de <span class="math inline">\(\bar{x}\)</span> (pues <span class="math inline">\((x_i - \bar{x})^2 &lt; 1\)</span> en ese caso) pero le da mayor peso a valores que están muy lejanos (donde <span class="math inline">\((x_i - \bar{x})^2 \gg 1\)</span> si <span class="math inline">\(x_i\)</span> está muy lejos de <span class="math inline">\(\bar{x}\)</span>). Gráficamente:</p>
+<p><img src="InferenciaEstadistica_files/figure-html/unnamed-chunk-182-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Si nos interesara que todos los valores (tanto los cercanos a <span class="math inline">\(\bar{x}\)</span> como los lejanos) pesaran de manera idéntica entonces usaríamos el MAD:</p>
+<p><strong>4. Desviación Media Absoluta (MAD)</strong> Dado un vector de datos numéricos <span class="math inline">\(\vec{x} = (x_1, x_2, \dots, x_n)^T\)</span> definimos la desviación media absoluta, MAD, como (<span class="citation">Panaretos (<a href="#ref-panaretos2016statistics" role="doc-biblioref">2016</a>)</span>):
+<span class="math display">\[
+\text{MAD}_{\vec{x}} = \frac{1}{n} \sum\limits_{i=1}^{n} | x_i - \bar{x} |
+\]</span></p>
+<p>Misma que se puede calcular en <code>R</code> como:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="a-tibble-1-x-3.html#cb138-1"></a><span class="kw">mad</span>(conteo_delitos<span class="op">$</span>n, <span class="dt">center =</span> <span class="kw">mean</span>(conteo_delitos<span class="op">$</span>n))</span></code></pre></div>
+<p>[1] 114.638
+o bien dentro del <code>summarise</code>:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="a-tibble-1-x-3.html#cb139-1"></a>conteo_delitos <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="kw">mean</span>(n), <span class="kw">sum</span>(n), <span class="kw">var</span>(n), </span>
+<span id="cb139-2"><a href="a-tibble-1-x-3.html#cb139-2"></a>                             <span class="kw">mad</span>(n, <span class="dt">center =</span> <span class="kw">mean</span>(n)))</span></code></pre></div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-panaretos2016statistics">
+<p>Panaretos, Victor M. 2016. “Statistics for Mathematicians.” <em>Compact Textbook in Mathematics. Birkhäuser/Springer</em> 142: 9–15.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-tibble-1-x-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="a-tibble-1-x-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["InferenciaEstadistica.pdf", "InferenciaEstadistica.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

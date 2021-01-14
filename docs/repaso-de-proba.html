@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Repaso de Proba | Inferencia</title>
+  <meta name="description" content="Notas para un curso de inferencia estadística" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Repaso de Proba | Inferencia" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas para un curso de inferencia estadística" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Repaso de Proba | Inferencia" />
+  
+  <meta name="twitter:description" content="Notas para un curso de inferencia estadística" />
+  
+
+<meta name="author" content="Rodrigo Zepeda-Tello y Luis Carlos Bernal" />
+
+
+<meta name="date" content="2021-01-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="R.html"/>
+<link rel="next" href="referencias.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas a un curso de inferencia estadística</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#estadística-y-muestras"><i class="fa fa-check"></i><b>1.1</b> Estadística y muestras</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#modelos"><i class="fa fa-check"></i><b>1.2</b> Modelos</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#inferencia-estadística-ejemplo."><i class="fa fa-check"></i><b>1.3</b> Inferencia estadística: ejemplo.</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#estimador-de-momentos"><i class="fa fa-check"></i><b>1.3.1</b> Estimador de momentos</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#estimador-de-máxima-verosimilitud-maximización-discreta"><i class="fa fa-check"></i><b>1.3.2</b> Estimador de máxima verosimilitud (maximización discreta)</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#ejemplo-5-muestreo-de-urna-con-dos-clases-con-orden-con-reemplazo"><i class="fa fa-check"></i><b>1.3.3</b> Ejemplo 5: Muestreo de urna con dos clases, con orden, con reemplazo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#resumen-de-la-sección"><i class="fa fa-check"></i><b>1.4</b> Resumen de la sección</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="R.html"><a href="R.html"><i class="fa fa-check"></i><b>2</b> R</a><ul>
+<li class="chapter" data-level="2.1" data-path="R.html"><a href="R.html#programación-en-r"><i class="fa fa-check"></i><b>2.1</b> Programación en <code>R</code></a><ul>
+<li class="chapter" data-level="2.1.1" data-path="R.html"><a href="R.html#puntos-a-favor-de-r"><i class="fa fa-check"></i><b>2.1.1</b> Puntos a favor de <code>R</code></a></li>
+<li class="chapter" data-level="2.1.2" data-path="R.html"><a href="R.html#bienvenidx-a-r-bunny-wunnies-freak-out-sí-así-se-llama-esta-versión"><i class="fa fa-check"></i><b>2.1.2</b> Bienvenidx a <code>R</code>, Bunny-Wunnies Freak Out (sí, así se llama esta versión)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="R.html"><a href="R.html#instalando-cosas"><i class="fa fa-check"></i><b>2.2</b> Instalando cosas</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="R.html"><a href="R.html#instalación-de-r"><i class="fa fa-check"></i><b>2.2.1</b> Instalación de <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="R.html"><a href="R.html#instalación-de-rstudio"><i class="fa fa-check"></i><b>2.3</b> Instalación de <code>RStudio</code></a></li>
+<li class="chapter" data-level="2.4" data-path="R.html"><a href="R.html#primeros-pasos-en-r-usando-rstudio"><i class="fa fa-check"></i><b>2.4</b> Primeros pasos en <code>R</code> usando <code>RStudio</code></a></li>
+<li class="chapter" data-level="2.5" data-path="R.html"><a href="R.html#cálculos-numéricos"><i class="fa fa-check"></i><b>2.5</b> Cálculos numéricos</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="R.html"><a href="R.html#ejercicio"><i class="fa fa-check"></i><b>2.5.1</b> Ejercicio</a></li>
+<li class="chapter" data-level="2.5.2" data-path="R.html"><a href="R.html#ejercicio-1"><i class="fa fa-check"></i><b>2.5.2</b> Ejercicio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="R.html"><a href="R.html#respuestas"><i class="fa fa-check"></i><b>2.5.3</b> Respuestas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="R.html"><a href="R.html#variables"><i class="fa fa-check"></i><b>2.6</b> Variables</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="R.html"><a href="R.html#ejercicios"><i class="fa fa-check"></i><b>2.6.1</b> Ejercicios</a></li>
+<li class="chapter" data-level="2.6.2" data-path="R.html"><a href="R.html#nivel-3"><i class="fa fa-check"></i><b>2.6.2</b> NIVEL 3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="R.html"><a href="R.html#observaciones-sobre-la-aritmética-de-punto-flotante"><i class="fa fa-check"></i><b>2.7</b> Observaciones sobre la aritmética de punto flotante</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="R.html"><a href="R.html#cómo-checar-un-if"><i class="fa fa-check"></i><b>2.7.1</b> ¿Cómo checar un if?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="R.html"><a href="R.html#leer-y-almacenar-variables-en-r"><i class="fa fa-check"></i><b>2.8</b> Leer y almacenar variables en <code>R</code></a><ul>
+<li class="chapter" data-level="2.8.1" data-path="R.html"><a href="R.html#ejercicio-2"><i class="fa fa-check"></i><b>2.8.1</b> Ejercicio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="R.html"><a href="R.html#instalación-de-paquetes"><i class="fa fa-check"></i><b>2.9</b> Instalación de paquetes</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="R.html"><a href="R.html#ejercicios-1"><i class="fa fa-check"></i><b>2.9.1</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="R.html"><a href="R.html#comentarios-adicionales-sobre-el-formato"><i class="fa fa-check"></i><b>2.10</b> Comentarios adicionales sobre el formato</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="repaso-de-proba.html"><a href="repaso-de-proba.html"><i class="fa fa-check"></i><b>3</b> Repaso de Proba</a><ul>
+<li class="chapter" data-level="3.1" data-path="repaso-de-proba.html"><a href="repaso-de-proba.html#funciones-indicadoras"><i class="fa fa-check"></i><b>3.1</b> Funciones indicadoras</a></li>
+<li class="chapter" data-level="3.2" data-path="repaso-de-proba.html"><a href="repaso-de-proba.html#conteo"><i class="fa fa-check"></i><b>3.2</b> Conteo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/RodrigoZepeda" target="blank">Elaborado por Rodrigo Zepeda y Luis Carlos Bernal</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inferencia</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="repaso-de-proba" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Repaso de Proba</h1>
+<div id="funciones-indicadoras" class="section level2">
+<h2><span class="header-section-number">3.1</span> Funciones indicadoras</h2>
+<p>Dado un conjunto <span class="math inline">\(A\)</span> definimos la función indicadora de <span class="math inline">\(A\)</span> como sigue:
+<span class="math display">\[
+\mathbb{I}_A (x)= \begin{cases}
+1 &amp; \text{ si } x \in A \\
+0 &amp; \text{ si } x \not\in A
+\end{cases}
+\]</span></p>
+<p>La función indicadora cumple las siguientes propiedades:</p>
+<p>Sean <span class="math inline">\(A,B\)</span> conjuntos; luego:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\mathbb{I}_{A \cap B}(x) = \mathbb{I}_{A}(x) \cdot \mathbb{I}_{B}(x)\)</span></p></li>
+<li><p><span class="math inline">\(\mathbb{I}_{A \cup B}(x) = \mathbb{I}_{A}(x) + \mathbb{I}_{B}(x) - \mathbb{I}_{A}(x) \cdot \mathbb{I}_{B}(x)\)</span></p></li>
+<li><p><span class="math inline">\(\mathbb{E}_X[\mathbb{I}_A(X)] = \mathbb{P}(X\in A)\)</span></p></li>
+</ol>
+<p><em>Demostración</em>:
+1. Si <span class="math inline">\(x\in A \cap B\)</span> pasa que <span class="math inline">\(\mathbb{I}_{A \cap B}(x) = 1\)</span>; además, por hipótesis <span class="math inline">\(x\in A\)</span> y <span class="math inline">\(x \in B\)</span> lo que implica que <span class="math inline">\(\mathbb{I}_{A}(x) = 1\)</span> y <span class="math inline">\(\mathbb{I}_{B}(x) = 1\)</span>; en caso contrario <span class="math inline">\(\mathbb{I}_{A \cap B}(x) = 1\)</span> y como no está en el conjunto al menos uno <span class="math inline">\(\mathbb{I}_{A}(x)\)</span> ó <span class="math inline">\(\mathbb{I}_{B}(x)\)</span> es cero. Esto concluye la prueba.
+2. Demostración es similar
+3. Para cualquier variable aleatoria <span class="math inline">\(X\)</span>, <span class="math inline">\(\mathbb{I}_{A}(X)\)</span> sólo toma dos valores: <span class="math inline">\(0\)</span> si <span class="math inline">\(X\not\in A\)</span> y <span class="math inline">\(1\)</span> si <span class="math inline">\(X\in A\)</span>. Luego:</p>
+<p><span class="math display">\[
+\mathbb{E}_X[\mathbb{I}_A(X)] = 1 \cdot \mathbb{P}(X\in A) + 0 \cdot \mathbb{P}(X\not\in A) = \mathbb{P}(X\in A) 
+\]</span></p>
+</div>
+<div id="conteo" class="section level2">
+<h2><span class="header-section-number">3.2</span> Conteo</h2>
+<p>Intentemos resumir todas las formas de contar que tenemos con un ejemplo de <span class="citation">(<span class="citeproc-not-found" data-reference-id="casella2002statistical"><strong>???</strong></span>)</span>.</p>
+<blockquote>
+<p>En la lotería de Nueva York se eligen <span class="math inline">\(6\)</span> de <span class="math inline">\(44\)</span> números para un ticket. ¿Cuántos boletos de lotería posibles hay?</p>
+</blockquote>
+<p>Veamos algunas formas posibles de solución<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>Ordenado y sin reemplazo</strong> Si sólo importa el orden y una vez que sale un número no se vuelve a meter a los posibles entonces tenemos:
+<span class="math display">\[
+\frac{44!}{(44-6)!}
+\]</span></p></li>
+<li><p><strong>Ordenado y con reemplazo</strong> En cada uno de los <span class="math inline">\(6\)</span> lugares hay <span class="math inline">\(44\)</span> números posibles:
+<span class="math display">\[
+44^6
+\]</span></p></li>
+<li><p><strong>Sin orden y sin reemplazo</strong> Esto es una combinación por lo que la forma de extraerlo es:
+<span class="math display">\[
+\binom{44}{6}
+\]</span></p></li>
+<li><p><strong>Sin orden y con reemplazo</strong> Para resolver este caso podemos usar la técnica de las barras y los puntos. Coloquemos barras y los huecos entre ellas representan cada uno de los <span class="math inline">\(44\)</span> números.
+<span class="math display">\[\begin{equation}\nonumber
+|\underbrace{\_}_{1}|\underbrace{\_}_{2}|\underbrace{\_}_{3}|\cdots |\underbrace{\_}_{n}|
+\end{equation}\]</span>
+Coloquemos puntos (<span class="math inline">\(\circ\)</span>) donde estén los números seleccionados. Por ejemplo la siguiente representa la combinación <span class="math inline">\(113555\)</span>
+<span class="math display">\[\begin{equation}\nonumber
+|\underbrace{\circ \circ}_{1}|\underbrace{\_}_{2}|\underbrace{\circ}_{3}||\underbrace{\_}_{4}|\underbrace{\circ \circ \circ}_{5}|\cdots |\underbrace{\_}_{n}|
+\end{equation}\]</span>
+Tenemos entonces que el problema se reduce a colocar <span class="math inline">\(n - 1= 43\)</span> barritas (son un total de <span class="math inline">\(45\)</span> pero la primera y la última no deben cambiar de lugar) y <span class="math inline">\(k = 6\)</span> círculos por tanto colocamos <span class="math inline">\(49\)</span> elementos en total. De estos, nos interesa poner <span class="math inline">\(6\)</span> por lo que tenemos:
+<span class="math display">\[
+\binom{44 + 6  - 1}{6}
+\]</span>
+formas distintas. Esto nos lleva a la tabla siguiente:</p></li>
+</ol>
+<p>Para obtener una muestra de tamaño <span class="math inline">\(k\)</span> a partir de un conjunto de tamaño <span class="math inline">\(n &gt; 0\)</span> éstas son las opciones:</p>
+<table>
+<tr>
+<td>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(\quad \text{Con Reemplazo}\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(\quad \text{Sin Reemplazo}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\quad \text{Con Orden}\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(\quad n^k\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(\quad (n)_k\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\quad \text{Sin Orden}\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(\quad \binom{n+k-1}{k}\)</span>
+</td>
+<td>
+</td>
+<td>
+<span class="math inline">\(\quad \binom{n}{k}\)</span>
+</td>
+</tr>
+</table>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="12">
+<li id="fn12"><p>¿Se te ocurre alguna que no esté aquí?<a href="repaso-de-proba.html#fnref12" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="R.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["InferenciaEstadistica.pdf", "InferenciaEstadistica.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
